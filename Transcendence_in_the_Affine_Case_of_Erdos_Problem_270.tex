@@ -1,0 +1,528 @@
+\documentclass[12pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{amssymb,amsthm,mathtools}
+\usepackage{titlesec}
+\usepackage[hidelinks]{hyperref}
+
+\hypersetup{
+  pdftitle={Transcendence in the Affine Case of Erdos Problem 270},
+  pdfsubject={Transcendence for positive affine functions in Erdos Problem 270},
+  pdfauthor={Costa Lambrinoudis}
+}
+
+\allowdisplaybreaks
+\linespread{1.02}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.2\baselineskip}
+\emergencystretch=2em
+\titleformat{\section}{\raggedright\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titlespacing*{\section}{0pt}{3.5ex plus 1ex minus 0.2ex}{2.3ex plus 0.2ex}
+\titleformat{\subsection}{\raggedright\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titlespacing*{\subsection}{0pt}{3.25ex plus 1ex minus 0.2ex}{1.5ex plus 0.2ex}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem*{descentlemma}{Descent lemma}
+
+\begin{document}
+
+\begin{center}
+{\LARGE Transcendence in the Affine Case of Erd\H{o}s Problem 270}\\[1.5ex]
+{\large Costa Lambrinoudis}\\[0.5ex]
+{22 August 2026}\\[1.75ex]
+{\small\itshape AI Disclosure: This manuscript was written and checked using generative AI.}
+\end{center}
+
+\begin{quote}
+\small
+Erd\H{o}s Problem 270 asked whether a series of reciprocals of consecutive-integer products must be irrational when the number of factors tends to infinity. Crmari\'c and Kova\v{c} showed that the answer is negative without a regularity assumption, while the case in which the number of factors is nondecreasing remains open. We prove that
+\[
+C_{a,b}:=\sum_{n=1}^{\infty}\frac{n!}{((a+1)n+b)!}
+\]
+is transcendental for every $a\geq1$ and $b\geq1-a$. We first give an elementary proof of irrationality for $0\leq b\leq a$, including the example singled out by Erd\H{o}s and Graham. We then prove transcendence by studying the associated hypergeometric $E$-functions. Theorems of Salikhov and Salikhov--Viskina cover $0\leq b\leq a$, and an index shift handles $1-a\leq b<0$. For $b>a$, we obtain the functional independence required by Beukers's lifting theorem from an Euler-operator reduction and a logarithmic formal term at infinity.
+\end{quote}
+
+\section{Irrationality of the Erd\H{o}s--Graham example}
+\label{sec:elementary-proof}
+
+Erd\H{o}s and Graham ended their chapter on irrationality and transcendence with the question now known as Erd\H{o}s Problem 270. Given a positive integer-valued function $f$ with $f(n)\to\infty$, they considered
+\[
+S(f):=\sum_{n=1}^{\infty}
+\frac1{(n+1)(n+2)\cdots(n+f(n))},
+\]
+and asked whether $S(f)$ must be irrational. They expected an affirmative answer when $f$ is nondecreasing~\cite[p.~66]{erdos-graham}. Crmari\'c and Kova\v{c} later showed that some regularity assumption is necessary: as $f$ ranges over all such functions, $S(f)$ takes every value in $(0,\infty)$~\cite[Theorem~1]{crmaric-kovac}. The nondecreasing problem remains open~\cite{bloom-270}.
+
+Erd\H{o}s and Graham singled out the simplest nondecreasing choice, $f(n)=n$. They described the resulting series as difficult to treat and wrote that such series were surely irrational~\cite[pp.~65--66]{erdos-graham}. Crmari\'c and Kova\v{c} later returned to this example and reported that they knew no proof of its irrationality~\cite[p.~55, following (1.1)]{crmaric-kovac}. It is the first member of the affine family considered here:
+
+\[
+S(f)=C:=\sum_{n=1}^{\infty}\frac{n!}{(2n)!}
+=\sum_{n=1}^{\infty}\frac1{D_n},
+\qquad
+D_n:=\frac{(2n)!}{n!}.
+\]
+Then
+\[
+\frac{D_{n+1}}{D_n}
+=\frac{(2n+2)(2n+1)}{n+1}
+=4n+2,
+\]
+so $D_n\mid D_{n+1}$. If
+\[
+P_N:=\sum_{n=1}^{N}\frac1{D_n},
+\qquad
+R_N:=C-P_N,
+\]
+then $D_NP_N\in\mathbb Z$, while
+\[
+\begin{aligned}
+0<D_NR_N
+&=\sum_{k=1}^{\infty}\frac{D_N}{D_{N+k}}\\
+&=\sum_{k=1}^{\infty}
+\frac1{(4N+2)(4N+6)\cdots(4N+4k-2)}\\
+&\leq\sum_{k=1}^{\infty}\frac1{(4N+2)^k}
+=\frac1{4N+1}.
+\end{aligned}
+\]
+Thus $D_NR_N\to0$.
+
+Suppose that $C=p/q$, where $p\in\mathbb Z$ and $q\in\mathbb Z_{>0}$. Then
+\[
+D_NR_N=\frac{pD_N}{q}-D_NP_N
+\]
+is positive and belongs to $q^{-1}\mathbb Z$. It must therefore be at least $1/q$, contradicting $D_NR_N\to0$. Hence $C$ is irrational.
+
+\section{Irrationality for \texorpdfstring{$0\leq b\leq a$}{0 <= b <= a}}
+\label{sec:irrationality-range}
+
+For integers $a\geq1$ and $b\geq0$, the affine choice $f(n)=an+b$ gives
+\[
+S(f)=\sum_{n=1}^{\infty}\frac1{(n+1)\cdots((a+1)n+b)}
+=\sum_{n=1}^{\infty}\frac{n!}{((a+1)n+b)!}
+=:C_{a,b}.
+\]
+These are the affine cases of Problem 270 with nonnegative intercept. The preceding argument extends to the range $0\leq b\leq a$. Fix $a$ and $b$ in this range, and put
+\[
+D_n:=\frac{((a+1)n+b)!}{n!}.
+\]
+Then
+\[
+\frac{D_{n+1}}{D_n}
+=\frac{\displaystyle\prod_{j=1}^{a+1}\bigl((a+1)n+b+j\bigr)}{n+1}.
+\]
+The factor with $j=a+1-b$ is $(a+1)(n+1)$. Cancelling $n+1$ gives the positive integer
+\[
+r_n:=\frac{D_{n+1}}{D_n}
+=(a+1)
+\prod_{\substack{1\leq j\leq a+1\\j\neq a+1-b}}
+\bigl((a+1)n+b+j\bigr).
+\]
+Thus $D_n\mid D_{n+1}$. Moreover, $r_n\geq a+1\geq2$, and every factor in the product defining $r_n$ increases with $n$. Hence $r_n$ is increasing and tends to infinity. Let
+\[
+P_N:=\sum_{n=1}^{N}\frac1{D_n},
+\qquad
+R_N:=C_{a,b}-P_N.
+\]
+Since $D_1\mid D_2\mid\cdots\mid D_N$, we have $D_NP_N\in\mathbb Z$. Moreover,
+\[
+\begin{aligned}
+0<D_NR_N
+&=\sum_{k=1}^{\infty}
+\frac1{r_Nr_{N+1}\cdots r_{N+k-1}}\\
+&\leq\sum_{k=1}^{\infty}\frac1{r_N^k}
+=\frac1{r_N-1}
+\longrightarrow0.
+\end{aligned}
+\]
+If $C_{a,b}=p/q$, then $D_NR_N$ is positive and belongs to $q^{-1}\mathbb Z$, so it is at least $1/q$. This is impossible for large $N$. Hence $C_{a,b}$ is irrational for every $a\geq1$ and $0\leq b\leq a$.
+
+\section{Transcendence of \texorpdfstring{$C_{1,0}$ and $C_{1,1}$}{C(1,0) and C(1,1)}}
+\label{sec:a1-transcendence}
+
+The elementary proof above establishes the irrationality of $C_{1,0}$. Its Gaussian integral representation leads to an independent proof of transcendence. Crmari\'c and Kova\v{c} record the identity~\cite[p.~55 and footnote~1]{crmaric-kovac}
+\[
+C_{1,0}=e^{1/4}\int_0^{1/2}e^{-t^2}\,dt.
+\]
+They obtain it by expanding $e^{1/4-t^2}$ and integrating termwise.
+
+In a 2023 MathOverflow discussion of the neighboring integral $\int_0^1e^{-t^2}\,dt$, Weber and Pinelis~\cite{mathoverflow} considered the $E$-function
+\[
+y(x):=\frac1{\sqrt{x}}\int_0^{\sqrt{x}}e^{-t^2}\,dt
+=\sum_{n=0}^{\infty}\frac{(-1)^n}{2n+1}\frac{x^n}{n!}
+\]
+and used the Siegel--Shidlovsky theorem to prove that $y(1)$ and $e^{-1}$ are algebraically independent. The differential system in their argument is ordinary at every nonzero algebraic point, so applying the same theorem at $x=1/4$ gives the algebraic independence of $y(1/4)$ and $e^{-1/4}$. Since
+\[
+y(1/4)=2\int_0^{1/2}e^{-t^2}\,dt,
+\qquad
+C_{1,0}=\frac{y(1/4)}{2e^{-1/4}},
+\]
+an algebraic value of $C_{1,0}$ would give a nontrivial algebraic relation between $y(1/4)$ and $e^{-1/4}$. Hence $C_{1,0}$ is transcendental. The MathOverflow discussion did not mention either the factorial series or this specialization.
+
+To pass from this special argument to the full family, we express the case $a=1$ as a hypergeometric $E$-function. This introduces the method used in Section~\ref{sec:affine-family} and treats $C_{1,1}$ as well. For $b\in\{0,1\}$, define
+\[
+F_{1,b}(z):=\sum_{n=0}^{\infty}\frac{n!}{(2n+b)!}z^n.
+\]
+Then
+\[
+F_{1,b}(1)=1+C_{1,b}.
+\]
+Writing $\beta=b+1/2$, direct coefficient comparison gives
+\[
+F_{1,b}(z)={}_1F_1\!\left(1;\beta;\frac z4\right).
+\]
+This is an $E$-function. If $h(x)={}_1F_1(1;\beta;x)$, Kummer's equation reads
+\[
+xh''+(\beta-x)h'-h=0.
+\]
+The left side is the derivative of $xh'+(\beta-1-x)h$. Evaluation at $x=0$ therefore gives
+\[
+xh'(x)+(\beta-1-x)h(x)=\beta-1.
+\]
+After substituting $x=z/4$,
+\[
+zF_{1,b}'(z)+\left(\beta-1-\frac z4\right)F_{1,b}(z)=\beta-1.
+\tag{1}
+\]
+Thus $(1,F_{1,b})^{\mathsf T}$ satisfies a first-order system over $\overline{\mathbb Q}(z)$ whose only finite singularity is $0$.
+
+The functions $1$ and $F_{1,b}$ are linearly independent over $\overline{\mathbb Q}(z)$. Otherwise $F_{1,b}$ would be rational; because it is entire, it would be a polynomial, contrary to its infinitely many nonzero Taylor coefficients. Beukers~\cite[Corollary~1.4]{beukers} proves that $E$-functions which are linearly independent over $\overline{\mathbb Q}(z)$ remain linearly independent after evaluation at a nonzero algebraic point that is ordinary for their differential system. Applied at $z=1$, this gives linear independence of $1$ and $F_{1,b}(1)$ over $\overline{\mathbb Q}$. Hence $F_{1,b}(1)$ is transcendental, and so are both $C_{1,0}$ and $C_{1,1}$. The case $b=0$ recovers the preceding conclusion, while $b=1$ gives the other case in the range $0\leq b\leq a$ when $a=1$.
+
+\section{Transcendence of the affine family}
+\label{sec:affine-family}
+
+\begin{theorem}
+\label{thm:main}
+For all integers $a\geq1$ and $b\geq1-a$, the number $C_{a,b}$ is transcendental.
+\end{theorem}
+
+For all integers $a\geq1$ and $b\geq0$, define
+\[
+F_{a,b}(z):=b!\sum_{n=0}^{\infty}
+\frac{n!}{((a+1)n+b)!}z^{an}.
+\tag{2}
+\]
+Then
+\[
+F_{a,b}(1)=1+b!C_{a,b}.
+\tag{3}
+\]
+For $b\geq0$, it is therefore enough to prove that $F_{a,b}(1)$ is transcendental. Beukers's theorem reduces this to finding a differential system, ordinary at $1$, whose components include $F_{a,b}$ and are linearly independent over $\overline{\mathbb Q}(z)$.
+
+\subsection{The range \texorpdfstring{$0\leq r\leq a$}{0 <= r <= a}}
+\label{sec:initial-range}
+
+Assume first that $0\leq r\leq a$. Put
+\[
+J_{a,r}:=\{1,\ldots,a+1\}\setminus\{a+1-r\},
+\qquad
+\beta_j:=\frac{r+j}{a+1}\quad(j\in J_{a,r}).
+\]
+The omitted parameter is the unique one equal to $1$. The multiplication formula gives
+\[
+F_{a,r}(z)
+={}_1F_a\!\left(
+\begin{matrix}1\\(\beta_j)_{j\in J_{a,r}}\end{matrix};
+\frac{z^a}{(a+1)^{a+1}}
+\right).
+\tag{4}
+\]
+Indeed,
+\[
+\prod_{j=1}^{a+1}
+\left(\frac{r+j}{a+1}\right)_n
+=\frac{((a+1)n+r)!}{r!(a+1)^{(a+1)n}},
+\]
+and deleting the factor $(1)_n=n!$ yields~(4).
+
+To match the notation of the cited results, set
+\[
+\rho_a:=\frac{a}{(a+1)^{(a+1)/a}},
+\qquad
+\lambda_j:=\beta_j-1,
+\]
+and define
+\[
+\varphi(w):=\sum_{n=0}^{\infty}
+\frac{(w/a)^{an}}
+{\displaystyle\prod_{j\in J_{a,r}}(\lambda_j+1)_n}.
+\]
+Then $F_{a,r}(z)=\varphi(\rho_a z)$. This is the $l=0$, $t=a$ case of Salikhov's formula~\cite[eq.~(1)]{salikhov}. Here $l=0$ means that Salikhov's numerator contains no Pochhammer factors; in standard hypergeometric notation the parameter $1$ in~(4) remains because $(1)_n/n!=1$.
+
+Let $\theta=z\,d/dz$ and define
+\[
+W_{a,r}:=\operatorname{span}_{\mathbb C(z)}
+\{1,F_{a,r},\theta F_{a,r},\ldots,\theta^{a-1}F_{a,r}\}.
+\tag{5}
+\]
+The key functional statement is
+\[
+\dim_{\mathbb C(z)}W_{a,r}=a+1.
+\tag{6}
+\]
+For odd $a$, Salikhov's Theorem~1 applies to this $l=0$ function~\cite[Theorem~1]{salikhov}. The parameters are rational, and none is a negative integer. The remaining hypothesis requires that their multiset modulo integers not be invariant under translation by $1/d$ for any divisor $d>1$ of $a$. In the present notation, this multiset is
+\[
+S_a=\left\{\frac1{a+1},\ldots,\frac a{a+1}\right\}\subset\mathbb Q/\mathbb Z.
+\]
+If $d>1$ divides $a$, then $\gcd(d,a+1)=1$, so $1/d$ does not lie in the subgroup $(a+1)^{-1}\mathbb Z/\mathbb Z$ containing $S_a$. Translation by $1/d$ therefore cannot preserve $S_a$, which verifies Salikhov's parameter condition. The theorem gives algebraic independence of $\varphi(\alpha),\varphi'(\alpha),\ldots,\varphi^{(a-1)}(\alpha)$ for every nonzero algebraic $\alpha$.
+
+When $a$ is even, the theorem of Salikhov--Viskina applies with $t=a$. If the $\lambda_j$ are rational and not negative integers, it states that for every nonzero algebraic $\alpha$ the numbers $1,\varphi(\alpha),\delta\varphi(\alpha),\ldots,\delta^{a-1}\varphi(\alpha)$ are linearly independent over $\overline{\mathbb Q}$, where $\delta=w\,d/dw$ is their Euler operator~\cite[p.~833]{salikhov-viskina}. Unlike Salikhov's odd-order result, this gives linear rather than algebraic independence; it includes the constant $1$ and imposes no translation condition.
+
+In either parity, the cited theorem implies that the values of $1,F_{a,r},\theta F_{a,r},\ldots,\theta^{a-1}F_{a,r}$ are linearly independent over $\overline{\mathbb Q}$ at every nonzero algebraic point. At such a point $\alpha$, the Euler derivatives $(\theta^kF_{a,r})(\alpha)$ and the ordinary derivatives $F_{a,r}^{(k)}(\alpha)$ are related by a triangular algebraic matrix with diagonal entries $1,\alpha,\ldots,\alpha^{a-1}$. The two forms of the independence statement are therefore equivalent.
+
+\begin{descentlemma}
+Let $g_1,\ldots,g_m\in\overline{\mathbb Q}[[z]]$. If these series are linearly dependent over $\mathbb C(z)$, then they are linearly dependent over $\overline{\mathbb Q}(z)$.
+\end{descentlemma}
+
+\begin{proof}
+Clear the denominators in a nonzero relation and let $D$ be the largest degree of its polynomial coefficients. Writing those coefficients as $\sum_{d=0}^{D}c_{i,d}z^d$ and comparing Taylor coefficients gives a homogeneous linear system over $\overline{\mathbb Q}$ in the finitely many unknowns $c_{i,d}$. Its row space has a finite basis, so the system has the same kernel as a finite matrix over $\overline{\mathbb Q}$. If its kernel over $\mathbb C$ is nonzero, then its kernel over $\overline{\mathbb Q}$ is nonzero, and the corresponding polynomial coefficients give the required relation.
+\end{proof}
+
+Every function in~(5) has algebraic Taylor coefficients, so the descent lemma implies~(6). Otherwise a relation over $\mathbb C(z)$ would descend to $\overline{\mathbb Q}(z)$. Specializing at a nonzero algebraic point where its coefficients are defined and not all zero would contradict the cited value independence.
+
+Applying the value-independence statement at $z=1$ proves that $F_{a,r}(1)$, and hence $C_{a,r}$ by~(3), is transcendental for $0\leq r\leq a$.
+
+The same statement handles affine functions with negative intercept that remain positive for every $n\geq1$. Suppose that $1-a\leq b<0$ and put $r=a+1+b$, so that $a\geq2$ and $2\leq r\leq a$. Shifting the summation index by writing $n=m+1$ gives
+\[
+\begin{aligned}
+C_{a,b}
+&=\sum_{m=0}^{\infty}\frac{(m+1)!}{((a+1)m+r)!}\\
+&=\frac1{r!}\left(F_{a,r}(1)+\frac1a\theta F_{a,r}(1)\right).
+\end{aligned}
+\]
+If $C_{a,b}$ were algebraic, this identity would give a nontrivial linear relation over $\overline{\mathbb Q}$ among $1$, $F_{a,r}(1)$, and $\theta F_{a,r}(1)$. Hence $C_{a,b}$ is transcendental for $1-a\leq b<0$ as well.
+
+To treat $b>a$, we compare the formal solutions of the relevant differential equations at infinity. The generalized hypergeometric equation for~(4) can be written as
+\[
+\left[
+\prod_{j\in J_{a,r}}
+\left(\frac{\theta}{a}+\beta_j-1\right)
+-\frac{z^a}{(a+1)^{a+1}}
+\right]F_{a,r}
+=\prod_{j\in J_{a,r}}(\beta_j-1).
+\tag{7}
+\]
+The right side is nonzero because the parameter equal to $1$ was removed. To describe the formal system at infinity, put
+\[
+x:=z^{-1},\qquad K:=\mathbb C((x)),\qquad \kappa_a:=(a+1)^{-(a+1)},
+\]
+so that $\theta=-x\,d/dx$ on $K$, and write
+\[
+c_{a,r}:=\prod_{j\in J_{a,r}}(\beta_j-1),\qquad P_{a,r}(u):=\prod_{j\in J_{a,r}}(u+\beta_j-1)=\sum_{j=0}^{a}p_ju^j,\qquad p_a=1.
+\]
+Let
+\[
+Y_0:=1,\qquad Y_j:=\theta^{j-1}F_{a,r}\quad(1\leq j\leq a).
+\]
+Equation~(7) is equivalent to the augmented companion system
+\[
+\theta Y_0=0,\qquad \theta Y_j=Y_{j+1}\quad(1\leq j<a),
+\]
+\[
+\theta Y_a=a^ac_{a,r}Y_0+a^a(\kappa_a z^a-p_0)Y_1-\sum_{j=1}^{a-1}a^{a-j}p_jY_{j+1}.
+\]
+After expanding rational functions at infinity, this system defines a rank-$(a+1)$ differential module $\mathcal M_{a,r}$ over $K$.
+
+\begin{lemma}[Zero-exponential formal component]
+\label{lem:zero-component}
+The Levelt--Turrittin decomposition of $\mathcal M_{a,r}$ is
+\[
+\mathcal M_{a,r}=\mathcal M_0\oplus\bigoplus_{\zeta^a=1}\mathcal M_\zeta,
+\]
+where $\mathcal M_0$ has rank one and exponential part $0$, while each $\mathcal M_\zeta$ has rank one and exponential part $\rho_a\zeta z$. The zero summand has the formal solution vector
+\[
+\widehat Y^{(0)}:=\left(1,\widehat F_{a,r}^{(0)},\theta\widehat F_{a,r}^{(0)},\ldots,\theta^{a-1}\widehat F_{a,r}^{(0)}\right)^{\mathsf T},
+\]
+where
+\[
+\widehat F_{a,r}^{(0)}(z)\in z^{-a}\mathbb C[[z^{-a}]].
+\tag{8}
+\]
+More explicitly, if
+\[
+G=r_0+\sum_{k=0}^{a-1}r_{k+1}\theta^kF_{a,r}\in W_{a,r},\qquad r_0,\ldots,r_a\in\mathbb C(z),
+\]
+then its zero-exponential projection is
+\[
+\pi_0(G)=r_0+\sum_{k=0}^{a-1}r_{k+1}\theta^k\widehat F_{a,r}^{(0)}\in K.
+\]
+The projection extends $K$-linearly to $K\otimes_{\mathbb C(z)}W_{a,r}$ and commutes with $\theta$. In particular, $\pi_0(G)$ is a Laurent series without powers of $\log z$.
+\end{lemma}
+
+\begin{proof}
+Writing $\widehat F_{a,r}^{(0)}=\sum_{m\geq1}h_mz^{-am}$ in~(7) gives
+\[
+h_1=-\frac{c_{a,r}}{\kappa_a},
+\qquad
+h_{m+1}=\frac{P_{a,r}(-m)}{\kappa_a}h_m
+\quad(m\geq1).
+\tag{9}
+\]
+This recurrence constructs the solution~(8). It is unique among Laurent-series particular solutions. Indeed, the difference of two such solutions would be a nonzero Laurent-series solution of the homogeneous equation. If $dz^\nu$ were its leading monomial, the term $-\kappa_a z^a dz^\nu$ could not be cancelled by $P_{a,r}(\theta/a)$, which does not raise exponents. Consequently $\widehat Y^{(0)}$ is a nonzero formal solution of the augmented system with exponential part $0$.
+
+The homogeneous equation associated with~(7) has characteristic equation
+\[
+\lambda^a=\frac{a^a}{(a+1)^{a+1}},
+\]
+so its $a$ characteristic numbers are the distinct nonzero numbers $\rho_a\zeta$. Its formal homogeneous solutions have the form
+\[
+e^{\rho_a\zeta z}z^{\mu_\zeta}\mathbb C[[z^{-1}]],
+\qquad \zeta^a=1,
+\]
+and are log-free because every characteristic number is simple; see Salikhov~\cite[Remark~2, p.~206]{salikhov}. Each of the $a$ distinct nonzero exponential parts therefore contributes a rank-one summand.
+
+The Levelt--Turrittin theorem decomposes $\mathcal M_{a,r}$ as a direct sum of differential modules indexed by their exponential parts~\cite[Chapter~3, Theorem~3.1]{vdput-singer}. No ramification is needed because $0$ and the polynomials $\rho_a\zeta z$ lie over $K$. The nonzero exponential summands account for rank $a$, and $\widehat Y^{(0)}$ supplies a nonzero solution in the zero-exponential summand. Since $\mathcal M_{a,r}$ has rank $a+1$, the zero summand has rank exactly one, and its formal solution space is spanned by $\widehat Y^{(0)}$.
+
+By~(6), the displayed expression for $G$ in the statement is unique. Expanding the coefficients $r_j$ in $K$ and projecting the companion vector onto the line spanned by $\widehat Y^{(0)}$ gives the stated formula for $\pi_0(G)$. Because the Levelt--Turrittin summands are differential modules, this projection is $K$-linear and commutes with $\theta$. Every entry of $\widehat Y^{(0)}$ lies in $K$, so the formula also shows directly that $\pi_0(G)$ contains no logarithms.
+\end{proof}
+
+\subsection{Euler reduction for \texorpdfstring{$b>a$}{b > a}}
+\label{sec:euler-reduction}
+
+Suppose that $b>a$ and write
+\[
+b=q(a+1)+r,
+\qquad q\geq1,
+\qquad 0\leq r\leq a.
+\tag{10}
+\]
+Put
+\[
+\beta_j:=\frac{b+j}{a+1},
+\qquad 1\leq j\leq a+1,
+\qquad
+x:=\frac{z^a}{(a+1)^{a+1}}.
+\]
+None of the lower parameters is equal to $1$, and the multiplication formula gives
+\[
+F_{a,b}(z)
+={}_2F_{a+1}\!\left(
+\begin{matrix}1,1\\\beta_1,\ldots,\beta_{a+1}\end{matrix};
+x
+\right).
+\tag{11}
+\]
+The function $F_{a,b}$ in~(11) is a hypergeometric $E$-function: its parameters are positive rational numbers, and with two upper and $a+1$ lower parameters, the required pullback degree is $(a+1)-2+1=a$. Writing its differential equation in terms of $\theta_x=x\,d/dx$, factoring off $\theta_x$, and evaluating at $x=0$ to determine the resulting constant gives
+\[
+\left[
+\prod_{j=1}^{a+1}\left(\frac{\theta}{a}+\beta_j-1\right)
+-\frac{z^a}{(a+1)^{a+1}}\left(\frac{\theta}{a}+1\right)
+\right]F_{a,b}
+=\prod_{j=1}^{a+1}(\beta_j-1).
+\tag{12}
+\]
+This is an order-$(a+1)$ inhomogeneous equation. Its leading ordinary-derivative coefficient is a nonzero constant multiple of $z^{a+1}$, so its companion system has no nonzero finite singularity.
+
+Coefficient comparison in~(2) gives the Euler reduction
+\[
+\boxed{
+\prod_{k=1}^{q}\left(\frac{\theta}{a}+k\right)F_{a,b}(z)
+=\frac{b!}{r!}z^{-aq}
+\left[
+F_{a,r}(z)
+-r!\sum_{m=0}^{q-1}
+\frac{m!}{((a+1)m+r)!}z^{am}
+\right].}
+\tag{13}
+\]
+The operator on the left multiplies the coefficient of $z^{an}$ by
+\[
+\prod_{k=1}^{q}(n+k)=\frac{(n+q)!}{n!}.
+\]
+The index shift $n\mapsto n+q$ gives the right side of~(13). In particular, the differential module generated by $1$ and $F_{a,b}$ contains $W_{a,r}$.
+
+\subsection{Resonance}
+\label{sec:resonance}
+
+Assume for contradiction that $F_{a,b}\in W_{a,r}$ and apply the projection $\pi_0$ of Lemma~\ref{lem:zero-component} to~(13). This projection commutes with the Euler operator on the left. On the right, the contribution of $z^{-aq}F_{a,r}$ begins at $z^{-a(q+1)}$ by~(8), whereas the highest term of the polynomial subtracted in~(13), corresponding to $m=q-1$, contributes the nonzero $z^{-a}$ coefficient
+\[
+-\frac{b!(q-1)!}{((a+1)(q-1)+r)!}.
+\tag{14}
+\]
+
+Under this assumption, the lemma shows that the zero-exponential component of $F_{a,b}$ is a Laurent series $L(z)\in\mathbb C((z^{-1}))$ without logarithms. The Euler operator on the left of~(13) acts diagonally on monomials, and its multiplier on $z^{-a}$ is
+\[
+\prod_{k=1}^{q}(-1+k)=0.
+\tag{15}
+\]
+It follows that the $z^{-a}$ coefficient in the zero-exponential component of the left side of~(13) must vanish, contradicting~(14). Therefore
+\[
+F_{a,b}\notin W_{a,r}.
+\tag{16}
+\]
+
+The projected equation therefore requires a logarithmic term. Since
+\[
+\prod_{k=1}^{q}\left(\frac{\theta}{a}+k\right)
+\bigl(z^{-a}\log z\bigr)
+=\frac{(q-1)!}{a}z^{-a},
+\]
+comparison with~(14) gives
+\[
+\widehat F_{a,b}^{(0)}(z)
+=-\frac{a\,b!}{((a+1)(q-1)+r)!}\,z^{-a}\log z
++\cdots,
+\tag{17}
+\]
+where the omitted terms do not affect the coefficient of $z^{-a}\log z$.
+
+Define
+\[
+V_{a,b}:=\operatorname{span}_{\mathbb C(z)}
+\{1,F_{a,b},\theta F_{a,b},\ldots,\theta^aF_{a,b}\}.
+\tag{18}
+\]
+Equation~(12) makes $V_{a,b}$ stable under $\theta$ and gives $\dim V_{a,b}\leq a+2$. Equation~(13) gives $W_{a,r}\subseteq V_{a,b}$. By~(6) and~(16), the additional element $F_{a,b}$ is not in $W_{a,r}$, so
+\[
+\dim V_{a,b}\geq(a+1)+1=a+2.
+\]
+Hence $\dim V_{a,b}=a+2$, and
+\[
+1,F_{a,b},F_{a,b}',\ldots,F_{a,b}^{(a)}
+\tag{19}
+\]
+are linearly independent over $\mathbb C(z)$. Thus~(12) has minimal possible order among inhomogeneous equations over $\mathbb C(z)$ satisfied by $F_{a,b}$.
+
+\subsection{Values at \texorpdfstring{$z=1$}{z=1}}
+\label{sec:evaluation}
+
+By~(11), $F_{a,b}$ is an $E$-function, as are its derivatives. The functions in~(19) are linearly independent over $\overline{\mathbb Q}(z)$, and~(12) supplies a companion system with no nonzero finite singularity. Beukers~\cite[Corollary~1.4]{beukers} therefore gives the linear independence of their values at the ordinary algebraic point $z=1$. In particular, $F_{a,b}(1)$ is transcendental, and~(3) gives the transcendence of $C_{a,b}$.
+
+Combining this with the cases $1-a\leq b\leq a$ treated above proves Theorem~\ref{thm:main}. In terms of Problem 270, $S(f)$ is transcendental for every positive integer-valued affine function $f(n)=an+b$ with $a\geq1$. Thus the theorem settles the entire affine subclass of the nondecreasing version of the problem.
+
+\clearpage
+\begin{thebibliography}{9}
+\footnotesize
+\raggedright
+\setlength{\itemsep}{0pt}
+\setlength{\parskip}{0pt}
+
+\bibitem{erdos-graham}
+P.~Erd\H{o}s and R.~L.~Graham, \emph{Old and New Problems and Results in Combinatorial Number Theory}, Monographies de L'Enseignement Math\'ematique \textbf{28} (1980), pp.~65--66.
+
+\bibitem{bloom-270}
+T.~F.~Bloom, Erd\H{o}s Problem \#270, \emph{Erd\H{o}s Problems}. \href{https://www.erdosproblems.com/270}{erdosproblems.com/270}; accessed 22 August 2026.
+
+\bibitem{crmaric-kovac}
+T.~Crmari\'c and V.~Kova\v{c}, On the irrationality of certain super-polynomially decaying series, \emph{Colloquium Mathematicum} \textbf{179} (2025), 55--68. \href{https://doi.org/10.4064/cm9628-5-2025}{doi:10.4064/cm9628-5-2025}.
+
+\bibitem{mathoverflow}
+D.~Weber and I.~Pinelis, answers to ``Is the integral of $e^{-x^2}$ from $0$ to $1$ known to be irrational?'', MathOverflow, 26 December 2023. \href{https://mathoverflow.net/questions/461028/}{Online discussion}.
+
+\bibitem{beukers}
+F.~Beukers, A refined version of the Siegel--Shidlovskii theorem, \emph{Annals of Mathematics} \textbf{163} (2006), 369--379. \href{https://doi.org/10.4007/annals.2006.163.369}{doi:10.4007/annals.2006.163.369}.
+
+\bibitem{salikhov}
+V.~Kh.~Salikhov, A criterion for the algebraic independence of values of a class of hypergeometric $E$-functions, \emph{Mathematics of the USSR-Sbornik} \textbf{69} (1991), 203--226. \href{https://doi.org/10.1070/SM1991v069n01ABEH002113}{doi:10.1070/SM1991v069n01ABEH002113}.
+
+\bibitem{salikhov-viskina}
+V.~Kh.~Salikhov and G.~G.~Viskina, Algebraic relations between the hypergeometric $E$-function and its derivatives, \emph{Matematicheskie Zametki} \textbf{71} (2002), 832--844; English translation in \emph{Mathematical Notes} \textbf{71} (2002), 761--772. \href{https://doi.org/10.1023/A:1015864711107}{doi:10.1023/A:1015864711107}.
+
+\bibitem{vdput-singer}
+M.~van der Put and M.~F.~Singer, \emph{Galois Theory of Linear Differential Equations}, Grundlehren der mathematischen Wissenschaften \textbf{328}, Springer, 2003, Chapter~3, Theorem~3.1. \href{https://doi.org/10.1007/978-3-642-55750-7}{doi:10.1007/978-3-642-55750-7}.
+
+\end{thebibliography}
+
+\end{document}

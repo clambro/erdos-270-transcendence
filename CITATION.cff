@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite the manuscript described in preferred-citation."
+title: "Transcendence in the Affine Case of Erdős Problem 270: Manuscript and Lean Formalization"
+type: software
+authors:
+  - family-names: Lambrinoudis
+    given-names: Costa
+version: 1.0.0
+date-released: "2026-08-22"
+license: CC-BY-4.0
+keywords:
+  - Erdős Problem 270
+  - irrationality
+  - transcendence
+  - factorial-ratio series
+  - hypergeometric E-functions
+  - Lean
+preferred-citation:
+  type: article
+  title: "Transcendence in the Affine Case of Erdős Problem 270"
+  authors:
+    - family-names: Lambrinoudis
+      given-names: Costa
+  year: 2026

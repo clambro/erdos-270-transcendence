@@ -1,0 +1,29 @@
+# Lean and Lake build output
+.lake/
+**/.lake/
+
+# LaTeX auxiliary files (the published article.pdf remains tracked)
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.xdv
+
+# Editor and operating-system files
+*~
+.DS_Store
+.idea/
+.vscode/
+Thumbs.db
+
+# Local environment files
+.env
+.env.*
+!.env.example

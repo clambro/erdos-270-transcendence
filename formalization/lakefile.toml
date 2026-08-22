@@ -1,0 +1,11 @@
+name = "factorial-ratio"
+version = "0.1.0"
+defaultTargets = ["FactorialRatio"]
+
+[[lean_lib]]
+name = "FactorialRatio"
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4.git"
+rev = "v4.33.1"

@@ -39,6 +39,8 @@ The complete arguments and references are in the [full paper](Transcendence_in_t
 
 ### 1. Irrationality of the base case
 
+Note: Crmarić and Kovač had already noticed this same argument for the base case after their paper appeared, and Kovač posted it on the [Erdős Problems forum](https://www.erdosproblems.com/forum/thread/270#post-7469) in July 2026. We became aware of the post after independently discovering the argument.
+
 For
 
 $$

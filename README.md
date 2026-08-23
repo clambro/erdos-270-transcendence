@@ -55,7 +55,7 @@ $$
 If $P_N$ is the $N^\mathrm{th}$ partial sum and $R_N=C_{1,0}-P_N$, then $D_NP_N$ is an integer, while a geometric estimate gives
 
 $$
-0<D_NR_N\leq\frac1{4N+1}\longrightarrow0.
+0 < D_N R_N \leq \frac{1}{4N+1} \to 0.
 $$
 
 If $C_{1,0}=p/q$ were rational, then $D_NR_N=pD_N/q-D_NP_N$ would be a positive element of $q^{-1}\mathbb Z$. It would therefore be at least $1/q$, contradicting the limit above. Hence $C_{1,0}$ is irrational.
@@ -79,10 +79,10 @@ $$
 is a positive integer. Moreover, $r_n\to\infty$. The same partial-sum argument now gives
 
 $$
-0<D_NR_N
-=\sum_{k\geq1}\frac1{r_Nr_{N+1}\cdots r_{N+k-1}}
-\leq\frac1{r_N-1}
-\longrightarrow0.
+0 < D_N R_N
+= \sum_{k\geq1}\frac{1}{r_N r_{N+1}\cdots r_{N+k-1}}
+\leq \frac{1}{r_N-1}
+\to 0.
 $$
 
 Rationality would again force $D_NR_N$ to remain at least $1/q$. Therefore $C_{a,b}$ is irrational throughout this range.

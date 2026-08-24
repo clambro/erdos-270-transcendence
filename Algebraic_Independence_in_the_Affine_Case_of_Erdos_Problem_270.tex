@@ -27,6 +27,7 @@
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}[section]
 \newtheorem*{descentlemma}{Descent lemma}
+\newtheorem*{corollary}{Corollary}
 
 \begin{document}
 
@@ -43,11 +44,11 @@ Erd\H{o}s Problem 270 asks whether the series of reciprocals of $(n+1)(n+2)\cdot
 \[
 C_{a,b}:=\sum_{n=1}^{\infty}\frac{n!}{((a+1)n+b)!}
 \]
-for $a\geq1$ and $b\geq1-a$. For each fixed $a$, we prove that $C_{a,0},\ldots,C_{a,a-1},C_{a,a+1}$ are algebraically independent over $\overline{\mathbb Q}$ and that every other admissible $C_{a,b}$ is a rational affine combination of them. Thus the fixed-slope family has transcendence degree $a+1$; in particular, every positive affine case of Problem 270 is transcendental. We begin with an elementary irrationality proof for the Erd\H{o}s--Graham example and its extension to $0\leq b\leq a$. A Gaussian integral representation then gives a short transcendence proof for the original example. For the general theorem, we pass to hypergeometric $E$-functions and combine algebraic-independence results of Salikhov and Salikhov--Viskina with a logarithmic obstruction at infinity and Beukers's specialization theorem.
+for $a\geq1$ and $b\geq1-a$. For each fixed $a$, we prove that $C_{a,0},\ldots,C_{a,a-1},C_{a,a+1}$ are algebraically independent over $\overline{\mathbb Q}$ and that every other admissible $C_{a,b}$ is a rational affine combination of them. Thus the fixed-slope family has transcendence degree $a+1$; in particular, every positive affine case of Problem 270 is transcendental. We begin with an elementary irrationality proof for $0\leq b\leq a$, which includes the Erd\H{o}s--Graham example. A Gaussian integral representation then gives a short transcendence proof for that example. For the general theorem, we pass to hypergeometric $E$-functions and combine algebraic-independence results of Salikhov and Salikhov--Viskina with a logarithmic obstruction at infinity and Beukers's specialization theorem.
 \end{quote}
 
-\section{Irrationality of the Erd\H{o}s--Graham example}
-\label{sec:elementary-proof}
+\section{Irrationality in the affine family}
+\label{sec:irrationality}
 
 Erd\H{o}s and Graham ended their chapter on irrationality and transcendence with the question now known as Erd\H{o}s Problem 270. Given a positive integer-valued function $f$ with $f(n)\to\infty$, they considered
 \[
@@ -56,55 +57,15 @@ S(f):=\sum_{n=1}^{\infty}
 \]
 and asked whether $S(f)$ must be irrational. They expected an affirmative answer when $f$ is nondecreasing~\cite[p.~66]{erdos-graham}. Crmari\'c and Kova\v{c} later showed that some regularity assumption is necessary: as $f$ ranges over all such functions, $S(f)$ takes every value in $(0,\infty)$~\cite[Theorem~1]{crmaric-kovac}. The nondecreasing problem remains open~\cite{bloom-270}.
 
-Erd\H{o}s and Graham singled out the simplest nondecreasing choice, $f(n)=n$. They described the resulting series as difficult to treat and wrote that such series were surely irrational~\cite[pp.~65--66]{erdos-graham}. Crmari\'c and Kova\v{c} later returned to this example and reported that they knew no proof of its irrationality~\cite[p.~55, following (1.1)]{crmaric-kovac}. After their paper appeared, Crmari\'c and Kova\v{c} found a short proof, which Kova\v{c} posted on the Erd\H{o}s Problems forum in July 2026~\cite{kovac-forum}. We obtained the argument below independently, before learning of their post. The series is the first member of the affine family considered here:
-
-\[
-S(f)=C:=\sum_{n=1}^{\infty}\frac{n!}{(2n)!}
-=\sum_{n=1}^{\infty}\frac1{D_n},
-\qquad
-D_n:=\frac{(2n)!}{n!}.
-\]
-Then
-\[
-\frac{D_{n+1}}{D_n}
-=\frac{(2n+2)(2n+1)}{n+1}
-=4n+2,
-\]
-so $D_n\mid D_{n+1}$. If
-\[
-P_N:=\sum_{n=1}^{N}\frac1{D_n},
-\qquad
-R_N:=C-P_N,
-\]
-then $D_NP_N\in\mathbb Z$, while
-\[
-\begin{aligned}
-0<D_NR_N
-&=\sum_{k=1}^{\infty}\frac{D_N}{D_{N+k}}\\
-&=\sum_{k=1}^{\infty}
-\frac1{(4N+2)(4N+6)\cdots(4N+4k-2)}\\
-&\leq\sum_{k=1}^{\infty}\frac1{(4N+2)^k}
-=\frac1{4N+1}.
-\end{aligned}
-\]
-Thus $D_NR_N\to0$.
-
-Suppose that $C=p/q$, where $p\in\mathbb Z$ and $q\in\mathbb Z_{>0}$. Then
-\[
-D_NR_N=\frac{pD_N}{q}-D_NP_N
-\]
-is positive and belongs to $q^{-1}\mathbb Z$. It must therefore be at least $1/q$, contradicting $D_NR_N\to0$. Hence $C$ is irrational.
-
-\section{Irrationality for \texorpdfstring{$0\leq b\leq a$}{0 <= b <= a}}
-\label{sec:irrationality-range}
-
 For integers $a\geq1$ and $b\geq0$, the affine choice $f(n)=an+b$ gives
 \[
 S(f)=\sum_{n=1}^{\infty}\frac1{(n+1)\cdots((a+1)n+b)}
 =\sum_{n=1}^{\infty}\frac{n!}{((a+1)n+b)!}
 =:C_{a,b}.
 \]
-These are the affine cases of Problem 270 with nonnegative intercept. The preceding argument extends to the range $0\leq b\leq a$. Fix $a$ and $b$ in this range, and put
+Erd\H{o}s and Graham singled out the simplest choice, $f(n)=n$, and described the resulting series as difficult to treat~\cite[pp.~65--66]{erdos-graham}. It is the case $a=1$, $b=0$ of the family above. The following argument proves irrationality throughout the larger range $0\leq b\leq a$.
+
+Fix $a\geq1$ and $0\leq b\leq a$, and put
 \[
 D_n:=\frac{((a+1)n+b)!}{n!}.
 \]
@@ -139,12 +100,23 @@ Since $D_1\mid D_2\mid\cdots\mid D_N$, we have $D_NP_N\in\mathbb Z$. Moreover,
 \]
 If $C_{a,b}=p/q$, then $D_NR_N$ is positive and belongs to $q^{-1}\mathbb Z$, so it is at least $1/q$. This is impossible for large $N$. Hence $C_{a,b}$ is irrational for every $a\geq1$ and $0\leq b\leq a$.
 
-\section{Transcendence of \texorpdfstring{$C_{1,0}$ and $C_{1,1}$}{C(1,0) and C(1,1)}}
+\begin{corollary}
+The Erd\H{o}s--Graham series
+\[
+C_{1,0}=\sum_{n=1}^{\infty}\frac{n!}{(2n)!}
+\]
+is irrational.
+\end{corollary}
+
+Crmari\'c and Kova\v{c} returned to this example and reported that they knew no proof of its irrationality~\cite[p.~55, following (1.1)]{crmaric-kovac}. After their paper appeared, they found the $a=1$, $b=0$ specialization of the argument above and suggested that similar reasoning might extend further; Kova\v{c} posted this observation on the Erd\H{o}s Problems forum in July 2026~\cite{kovac-forum}. We obtained the general argument independently before learning of their post.
+
+\section{Transcendence of \texorpdfstring{$C_{1,0}$}{C(1,0)}}
 \label{sec:a1-transcendence}
 
-The elementary proof above establishes the irrationality of $C_{1,0}$. Its Gaussian integral representation leads to an independent proof of transcendence. Crmari\'c and Kova\v{c} record the identity~\cite[p.~55 and footnote~1]{crmaric-kovac}
+The same constant has a Gaussian integral representation. Crmari\'c and Kova\v{c} record the identity~\cite[p.~55 and footnote~1]{crmaric-kovac}
 \[
 C_{1,0}=e^{1/4}\int_0^{1/2}e^{-t^2}\,dt.
+\tag{1}
 \]
 They obtain it by expanding $e^{1/4-t^2}$ and integrating termwise.
 
@@ -161,36 +133,9 @@ C_{1,0}=\frac{y(1/4)}{2e^{-1/4}},
 \]
 an algebraic value of $C_{1,0}$ would give a nontrivial algebraic relation between $y(1/4)$ and $e^{-1/4}$. Hence $C_{1,0}$ is transcendental. The MathOverflow discussion did not mention either the factorial series or this specialization.
 
-To pass from this special argument to the full family, we express the case $a=1$ as a hypergeometric $E$-function. This introduces the method used in Section~\ref{sec:affine-family} and treats $C_{1,1}$ as well. For $b\in\{0,1\}$, define
-\[
-F_{1,b}(z):=\sum_{n=0}^{\infty}\frac{n!}{(2n+b)!}z^n.
-\]
-Then
-\[
-F_{1,b}(1)=1+C_{1,b}.
-\]
-Writing $\beta=b+1/2$, direct coefficient comparison gives
-\[
-F_{1,b}(z)={}_1F_1\!\left(1;\beta;\frac z4\right).
-\]
-This is an $E$-function. If $h(x)={}_1F_1(1;\beta;x)$, Kummer's equation reads
-\[
-xh''+(\beta-x)h'-h=0.
-\]
-The left side is the derivative of $xh'+(\beta-1-x)h$. Evaluation at $x=0$ therefore gives
-\[
-xh'(x)+(\beta-1-x)h(x)=\beta-1.
-\]
-After substituting $x=z/4$,
-\[
-zF_{1,b}'(z)+\left(\beta-1-\frac z4\right)F_{1,b}(z)=\beta-1.
-\tag{1}
-\]
-Thus $(1,F_{1,b})^{\mathsf T}$ satisfies a first-order system over $\overline{\mathbb Q}(z)$ whose only finite singularity is $0$.
+We now turn to the hypergeometric $E$-functions associated with the full affine family.
 
-The functions $1$ and $F_{1,b}$ are linearly independent over $\overline{\mathbb Q}(z)$. Otherwise $F_{1,b}$ would be rational; because it is entire, it would be a polynomial, contrary to its infinitely many nonzero Taylor coefficients. Beukers~\cite[Corollary~1.4]{beukers} proves that $E$-functions which are linearly independent over $\overline{\mathbb Q}(z)$ remain linearly independent after evaluation at a nonzero algebraic point that is ordinary for their differential system. Applied at $z=1$, this gives linear independence of $1$ and $F_{1,b}(1)$ over $\overline{\mathbb Q}$. Hence $F_{1,b}(1)$ is transcendental, and so are both $C_{1,0}$ and $C_{1,1}$. The case $b=0$ recovers the preceding conclusion, while $b=1$ gives the other case in the range $0\leq b\leq a$ when $a=1$.
-
-\section{The affine family}
+\section{Algebraic independence in the affine family}
 \label{sec:affine-family}
 
 \begin{theorem}
@@ -207,7 +152,7 @@ are algebraically independent over $\overline{\mathbb Q}$. Every $C_{a,b}$ with 
 Moreover, every $C_{a,b}$ in this range is transcendental.
 \end{theorem}
 
-We first prove the transcendence assertion for every admissible intercept. The same hypergeometric framework will then be used to determine all algebraic relations at each fixed slope.
+We first prove the transcendence assertion for every admissible intercept. We then use the same functions to determine all algebraic relations at each fixed slope.
 
 For all integers $a\geq1$ and $b\geq0$, define
 \[

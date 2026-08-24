@@ -3,9 +3,9 @@ import FactorialRatio.ExternalTheorems
 /-!
 # The Gaussian proof of the base-case transcendence statement
 
-This file formalizes the complete deduction from the two inputs cited in Section 3 of
-the manuscript: the Gaussian integral identity and the Siegel--Shidlovsky independence
-statement at `x=1/4`. The inputs themselves remain explicit because the required
+This file formalizes the complete deduction from the two inputs cited in the manuscript's
+Gaussian transcendence argument: the Gaussian integral identity and the Siegel--Shidlovsky
+independence statement at `x=1/4`. The inputs themselves remain explicit because the required
 termwise-integration argument and Siegel--Shidlovsky theorem are not in mathlib.
 -/
 

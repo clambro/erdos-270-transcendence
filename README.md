@@ -8,11 +8,9 @@
 
 - [Introduction](#introduction)
 - [Proof outline](#proof-outline)
-  - [1. Irrationality of the base case](#1-irrationality-of-the-base-case)
-  - [2. Irrationality for $0\leq b\leq a$](#irrationality-range)
-  - [3. Transcendence of the base case](#3-transcendence-of-the-base-case)
-  - [4. Hypergeometric transcendence for the affine family](#4-hypergeometric-transcendence-for-the-affine-family)
-  - [5. Algebraic independence at fixed slope](#5-algebraic-independence-at-fixed-slope)
+  - [1. Irrationality in the affine family](#1-irrationality-in-the-affine-family)
+  - [2. Transcendence of the base case](#2-transcendence-of-the-base-case)
+  - [3. Algebraic independence in the affine family](#3-algebraic-independence-in-the-affine-family)
 - [Lean verification](#lean-verification)
   - [Fully verified](#fully-verified)
   - [Not yet verified in Lean](#not-yet-verified-in-lean)
@@ -44,36 +42,9 @@ are algebraically independent, and every other admissible intercept is a rationa
 
 The complete arguments and references are in the [full paper](Algebraic_Independence_in_the_Affine_Case_of_Erdos_Problem_270.pdf).
 
-### 1. Irrationality of the base case
+### 1. Irrationality in the affine family
 
-Note: Crmarić and Kovač had already noticed this same argument for the base case after their paper appeared, and Kovač posted it on the [Erdős Problems forum](https://www.erdosproblems.com/forum/thread/270#post-7469) in July 2026. We became aware of the post after independently discovering the argument.
-
-For
-
-$$
-C_{1,0}=\sum_{n=1}^{\infty}\frac{n!}{(2n)!}=\sum_{n=1}^{\infty}\frac1{D_n},
-\qquad D_n=\frac{(2n)!}{n!},
-$$
-
-the denominators form a divisibility chain because
-
-$$
-\frac{D_{n+1}}{D_n}=4n+2.
-$$
-
-If $P_N$ is the $N^\mathrm{th}$ partial sum and $R_N=C_{1,0}-P_N$, then $D_NP_N$ is an integer, while a geometric estimate gives
-
-$$
-0 < D_N R_N \leq \frac{1}{4N+1} \to 0.
-$$
-
-If $C_{1,0}=p/q$ were rational, then $D_NR_N=pD_N/q-D_NP_N$ would be a positive element of $q^{-1}\mathbb Z$. It would therefore be at least $1/q$, contradicting the limit above. Hence $C_{1,0}$ is irrational.
-
-<a id="irrationality-range"></a>
-
-### 2. Irrationality for $0\leq b\leq a$
-
-The same argument works for $a\geq1$ and $0\leq b\leq a$. Set
+For $a\geq1$ and $0\leq b\leq a$, set
 
 $$
 D_n=\frac{((a+1)n+b)!}{n!}.
@@ -85,7 +56,7 @@ $$
 r_n:=\frac{D_{n+1}}{D_n}
 $$
 
-is a positive integer. Moreover, $r_n\to\infty$. The same partial-sum argument now gives
+is a positive integer. Moreover, $r_n\to\infty$. If $P_N$ is the $N^\mathrm{th}$ partial sum and $R_N=C_{a,b}-P_N$, then $D_NP_N$ is an integer, while
 
 $$
 0 < D_N R_N
@@ -94,9 +65,17 @@ $$
 \to 0.
 $$
 
-Rationality would again force $D_NR_N$ to remain at least $1/q$. Therefore $C_{a,b}$ is irrational throughout this range.
+If $C_{a,b}=p/q$ were rational, then $D_NR_N$ would be a positive element of $q^{-1}\mathbb Z$ and hence at least $1/q$, contradicting the limit above. Therefore $C_{a,b}$ is irrational throughout this range.
 
-### 3. Transcendence of the base case
+Taking $a=1$ and $b=0$ gives the Erdős–Graham example
+
+$$
+C_{1,0}=\sum_{n=1}^{\infty}\frac{n!}{(2n)!},
+$$
+
+so its irrationality is an immediate corollary of the family argument. Crmarić and Kovač later found this $a=1$, $b=0$ specialization and suggested that similar reasoning might extend further; Kovač posted the observation on the [Erdős Problems forum](https://www.erdosproblems.com/forum/thread/270#post-7469) in July 2026. We learned of the post after independently obtaining the general argument.
+
+### 2. Transcendence of the base case
 
 Crmarić and Kovač record the Gaussian representation
 
@@ -119,9 +98,17 @@ $$
 
 an algebraic value of $C_{1,0}$ would produce a nontrivial algebraic relation between those two values. Hence $C_{1,0}$ is transcendental.
 
-### 4. Hypergeometric transcendence for the affine family
+### 3. Algebraic independence in the affine family
 
-For $b\geq0$, introduce the normalized hypergeometric $E$-function
+For each fixed $a\geq1$, the theorem identifies the algebraically independent basis
+
+$$
+C_{a,0},C_{a,1},\ldots,C_{a,a-1},C_{a,a+1}.
+$$
+
+Every other admissible $C_{a,b}$ is a rational affine combination of these $a+1$ constants.
+
+The proof first establishes individual transcendence for every admissible intercept. For $b\geq0$, introduce the normalized hypergeometric $E$-function
 
 $$
 F_{a,b}(z)=b!\sum_{n=0}^{\infty}\frac{n!}{((a+1)n+b)!}z^{an},
@@ -146,15 +133,7 @@ $$
 \boxed{C_{a,b}\text{ is transcendental for every }a\geq1,\ b\geq1-a.}
 $$
 
-### 5. Algebraic independence at fixed slope
-
-[Christopher D. Long suggested](https://x.com/octonion/status/2091555025197662264) that the transcendence argument might extend to algebraic independence. For each fixed $a$, the resulting independent family is
-
-$$
-C_{a,0},C_{a,1},\ldots,C_{a,a-1},C_{a,a+1}.
-$$
-
-The contiguous relation
+[Christopher D. Long suggested](https://x.com/octonion/status/2091555025197662264) strengthening the transcendence argument to algebraic independence at fixed slope. The contiguous relation
 
 $$
 F_{a,b-1}=F_{a,b}+\frac{a+1}{ab}\theta F_{a,b}

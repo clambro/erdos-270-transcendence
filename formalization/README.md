@@ -85,12 +85,12 @@ noncomputable def fixedSlopeBasis (a : ℕ) (i : Fin (a + 1)) : ℝ :=
 The file now carries the manuscript's remaining algebraic argument through to its endpoint. Lean verifies that the boundary identity gives an independent block $C_{a,1},\ldots,C_{a,a+1}$ and that each recurrence replaces one member of an independent block with the next value by an invertible affine transformation. It then proves:
 
 - [`fixedSlopeBlock_linearIndependent`](FactorialRatio/FixedSlopeAlgebraicIndependence.lean): every consecutive block of $a+1$ positive-intercept values, together with $1$, is linearly independent over the real algebraic numbers;
-- [`integer_constant_transcendental_of_fixedSlope`](FactorialRatio/FixedSlopeAlgebraicIndependence.lean): every admissible integer-intercept value is transcendental;
-- [`integerConstant_mem_fixedSlopeAffineSpan`](FactorialRatio/FixedSlopeAlgebraicIndependence.lean): every admissible value lies in the rational affine span of the basis;
+- [`integer_constant_transcendental_of_fixedSlope`](FactorialRatio/FixedSlopeAlgebraicIndependence.lean): every integer-intercept value with $b\geq1-a$ is transcendental;
+- [`integerConstant_mem_fixedSlopeAffineSpan`](FactorialRatio/FixedSlopeAlgebraicIndependence.lean): every such value lies in the rational affine span of the basis;
 - [`fixedSlopeConstants_adjoin_eq`](FactorialRatio/FixedSlopeAlgebraicIndependence.lean): all nonnegative-intercept values generate the same $\mathbb Q$-algebra as the basis;
 - [`fixedSlopeConstants_trdeg`](FactorialRatio/FixedSlopeAlgebraicIndependence.lean): that algebra has transcendence degree exactly $a+1$.
 
-The external input packages the analytic part of the manuscript: the Salikhov and Viskina–Salikhov results, the log-free formal field at infinity, the trace-descent argument for the boundary function, and Beukers's specialization theorem. These ingredients have not been reconstructed in Lean.
+The external input packages the analytic part of the manuscript: the Salikhov and Viskina–Salikhov results, the log-free formal field at infinity, the trace-descent argument for the additional function, and Beukers's specialization theorem. These ingredients have not been reconstructed in Lean.
 
 ## Source guide
 

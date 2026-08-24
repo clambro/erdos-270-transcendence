@@ -478,8 +478,8 @@ theorem constant_mem_fixedSlopeAffineSpan (a b : ℕ) (ha : 1 ≤ a) :
             convert hscaled using 1; simp [Rat.smul_def]
             field_simp
 
-/-- Every admissible integer-intercept value lies in the same rational affine
-span. Together with the basis independence, this is the formal fixed-slope
+/-- Every integer-intercept value with `1 - a ≤ b` lies in the same rational
+affine span. Together with the basis independence, this is the formal fixed-slope
 structure asserted in the manuscript. -/
 theorem integerConstant_mem_fixedSlopeAffineSpan
     (a : ℕ) (b : ℤ) (ha : 1 ≤ a) (hb : (1 : ℤ) - (a : ℤ) ≤ b) :

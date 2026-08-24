@@ -25,8 +25,8 @@
 \titlespacing*{\section}{0pt}{3.5ex plus 1ex minus 0.2ex}{2.3ex plus 0.2ex}
 \titleformat{\subsection}{\raggedright\normalfont\large\bfseries}{\thesubsection}{1em}{}
 \titlespacing*{\subsection}{0pt}{3.25ex plus 1ex minus 0.2ex}{1.5ex plus 0.2ex}
-\newtheorem{theorem}{Theorem}
-\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
 \newtheorem*{descentlemma}{Descent lemma}
 \newtheorem*{corollary}{Corollary}
 
@@ -35,16 +35,16 @@
 \begin{center}
 {\LARGE Algebraic Independence in the Affine Case of Erd\H{o}s Problem 270}\\[1.5ex]
 {\large Costa Lambrinoudis {\normalsize(with AI)}}\footnote{\textit{AI disclosure:} Generative AI performed nearly all of the mathematical work: it independently rediscovered the elementary denominator argument, developed the affine and transcendence-theoretic extensions, conducted the literature search, wrote the manuscript, and produced the Lean formalization. Costa Lambrinoudis directed and supervised the investigation.}\\[0.5ex]
-{23 August 2026}
+{24 August 2026}
 \end{center}
 
 \begin{quote}
 \small
-Erd\H{o}s Problem 270 concerns the irrationality of a family of convergent series indexed by positive integer-valued functions $f$ with $f(n)\to\infty$. We treat the affine functions $f(n)=an+b$, for which the series becomes
+Erd\H{o}s Problem 270 concerns the irrationality of a family of convergent series indexed by positive integer-valued functions $f$ with $f(n)\to\infty$. We treat the affine subfamily $f_{a,b}(n)=an+b$, for which the series becomes
 \[
 C_{a,b}:=\sum_{n=1}^{\infty}\frac{n!}{((a+1)n+b)!}
 \]
-where $a\geq1$ and $b\geq1-a$. For each fixed $a$, we prove that $C_{a,0},\ldots,C_{a,a-1},C_{a,a+1}$ are algebraically independent over $\overline{\mathbb Q}$ and that every other admissible $C_{a,b}$ is a nonconstant rational affine combination of them. Hence the fixed-slope family has transcendence degree $a+1$, and every $C_{a,b}$ in this range is transcendental. We also give an elementary irrationality proof for $0\leq b\leq a$ and a short Gaussian-integral proof of the transcendence of $C_{1,0}$. The general proof combines algebraic-independence theorems for hypergeometric $E$-functions, a logarithmic obstruction at infinity, and Beukers's specialization theorem.
+where $a\geq1$ and $b\geq1-a$. For each fixed $a$, we prove that $C_{a,0},\ldots,C_{a,a-1},C_{a,a+1}$ are algebraically independent over $\overline{\mathbb Q}$ and that every other $C_{a,b}$ in this range is a rational affine combination of them with nonzero linear part. Hence the fixed-slope family has transcendence degree $a+1$, and every such $C_{a,b}$ is transcendental. We also give an elementary irrationality proof for $0\leq b\leq a$ and a short Gaussian-integral proof of the transcendence of $C_{1,0}$. The general proof combines algebraic-independence theorems for hypergeometric $E$-functions, a logarithmic obstruction at infinity, and Beukers's specialization theorem.
 \end{quote}
 
 \section{Irrationality for \texorpdfstring{$0\leq b\leq a$}{0 <= b <= a}}
@@ -57,11 +57,9 @@ S(f):=\sum_{n=1}^{\infty}
 \]
 and asked whether $S(f)$ must be irrational. They expected an affirmative answer when $f$ is nondecreasing~\cite[p.~66]{erdos-graham}. Crmari\'c and Kova\v{c} later showed that some regularity assumption is necessary: as $f$ ranges over all such functions, $S(f)$ takes every value in $(0,\infty)$~\cite[Theorem~1]{crmaric-kovac}. The nondecreasing problem remains open~\cite{bloom-270}.
 
-For integers $a\geq1$ and $b\geq1-a$, the positive affine choice $f(n)=an+b$ gives
+For integers $a\geq1$ and $b\geq1-a$, let $f_{a,b}(n):=an+b$. The corresponding series is
 \[
-S(f)=\sum_{n=1}^{\infty}\frac1{(n+1)\cdots((a+1)n+b)}
-=\sum_{n=1}^{\infty}\frac{n!}{((a+1)n+b)!}
-=:C_{a,b}.
+C_{a,b}:=S(f_{a,b})=\sum_{n=1}^{\infty}\frac{n!}{((a+1)n+b)!}.
 \]
 Erd\H{o}s and Graham singled out the simplest choice, $f(n)=n$, and described the resulting series as difficult to treat~\cite[pp.~65--66]{erdos-graham}. It is the case $a=1$, $b=0$ of the family above. Crmari\'c and Kova\v{c} later returned to this example and reported that they knew no proof of its irrationality~\cite[p.~55, following (1.1)]{crmaric-kovac}. The following argument proves it throughout the larger range $0\leq b\leq a$.\footnote{After their paper appeared, Kova\v{c} posted the $a=1$, $b=0$ specialization of this argument on the Erd\H{o}s Problems forum and suggested that it should extend further~\cite{kovac-forum}. We obtained the general argument independently before learning of that post.}
 
@@ -118,7 +116,7 @@ Crmari\'c and Kova\v{c} record the Gaussian integral representation~\cite[p.~55 
 C_{1,0}=e^{1/4}\int_0^{1/2}e^{-t^2}\,dt.
 \tag{1}
 \]
-In a 2023 MathOverflow discussion\footnote{The discussion did not mention either the factorial series or the specialization below.} of the neighboring integral $\int_0^1e^{-t^2}\,dt$, Weber and Pinelis~\cite{mathoverflow} considered the $E$-function
+In a 2023 MathOverflow discussion\footnote{The discussion did not mention either the factorial series or the specialization below.} of the related integral $\int_0^1e^{-t^2}\,dt$, Weber and Pinelis~\cite{mathoverflow} considered the $E$-function
 \[
 y(x):=\frac1{\sqrt{x}}\int_0^{\sqrt{x}}e^{-t^2}\,dt
 =\sum_{n=0}^{\infty}\frac{(-1)^n}{2n+1}\frac{x^n}{n!}
@@ -131,7 +129,7 @@ C_{1,0}=\frac{y(1/4)}{2e^{-1/4}},
 \]
 an algebraic value of $C_{1,0}$ would give a nontrivial algebraic relation between $y(1/4)$ and $e^{-1/4}$. Hence $C_{1,0}$ is transcendental.
 
-The natural next question is whether this conclusion extends through the affine family. Its uniform hypergeometric formulation gives a stronger result: algebraic independence at each fixed slope.
+The natural next question is whether this conclusion extends to the full affine family. Its uniform hypergeometric formulation gives a stronger result: algebraic independence at each fixed slope.
 
 \section{Algebraic independence in the affine family}
 \label{sec:affine-family}
@@ -142,13 +140,15 @@ For every integer $a\geq1$, the numbers
 \[
 C_{a,0},C_{a,1},\ldots,C_{a,a-1},C_{a,a+1}
 \]
-are algebraically independent over $\overline{\mathbb Q}$. Every $C_{a,b}$ with $b\geq1-a$ is a nonconstant rational affine combination of these $a+1$ numbers, and
+are algebraically independent over $\overline{\mathbb Q}$. Every $C_{a,b}$ with $b\geq1-a$ is a rational affine combination of these $a+1$ numbers with nonzero linear part, and
 \[
 \operatorname{trdeg}_{\overline{\mathbb Q}}
 \overline{\mathbb Q}(C_{a,b}:b\geq1-a)=a+1.
 \]
 Consequently every $C_{a,b}$ in this range is transcendental.\footnote{An earlier version of this paper established individual transcendence. Christopher D.~Long pointed out that the same machinery should also yield algebraic independence~\cite{long-x}; we then strengthened the argument to the form given here.}
 \end{theorem}
+
+The relation $C_{a,a}=(a+1)C_{a,0}-1/a!$ explains the omission of $C_{a,a}$: $C_{a,a+1}$ is the first possible additional independent value. Its independence and the recurrences below give a transcendence basis and generate all algebraic relations at fixed slope.
 
 For fixed $a$, we first obtain functional algebraic independence for $F_{a,0},\ldots,F_{a,a-1}$ from the hypergeometric $E$-function results of Salikhov and Viskina--Salikhov. A logarithmic obstruction then supplies the additional independent function $F_{a,a+1}$. Beukers's theorem transfers this independence to $z=1$, after which elementary recurrences recover every remaining intercept.
 
@@ -164,9 +164,9 @@ F_{a,b}(1)=1+b!C_{a,b}.
 \tag{3}
 \]
 
-\subsection{The first \texorpdfstring{$a$}{a} functions}
+\subsection{The first \texorpdfstring{$a$}{a} independent functions}
 
-Fix $a\geq1$, write $F_b=F_{a,b}$, and let $\theta=z\,d/dz$. Put
+Fix $a\geq1$, write $F_b=F_{a,b}$, and let $\theta=z\,d/dz$. We take $H=F_{a-1}$ because~(6) expresses $F_0,\ldots,F_{a-1}$ as an invertible triangular family of polynomials in $\theta$ applied to $H$. Their independence therefore reduces to that of $H,\theta H,\ldots,\theta^{a-1}H$, for which $H$ has the required hypergeometric parameters. Put
 \[
 H:=F_{a-1},
 \qquad
@@ -212,7 +212,7 @@ If $d>1$ divides $a$, then $\gcd(d,a+1)=1$, so $1/d$ does not belong to the subg
 
 When $a$ is even, Viskina--Salikhov show that algebraic dependence of the corresponding function and its first $a-1$ Euler derivatives requires one of the shifts $\lambda_j$ to be an integer~\cite[p.~833]{salikhov-viskina}. None of the numbers $(j-2)/(a+1)$ with $j\in J_a$ is an integer, so the same functional algebraic independence holds in the even case.
 
-For odd $a$, functional independence follows from the value theorem. A relation over $\mathbb C(z)$ among functions with algebraic Taylor coefficients descends to $\overline{\mathbb Q}(z)$: after fixing the monomials and degree bounds in a hypothetical relation, comparison of Taylor coefficients gives a homogeneous linear system over $\overline{\mathbb Q}$ in its polynomial coefficients. Specialization at a nonzero algebraic point where those coefficients are defined and not all zero would then contradict Salikhov's value theorem. Since ordinary and Euler derivatives are related by an invertible triangular transformation, we have in every parity
+Although Salikhov's odd-$a$ result is stated for values, it also gives functional independence here. A relation over $\mathbb C(z)$ among functions with algebraic Taylor coefficients descends to $\overline{\mathbb Q}(z)$: after fixing the monomials and degree bounds in a hypothetical relation, comparison of Taylor coefficients gives a homogeneous linear system over $\overline{\mathbb Q}$ in its polynomial coefficients. Specialization at a nonzero algebraic point where those coefficients are defined and not all zero would then contradict Salikhov's value theorem. Since ordinary and Euler derivatives are related by an invertible triangular transformation, we have in every parity
 \[
 H,\theta H,\ldots,\theta^{a-1}H
 \quad\text{algebraically independent over }\mathbb C(z).
@@ -251,7 +251,7 @@ are algebraically independent over $\mathbb C(z)$. Let
 \]
 Then $\mathcal K_a$ has transcendence degree $a$ over $\mathbb C(z)$. Its stability under differentiation follows from the hypergeometric equation~(11) below.
 
-\subsection{The boundary function}
+\subsection{The logarithmic obstruction}
 
 Let $G:=F_{a+1}$. The multiplication formula gives
 \[
@@ -281,6 +281,8 @@ The hypergeometric equation for $H$ is
 \left[P_a\!\left(\frac{\theta}{a}\right)-\kappa_a z^a\right]H=c_a.
 \tag{11}
 \]
+
+At infinity, the Levelt--Turrittin decomposition separates formal solutions by exponential factor; the factor $1$ defines the zero-exponential component. The image of $\mathcal K_a$ there is log-free, whereas the resonance of~(10) at $z^{-a}$ forces a $z^{-a}\log z$ term in $G$. Thus $G\notin\mathcal K_a$, and trace descent will exclude algebraicity over $\mathcal K_a$.
 
 \begin{lemma}[Logarithmic boundary obstruction]
 \label{lem:field-log-obstruction}
@@ -360,9 +362,11 @@ F_0,F_1,\ldots,F_{a-1},G
 \]
 are algebraically independent over $\mathbb C(z)$.
 
-\subsection{Specialization and the remaining intercepts}
+\subsection{Specialization at \texorpdfstring{$z=1$}{z=1}}
 
-The functions in~(14), together with the derivatives needed to close~(11) and~(10), form a system of $E$-functions over $\overline{\mathbb Q}(z)$ with no nonzero finite singularity. Its function field is $\mathcal K_a(G)$ and has transcendence degree $a+1$. Beukers's Theorem~1.1 preserves this transcendence degree at the ordinary algebraic point $z=1$~\cite[Theorem~1.1]{beukers}. The triangular transformation~(7) shows that the corresponding value field is generated by
+The vector $(1,H,\theta H,\ldots,\theta^{a-1}H,G)$ is closed under differentiation by~(11) and~(10), and its entries are $E$-functions. After conversion from $\theta$ to $d/dz$, the resulting system has no finite singularity except possibly $z=0$, so $z=1$ is ordinary. Its function field is $\mathcal K_a(G)$ and has transcendence degree $a+1$.
+
+Beukers's Theorem~1.1 preserves this transcendence degree at the algebraic point $z=1$~\cite[Theorem~1.1]{beukers}. By the triangular transformation~(7), the value field is generated by
 \[
 F_0(1),F_1(1),\ldots,F_{a-1}(1),G(1).
 \]
@@ -371,6 +375,8 @@ These values are therefore algebraically independent over $\overline{\mathbb Q}$
 C_{a,0},C_{a,1},\ldots,C_{a,a-1},C_{a,a+1}.
 \tag{15}
 \]
+
+\subsection{The remaining intercepts}
 
 It remains to express the other intercepts in this basis. Shifting the summation index gives
 \[
@@ -391,11 +397,11 @@ C_{a,b}
 +\frac1{a+1}C_{a,r-1}.
 \tag{18}
 \]
-Equation~(16) eliminates $C_{a,a}$ when $r=a$, proving the affine-span assertion for all admissible intercepts.
+Equation~(16) eliminates $C_{a,a}$ when $r=a$, proving the affine-span assertion for every $b\geq1-a$.
 
 These affine combinations are nonconstant. Equation~(16) gives an invertible affine transformation from the basis~(15) to the block $C_{a,1},\ldots,C_{a,a+1}$. For each $b>a+1$, equation~(17) advances the block $C_{a,b-a-1},\ldots,C_{a,b-1}$ to the next block. Its linear part is invertible because the coefficient of the discarded first entry in the new final coordinate is $-(a+1)/(b-a-1)\neq0$. Induction shows that every $C_{a,b}$ with $b\geq0$ has a nonzero linear part in the basis~(15). Equation~(18) also has a nonzero linear part; when $r=a$, use~(16).
 
-A nonconstant affine combination of algebraically independent numbers is transcendental. Hence every admissible $C_{a,b}$ is transcendental, and the affine span together with~(15) gives
+A nonconstant affine combination of algebraically independent numbers is transcendental. Hence every $C_{a,b}$ with $b\geq1-a$ is transcendental, and the affine span together with~(15) gives
 \[
 \operatorname{trdeg}_{\overline{\mathbb Q}}
 \overline{\mathbb Q}(C_{a,b}:b\geq1-a)=a+1.
@@ -423,7 +429,7 @@ V.~Kova\v{c}, comment on Erd\H{o}s Problem \#270, \emph{Erd\H{o}s Problems} foru
 C.~D.~Long, ``You can probably get algebraic independence here with a minor extension,'' post on X, 23 August 2026. \href{https://x.com/octonion/status/2091555025197662264}{Online post}; accessed 23 August 2026.
 
 \bibitem{mathoverflow}
-D.~Weber and I.~Pinelis, answers to ``Is the integral of $e^{-x^2}$ from $0$ to $1$ known to be irrational?'', MathOverflow, 26 December 2023. \href{https://mathoverflow.net/questions/461028/}{Online discussion}.
+D.~Weber and I.~Pinelis, answers to ``Is the integral of $e^{-x^2}$ from $0$ to $1$ known to be irrational?'', MathOverflow, 26 December 2023. \href{https://mathoverflow.net/questions/461028/}{Online discussion}; accessed 23 August 2026.
 
 \bibitem{beukers}
 F.~Beukers, A refined version of the Siegel--Shidlovskii theorem, \emph{Annals of Mathematics} \textbf{163} (2006), 369--379. \href{https://doi.org/10.4007/annals.2006.163.369}{doi:10.4007/annals.2006.163.369}.

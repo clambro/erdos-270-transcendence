@@ -10,8 +10,8 @@
 \usepackage[hidelinks]{hyperref}
 
 \hypersetup{
-  pdftitle={Transcendence in the Affine Case of Erdos Problem 270},
-  pdfsubject={Transcendence for positive affine functions in Erdos Problem 270},
+  pdftitle={Algebraic Independence in the Affine Case of Erdos Problem 270},
+  pdfsubject={Algebraic independence for positive affine functions in Erdos Problem 270},
   pdfauthor={Costa Lambrinoudis}
 }
 
@@ -31,19 +31,19 @@
 \begin{document}
 
 \begin{center}
-{\LARGE Transcendence in the Affine Case of Erd\H{o}s Problem 270}\\[1.5ex]
+{\LARGE Algebraic Independence in the Affine Case of Erd\H{o}s Problem 270}\\[1.5ex]
 {\large Costa Lambrinoudis}\\[0.5ex]
-{22 August 2026}\\[1.75ex]
+{23 August 2026}\\[1.75ex]
 {\small\itshape AI Disclosure: This manuscript was written and checked using generative AI.}
 \end{center}
 
 \begin{quote}
 \small
-Erd\H{o}s Problem 270 asked whether a series of reciprocals of consecutive-integer products must be irrational when the number of factors tends to infinity. Crmari\'c and Kova\v{c} showed that the answer is negative without a regularity assumption, while the case in which the number of factors is nondecreasing remains open. We prove that
+Erd\H{o}s Problem 270 asks whether the series of reciprocals of $(n+1)(n+2)\cdots(n+f(n))$ must be irrational whenever $f(n)\to\infty$. Crmari\'c and Kova\v{c} showed that the answer is negative without a regularity assumption, while the problem remains open for nondecreasing $f$. Erd\H{o}s and Graham singled out the simplest such choice, $f(n)=n$. We study the entire positive affine subfamily $f(n)=an+b$, whose members are
 \[
 C_{a,b}:=\sum_{n=1}^{\infty}\frac{n!}{((a+1)n+b)!}
 \]
-is transcendental for every $a\geq1$ and $b\geq1-a$. We first give an elementary proof of irrationality for $0\leq b\leq a$, including the example singled out by Erd\H{o}s and Graham. We then prove transcendence by studying the associated hypergeometric $E$-functions. Theorems of Salikhov and Salikhov--Viskina cover $0\leq b\leq a$, and an index shift handles $1-a\leq b<0$. For $b>a$, we obtain the functional independence required by Beukers's lifting theorem from an Euler-operator reduction and a logarithmic formal term at infinity.
+for $a\geq1$ and $b\geq1-a$. For each fixed $a$, we prove that $C_{a,0},\ldots,C_{a,a-1},C_{a,a+1}$ are algebraically independent over $\overline{\mathbb Q}$ and that every other admissible $C_{a,b}$ is a rational affine combination of them. Thus the fixed-slope family has transcendence degree $a+1$; in particular, every positive affine case of Problem 270 is transcendental. We begin with an elementary irrationality proof for the Erd\H{o}s--Graham example and its extension to $0\leq b\leq a$. A Gaussian integral representation then gives a short transcendence proof for the original example. For the general theorem, we pass to hypergeometric $E$-functions and combine algebraic-independence results of Salikhov and Salikhov--Viskina with a logarithmic obstruction at infinity and Beukers's specialization theorem.
 \end{quote}
 
 \section{Irrationality of the Erd\H{o}s--Graham example}
@@ -190,13 +190,24 @@ Thus $(1,F_{1,b})^{\mathsf T}$ satisfies a first-order system over $\overline{\m
 
 The functions $1$ and $F_{1,b}$ are linearly independent over $\overline{\mathbb Q}(z)$. Otherwise $F_{1,b}$ would be rational; because it is entire, it would be a polynomial, contrary to its infinitely many nonzero Taylor coefficients. Beukers~\cite[Corollary~1.4]{beukers} proves that $E$-functions which are linearly independent over $\overline{\mathbb Q}(z)$ remain linearly independent after evaluation at a nonzero algebraic point that is ordinary for their differential system. Applied at $z=1$, this gives linear independence of $1$ and $F_{1,b}(1)$ over $\overline{\mathbb Q}$. Hence $F_{1,b}(1)$ is transcendental, and so are both $C_{1,0}$ and $C_{1,1}$. The case $b=0$ recovers the preceding conclusion, while $b=1$ gives the other case in the range $0\leq b\leq a$ when $a=1$.
 
-\section{Transcendence of the affine family}
+\section{The affine family}
 \label{sec:affine-family}
 
 \begin{theorem}
 \label{thm:main}
-For all integers $a\geq1$ and $b\geq1-a$, the number $C_{a,b}$ is transcendental.
+For every integer $a\geq1$, the numbers
+\[
+C_{a,0},C_{a,1},\ldots,C_{a,a-1},C_{a,a+1}
+\]
+are algebraically independent over $\overline{\mathbb Q}$. Every $C_{a,b}$ with $b\geq1-a$ is a rational affine combination of these $a+1$ numbers, and
+\[
+\operatorname{trdeg}_{\overline{\mathbb Q}}
+\overline{\mathbb Q}(C_{a,b}:b\geq1-a)=a+1.
+\]
+Moreover, every $C_{a,b}$ in this range is transcendental.
 \end{theorem}
+
+We first prove the transcendence assertion for every admissible intercept. The same hypergeometric framework will then be used to determine all algebraic relations at each fixed slope.
 
 For all integers $a\geq1$ and $b\geq0$, define
 \[
@@ -490,7 +501,149 @@ are linearly independent over $\mathbb C(z)$. Thus~(12) has minimal possible ord
 
 By~(11), $F_{a,b}$ is an $E$-function, as are its derivatives. The functions in~(19) are linearly independent over $\overline{\mathbb Q}(z)$, and~(12) supplies a companion system with no nonzero finite singularity. Beukers~\cite[Corollary~1.4]{beukers} therefore gives the linear independence of their values at the ordinary algebraic point $z=1$. In particular, $F_{a,b}(1)$ is transcendental, and~(3) gives the transcendence of $C_{a,b}$.
 
-Combining this with the cases $1-a\leq b\leq a$ treated above proves Theorem~\ref{thm:main}. In terms of Problem 270, $S(f)$ is transcendental for every positive integer-valued affine function $f(n)=an+b$ with $a\geq1$. Thus the theorem settles the entire affine subclass of the nondecreasing version of the problem.
+Combining this with the cases $1-a\leq b\leq a$ treated above proves that $S(f)$ is transcendental for every positive integer-valued affine function $f(n)=an+b$ with $a\geq1$. It remains to determine the algebraic relations among the values with the same slope.
+
+\subsection{Algebraic independence at fixed slope}
+\label{sec:algebraic-independence}
+
+Christopher D.~Long suggested extending the transcendence argument to algebraic independence~\cite{long-x}. For a fixed slope, the entire family cannot be algebraically independent because its members satisfy affine recurrences. We will prove that the maximal independent subfamily is
+\[
+C_{a,0},C_{a,1},\ldots,C_{a,a-1},C_{a,a+1}
+\tag{20}
+\]
+and that
+\[
+\operatorname{trdeg}_{\overline{\mathbb Q}}
+\overline{\mathbb Q}(C_{a,b}:b\geq1-a)=a+1.
+\tag{21}
+\]
+
+Fix $a\geq1$, continue to write $\theta=z\,d/dz$, and abbreviate $F_b=F_{a,b}$. Direct comparison of the coefficients in~(2) gives
+\[
+F_{b-1}=F_b+\frac{a+1}{ab}\theta F_b
+\qquad(1\leq b\leq a).
+\tag{22}
+\]
+Indeed, the coefficient of $z^{an}$ on the right is
+\[
+\frac{b!n!}{((a+1)n+b)!}
+\left(1+\frac{(a+1)n}{b}\right)
+=\frac{(b-1)!n!}{((a+1)n+b-1)!}.
+\]
+Put $H=F_{a-1}$. Iterating~(22) gives
+\[
+F_j=P_j(\theta)H,
+\qquad
+P_j(X)=\prod_{k=j+1}^{a-1}
+\left(1+\frac{a+1}{ak}X\right),
+\qquad 0\leq j\leq a-1,
+\tag{23}
+\]
+where an empty product is $1$. The polynomials $P_{a-1},P_{a-2},\ldots,P_0$ have degrees $0,1,\ldots,a-1$ and nonzero leading coefficients. Thus~(23) is an invertible triangular linear transformation between
+\[
+F_0,F_1,\ldots,F_{a-1}
+\quad\text{and}\quad
+H,\theta H,\ldots,\theta^{a-1}H.
+\tag{24}
+\]
+
+For $H=F_{a-1}$, the lower shifts in Salikhov's notation are
+\[
+\lambda_j=\frac{j-2}{a+1},
+\qquad 1\leq j\leq a+1,\quad j\neq2.
+\tag{25}
+\]
+When $a$ is odd, Salikhov's Theorem~1 and the parameter check in Section~\ref{sec:initial-range} show that $H,\theta H,\ldots,\theta^{a-1}H$ are algebraically independent over $\mathbb C(z)$. When $a$ is even, Salikhov--Viskina show that algebraic dependence of the relevant function and its first $a-1$ Euler derivatives requires one of the shifts $\lambda_j$ to be an integer~\cite[p.~833]{salikhov-viskina}. None of the numbers in~(25) is an integer, so the same algebraic independence holds for even $a$. It follows from~(24) that
+\[
+F_0,F_1,\ldots,F_{a-1}
+\tag{26}
+\]
+are algebraically independent over $\mathbb C(z)$ for every $a\geq1$.
+
+It remains to adjoin one function from beyond the initial range. Let
+\[
+G:=F_{a+1},
+\qquad
+\mathcal K_a:=\mathbb C(z)(H,\theta H,\ldots,\theta^{a-1}H).
+\]
+The case $q=1$, $r=0$ of~(13) is
+\[
+\left(\frac{\theta}{a}+1\right)G
+=(a+1)!z^{-a}(F_0-1).
+\tag{27}
+\]
+The field $\mathcal K_a$ is stable under differentiation by the order-$a$ equation for $H$, and~(26) gives $\operatorname{trdeg}_{\mathbb C(z)}\mathcal K_a=a$.
+
+\begin{lemma}[Logarithmic boundary obstruction]
+\label{lem:field-log-obstruction}
+Every element of $\mathcal K_a$ has a log-free formal expansion at infinity, whereas the zero-exponential component of every formal solution $G$ of~(27) contains
+\[
+-a(a+1)!z^{-a}\log z.
+\tag{28}
+\]
+In particular, $G\notin\mathcal K_a$.
+\end{lemma}
+
+\begin{proof}
+Apply Lemma~\ref{lem:zero-component} with $r=a-1$. A formal fundamental matrix for the augmented equation of $H$ consists of its rank-one zero-exponential solution and the $a$ rank-one solutions with distinct exponential parts $\rho_a\zeta z$. All of these solutions are log-free. Let $\mathcal P_a$ be the differential field generated over $\mathbb C((z^{-1}))$ by the entries of this matrix inside the standard formal Picard--Vessiot extension. It is generated by Laurent series, formal powers of $z$, and the exponentials $e^{\rho_a\zeta z}$, without adjoining a formal logarithm. The explicit admissible-field construction in Salikhov~\cite[pp.~207--210]{salikhov} treats the logarithm as a separate transcendental generator. Hence addition, multiplication, inversion, and differentiation in $\mathcal P_a$ do not introduce a power of $\log z$.
+
+The formal expansions of $H,\theta H,\ldots,\theta^{a-1}H$ lie in $\mathcal P_a$, so the formal image of $\mathcal K_a$ is contained in $\mathcal P_a$ and is log-free. Project the right side of~(27) onto its zero-exponential component. The zero component of $F_0-1$ has constant term $-1$, and therefore the right side has leading term $-(a+1)!z^{-a}$. The operator $\theta/a+1$ annihilates $z^{-a}$. Since
+\[
+\left(\frac{\theta}{a}+1\right)
+\bigl(z^{-a}\log z\bigr)=\frac1a z^{-a},
+\]
+the projected equation forces the term~(28). A solution of the homogeneous equation is a constant multiple of $z^{-a}$ and cannot remove the logarithm. Thus $G$ cannot belong to the log-free field $\mathcal K_a$.
+\end{proof}
+
+The lemma excludes rational membership in $\mathcal K_a$. The next elementary differential-field argument excludes algebraic membership.
+
+\begin{lemma}[Trace descent]
+\label{lem:trace-descent}
+Let $K$ be a differential field of characteristic zero with algebraically closed field of constants, and let $R,p\in K$. Suppose that $y$ is algebraic over $K$ and satisfies $Dy+py=R$. Then the equation has a solution $y_0\in K$. If every solution of $Du+pu=0$ in an algebraic extension of $K$ already belongs to $K$, then $y\in K$.
+\end{lemma}
+
+\begin{proof}
+Put $L=K(y)$ and $d=[L:K]$. Derivation commutes with the field trace, so
+\[
+y_0:=\frac1d\operatorname{Tr}_{L/K}(y)
+\]
+belongs to $K$ and satisfies $Dy_0+py_0=R$. The difference $y-y_0$ satisfies the homogeneous equation. The constants of the finite algebraic differential extension $L/K$ are algebraic over the constants of $K$ and hence introduce no new constants because the latter field is algebraically closed. The final assertion follows.
+\end{proof}
+
+Apply Lemma~\ref{lem:trace-descent} to~(27), with $D=\theta/a$ and $p=1$. The homogeneous solutions are $cz^{-a}$, with $c\in\mathbb C$, and already belong to $\mathcal K_a$. If $G$ were algebraic over $\mathcal K_a$, the trace lemma would therefore imply $G\in\mathcal K_a$, contrary to Lemma~\ref{lem:field-log-obstruction}. Hence $G$ is transcendental over $\mathcal K_a$, and the $a+1$ functions
+\[
+F_0,F_1,\ldots,F_{a-1},G
+\tag{29}
+\]
+are algebraically independent over $\mathbb C(z)$.
+
+These functions and the derivatives needed to close their equations form a system of $E$-functions over $\overline{\mathbb Q}(z)$ with no nonzero finite singularity. Its function field has transcendence degree $a+1$: the derivatives of $H$ lie in $\mathcal K_a$, while~(27) puts every derivative of $G$ in $\mathcal K_a(G)$. Beukers's Theorem~1.1~\cite[Theorem~1.1]{beukers} preserves this transcendence degree at the ordinary point $z=1$. By the triangular transformation~(24) and equation~(27), the corresponding value field is generated by
+\[
+F_0(1),F_1(1),\ldots,F_{a-1}(1),G(1).
+\tag{30}
+\]
+The values in~(30) are therefore algebraically independent over $\overline{\mathbb Q}$. Equation~(3) gives the algebraic independence of the constants in~(20).
+
+It remains to identify the rest of the fixed-slope family. Shifting the summation index gives
+\[
+C_{a,a}=(a+1)C_{a,0}-\frac1{a!}
+\tag{31}
+\]
+and, for $b>a+1$,
+\[
+C_{a,b}=
+\frac{C_{a,b-1}-(a+1)C_{a,b-a-1}+(a+1)/b!}{b-a-1}.
+\tag{32}
+\]
+Thus every $C_{a,b}$ with $b\geq0$ is a rational affine combination of~(20). For $1-a\leq b<0$, set $r=a+1+b$. The index shift used in Section~\ref{sec:initial-range}, followed by~(22), gives
+\[
+C_{a,b}
+=\frac1{r!}
++\frac{a+1-r}{a+1}C_{a,r}
++\frac1{a+1}C_{a,r-1}.
+\tag{33}
+\]
+Here $2\leq r\leq a$, and~(31) eliminates $C_{a,a}$ when $r=a$. This proves the affine-span assertion in Theorem~\ref{thm:main}. The algebraic independence of~(20) supplies the matching lower bound in~(21) and completes the proof. In particular, the affine recurrences account for all algebraic relations at fixed slope: after any finite collection of the constants is expressed in the basis~(20), its ideal of polynomial relations is generated by the resulting affine linear relations.
 
 \clearpage
 \begin{thebibliography}{9}
@@ -510,6 +663,9 @@ T.~Crmari\'c and V.~Kova\v{c}, On the irrationality of certain super-polynomiall
 
 \bibitem{kovac-forum}
 V.~Kova\v{c}, comment on Erd\H{o}s Problem \#270, \emph{Erd\H{o}s Problems} forum, 12 July 2026. \href{https://www.erdosproblems.com/forum/thread/270\#post-7469}{Post 7469}; accessed 22 August 2026.
+
+\bibitem{long-x}
+C.~D.~Long, ``You can probably get algebraic independence here with a minor extension,'' post on X, 23 August 2026. \href{https://x.com/octonion/status/2091555025197662264}{Online post}; accessed 23 August 2026.
 
 \bibitem{mathoverflow}
 D.~Weber and I.~Pinelis, answers to ``Is the integral of $e^{-x^2}$ from $0$ to $1$ known to be irrational?'', MathOverflow, 26 December 2023. \href{https://mathoverflow.net/questions/461028/}{Online discussion}.

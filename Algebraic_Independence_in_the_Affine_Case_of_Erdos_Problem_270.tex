@@ -34,18 +34,17 @@
 
 \begin{center}
 {\LARGE Algebraic Independence in the Affine Case of Erd\H{o}s Problem 270}\\[1.5ex]
-{\large Costa Lambrinoudis}\\[0.5ex]
-{23 August 2026}\\[1.75ex]
-{\small\itshape AI Disclosure: This manuscript was written and checked using generative AI.}
+{\large Costa Lambrinoudis {\normalsize(with AI)}}\footnote{\textit{AI disclosure:} Generative AI performed nearly all of the mathematical work: it independently rediscovered the elementary denominator argument, developed the affine and transcendence-theoretic extensions, conducted the literature search, wrote the manuscript, and produced the Lean formalization. Costa Lambrinoudis directed and supervised the investigation.}\\[0.5ex]
+{23 August 2026}
 \end{center}
 
 \begin{quote}
 \small
-Erd\H{o}s Problem 270 asks whether the series of reciprocals of $(n+1)(n+2)\cdots(n+f(n))$ must be irrational whenever $f(n)\to\infty$. Crmari\'c and Kova\v{c} showed that the answer is negative without a regularity assumption, while the problem remains open for nondecreasing $f$. Erd\H{o}s and Graham singled out the simplest such choice, $f(n)=n$. We study the entire positive affine subfamily $f(n)=an+b$, whose members are
+Erd\H{o}s Problem 270 concerns the irrationality of a family of rapidly convergent series indexed by positive integer-valued functions $f$ with $f(n)\to\infty$. We treat the affine functions $f(n)=an+b$, for which the series becomes
 \[
 C_{a,b}:=\sum_{n=1}^{\infty}\frac{n!}{((a+1)n+b)!}
 \]
-for $a\geq1$ and $b\geq1-a$. For each fixed $a$, we prove that $C_{a,0},\ldots,C_{a,a-1},C_{a,a+1}$ are algebraically independent over $\overline{\mathbb Q}$ and that every other admissible $C_{a,b}$ is a nonconstant rational affine combination of them. Thus the fixed-slope family has transcendence degree $a+1$; in particular, every positive affine case of Problem 270 is transcendental. We begin with an elementary irrationality proof for $0\leq b\leq a$, which includes the Erd\H{o}s--Graham example. A Gaussian integral representation then gives a short transcendence proof for that example. For the general theorem, we pass to hypergeometric $E$-functions and combine algebraic-independence results of Salikhov and Salikhov--Viskina with a logarithmic obstruction at infinity and Beukers's specialization theorem.
+where $a\geq1$ and $b\geq1-a$. For each fixed $a$, we prove that $C_{a,0},\ldots,C_{a,a-1},C_{a,a+1}$ are algebraically independent over $\overline{\mathbb Q}$ and that every other admissible $C_{a,b}$ is a nonconstant rational affine combination of them. Hence the fixed-slope family has transcendence degree $a+1$, and every $C_{a,b}$ in this range is transcendental. We also give an elementary irrationality proof for $0\leq b\leq a$ and a short Gaussian-integral proof of the transcendence of $C_{1,0}$. The general proof combines algebraic-independence theorems for hypergeometric $E$-functions, a logarithmic obstruction at infinity, and Beukers's specialization theorem.
 \end{quote}
 
 \section{Irrationality in the affine family}

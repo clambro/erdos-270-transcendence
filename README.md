@@ -4,6 +4,10 @@
 
 **[Browse the Lean proofs and verification notes](formalization/README.md)**
 
+## AI disclosure
+
+Generative AI performed nearly all of the mathematical work: it independently rediscovered the elementary denominator argument, developed the affine extensions and the transcendence-theoretic arguments, conducted the literature search, wrote the manuscript, and produced the Lean formalization. I directed and supervised the investigation.
+
 ## Contents
 
 - [Introduction](#introduction)

@@ -1,5 +1,6 @@
 import FactorialRatio.Main
 import FactorialRatio.BaseCaseTranscendence
+import FactorialRatio.FixedSlopeAlgebraicIndependence
 
 /-!
 Run this file with `lake env lean FactorialRatio/AxiomAudit.lean` to display the axiom
@@ -16,6 +17,12 @@ dependencies of the principal verified statements.
 #print axioms FactorialRatio.euler_reduction_coefficient
 #print axioms FactorialRatio.differentialStepNumerator_eq_prod
 #print axioms FactorialRatio.differential_equation_coefficient
+#print axioms FactorialRatio.normalizedCoeff_contiguous
+#print axioms FactorialRatio.normalizedValue_contiguous
+#print axioms FactorialRatio.constant_intercept_recurrence
+#print axioms FactorialRatio.constant_boundary_eq
+#print axioms FactorialRatio.constant_beyond_recurrence
+#print axioms FactorialRatio.shiftedConstant_affine
 #print axioms FactorialRatio.resonanceAction_succ
 #print axioms FactorialRatio.resonantForcingCoeff_ne_zero
 #print axioms FactorialRatio.no_log_free_resonant_coefficient
@@ -27,3 +34,6 @@ dependencies of the principal verified statements.
 #print axioms FactorialRatio.constant_one_zero_transcendental_of_gaussian
 #print axioms FactorialRatio.nonnegative_constant_transcendental
 #print axioms FactorialRatio.integer_constant_transcendental
+#print axioms FactorialRatio.fixedSlopeBasis_algebraicIndependent
+#print axioms FactorialRatio.fixedSlopeBasis_algebraicIndependent_realAlgebraic
+#print axioms FactorialRatio.fixedSlopeBasis_transcendental

@@ -5,3 +5,4 @@ import FactorialRatio.ValueIdentities
 import FactorialRatio.ExternalTheorems
 import FactorialRatio.BaseCaseTranscendence
 import FactorialRatio.Main
+import FactorialRatio.FixedSlopeAlgebraicIndependence

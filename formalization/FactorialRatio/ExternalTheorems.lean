@@ -1,5 +1,6 @@
 import FactorialRatio.ValueIdentities
 import Mathlib.RingTheory.Algebraic.Integral
+import Mathlib.RingTheory.AlgebraicIndependent.AlgebraicClosure
 
 /-!
 # External transcendence inputs
@@ -65,5 +66,14 @@ theory, E-functions, or Beukers's theorem. -/
 structure BeyondStripInput : Prop where
   pair : ∀ a b : ℕ, 1 ≤ a → a < b →
     OneAndValueLinearIndependent (normalizedValue a b)
+
+/-- The fixed-slope value-independence consequence of the Salikhov,
+Salikhov--Viskina, formal-at-infinity, trace-descent, and Beukers arguments.
+
+The family has `a + 1` coordinates: `C_(a,0),...,C_(a,a-1),C_(a,a+1)`.
+This interface is passed explicitly because the analytic theorems needed to
+construct it are not available in mathlib. -/
+structure FixedSlopeAlgebraicIndependenceInput : Prop where
+  independent : ∀ a : ℕ, 1 ≤ a → AlgebraicIndependent ℚ (fixedSlopeBasis a)
 
 end FactorialRatio

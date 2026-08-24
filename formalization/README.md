@@ -12,7 +12,7 @@ This directory contains the Lean 4 formalization accompanying *Algebraic Indepen
 | --- | --- | --- |
 | Irrationality of $C_{a,b}$ for $a\geq1$ and $0\leq b\leq a$ | Fully verified | None |
 | Transcendence of $C_{1,0}$ by the Gaussian argument | Conditional deduction verified | Gaussian identity; Siegel–Shidlovsky value independence |
-| Transcendence of $C_{a,b}$ for $a\geq1$ and $b\geq1-a$ | Conditional deduction verified | Salikhov and Salikhov–Viskina value independence; formal minimality at infinity; Beukers's lifting theorem |
+| Direct transcendence of $C_{a,b}$ for $a\geq1$ and $b\geq1-a$ | Supplementary conditional deduction verified | Salikhov and Salikhov–Viskina value independence; formal minimality at infinity; Beukers's lifting theorem |
 | Algebraic independence of $C_{a,0},\ldots,C_{a,a-1},C_{a,a+1}$ | Conditional algebraic consequences verified | Salikhov and Salikhov–Viskina algebraic independence; logarithmic boundary obstruction; trace descent; Beukers's theorem |
 
 ## Irrationality theorem
@@ -32,7 +32,7 @@ $$
 
 Lean proves convergence, the divisibility chain for the reciprocal denominators, integrality of the scaled partial sums, positivity of the tail, an explicit bound forcing the scaled tail to zero, and the contradiction with rationality. Convergence is also proved for every $a\geq1$ and $b\geq0$; only the divisibility proof requires $b\leq a$.
 
-## Identities used in the transcendence proof
+## Coefficient and value identities
 
 The following parts of the later argument are verified without additional mathematical assumptions:
 
@@ -48,9 +48,9 @@ The following parts of the later argument are verified without additional mathem
 - the recurrence associated with the inhomogeneous differential equation;
 - the resonant vanishing, the nonzero forcing term, and the forced coefficient of $z^{-a}\log z$.
 - the coefficientwise and special-value contiguous identity relating $F_{a,b-1}$, $F_{a,b}$, and $\theta F_{a,b}$.
-- the boundary identity (31), the recurrence (32) for larger nonnegative intercepts, and the affine negative-intercept identity (33).
+- the boundary identity (10), the recurrence (17) for larger nonnegative intercepts, and the affine negative-intercept identity (18).
 
-These calculations appear in [`ValueIdentities.lean`](FactorialRatio/ValueIdentities.lean) and [`CoefficientIdentities.lean`](FactorialRatio/CoefficientIdentities.lean). They establish the algebraic and coefficient-level identities used in the manuscript. The analytic differential modules needed for the general transcendence theorem are not constructed in Lean.
+These calculations appear in [`ValueIdentities.lean`](FactorialRatio/ValueIdentities.lean) and [`CoefficientIdentities.lean`](FactorialRatio/CoefficientIdentities.lean). The boundary and affine recurrences are used in the streamlined manuscript. The more general Euler reduction and resonance calculation record the earlier direct-transcendence route and remain independently verified. The analytic differential modules are not constructed in Lean.
 
 ## Base-case transcendence
 
@@ -73,9 +73,9 @@ $$
 
 and proves that algebraicity of $C_{1,0}$ would contradict the stated independence. The Gaussian representation and the Siegel–Shidlovsky theorem have not been formalized.
 
-## Full affine family
+## Supplementary direct transcendence theorem
 
-The manuscript's main theorem covers every positive integer-valued affine function, corresponding to $a\geq1$ and $b\geq1-a$. Its Lean statement is [`integer_constant_transcendental`](FactorialRatio/Main.lean):
+[`Main.lean`](FactorialRatio/Main.lean) retains the earlier direct proof architecture for every positive integer-valued affine function, corresponding to $a\geq1$ and $b\geq1-a$. Its Lean statement is [`integer_constant_transcendental`](FactorialRatio/Main.lean):
 
 ```lean
 theorem integer_constant_transcendental
@@ -87,7 +87,7 @@ theorem integer_constant_transcendental
 
 `FundamentalStripInput` records the value-independence statements used for $0\leq b\leq a$ and the shifted negative-intercept cases. `BeyondStripInput` records the value-independence statement used for $b>a$. Given these hypotheses, Lean checks the normalization, all parameter-range reductions, and the final transcendence deductions.
 
-The following parts of the paper remain outside the formalization:
+The following inputs to this supplementary theorem remain outside the formalization:
 
 - the Salikhov and Salikhov–Viskina theorems and their application to the relevant hypergeometric $E$-functions;
 - the analytic hypergeometric differential systems;

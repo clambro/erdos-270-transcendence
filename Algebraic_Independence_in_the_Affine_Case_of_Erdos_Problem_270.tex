@@ -19,6 +19,7 @@
 \linespread{1.02}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.2\baselineskip}
+\setlength{\skip\footins}{1.25\baselineskip}
 \emergencystretch=2em
 \titleformat{\section}{\raggedright\normalfont\Large\bfseries}{\thesection}{1em}{}
 \titlespacing*{\section}{0pt}{3.5ex plus 1ex minus 0.2ex}{2.3ex plus 0.2ex}
@@ -44,7 +45,7 @@ Erd\H{o}s Problem 270 asks whether the series of reciprocals of $(n+1)(n+2)\cdot
 \[
 C_{a,b}:=\sum_{n=1}^{\infty}\frac{n!}{((a+1)n+b)!}
 \]
-for $a\geq1$ and $b\geq1-a$. For each fixed $a$, we prove that $C_{a,0},\ldots,C_{a,a-1},C_{a,a+1}$ are algebraically independent over $\overline{\mathbb Q}$ and that every other admissible $C_{a,b}$ is a rational affine combination of them. Thus the fixed-slope family has transcendence degree $a+1$; in particular, every positive affine case of Problem 270 is transcendental. We begin with an elementary irrationality proof for $0\leq b\leq a$, which includes the Erd\H{o}s--Graham example. A Gaussian integral representation then gives a short transcendence proof for that example. For the general theorem, we pass to hypergeometric $E$-functions and combine algebraic-independence results of Salikhov and Salikhov--Viskina with a logarithmic obstruction at infinity and Beukers's specialization theorem.
+for $a\geq1$ and $b\geq1-a$. For each fixed $a$, we prove that $C_{a,0},\ldots,C_{a,a-1},C_{a,a+1}$ are algebraically independent over $\overline{\mathbb Q}$ and that every other admissible $C_{a,b}$ is a nonconstant rational affine combination of them. Thus the fixed-slope family has transcendence degree $a+1$; in particular, every positive affine case of Problem 270 is transcendental. We begin with an elementary irrationality proof for $0\leq b\leq a$, which includes the Erd\H{o}s--Graham example. A Gaussian integral representation then gives a short transcendence proof for that example. For the general theorem, we pass to hypergeometric $E$-functions and combine algebraic-independence results of Salikhov and Salikhov--Viskina with a logarithmic obstruction at infinity and Beukers's specialization theorem.
 \end{quote}
 
 \section{Irrationality in the affine family}
@@ -113,13 +114,11 @@ Crmari\'c and Kova\v{c} returned to this example and reported that they knew no 
 \section{Transcendence of \texorpdfstring{$C_{1,0}$}{C(1,0)}}
 \label{sec:a1-transcendence}
 
-The same constant has a Gaussian integral representation. Crmari\'c and Kova\v{c} record the identity~\cite[p.~55 and footnote~1]{crmaric-kovac}
+Crmari\'c and Kova\v{c} record the Gaussian integral representation~\cite[p.~55 and footnote~1]{crmaric-kovac}, obtained by expanding $e^{1/4-t^2}$ and integrating termwise:
 \[
 C_{1,0}=e^{1/4}\int_0^{1/2}e^{-t^2}\,dt.
 \tag{1}
 \]
-They obtain it by expanding $e^{1/4-t^2}$ and integrating termwise.
-
 In a 2023 MathOverflow discussion of the neighboring integral $\int_0^1e^{-t^2}\,dt$, Weber and Pinelis~\cite{mathoverflow} considered the $E$-function
 \[
 y(x):=\frac1{\sqrt{x}}\int_0^{\sqrt{x}}e^{-t^2}\,dt
@@ -144,17 +143,17 @@ For every integer $a\geq1$, the numbers
 \[
 C_{a,0},C_{a,1},\ldots,C_{a,a-1},C_{a,a+1}
 \]
-are algebraically independent over $\overline{\mathbb Q}$. Every $C_{a,b}$ with $b\geq1-a$ is a rational affine combination of these $a+1$ numbers, and
+are algebraically independent over $\overline{\mathbb Q}$. Every $C_{a,b}$ with $b\geq1-a$ is a nonconstant rational affine combination of these $a+1$ numbers, and
 \[
 \operatorname{trdeg}_{\overline{\mathbb Q}}
 \overline{\mathbb Q}(C_{a,b}:b\geq1-a)=a+1.
 \]
-Moreover, every $C_{a,b}$ in this range is transcendental.
+Consequently every $C_{a,b}$ in this range is transcendental.\footnote{An earlier version of this paper established only individual transcendence. Christopher D.~Long pointed out that the same machinery should also yield algebraic independence~\cite{long-x}; the argument was then strengthened to the form given here.}
 \end{theorem}
 
-We first prove the transcendence assertion for every admissible intercept. We then use the same functions to determine all algebraic relations at each fixed slope.
+A logarithmic obstruction at infinity gives functional independence; we then specialize at $z=1$.
 
-For all integers $a\geq1$ and $b\geq0$, define
+For integers $a\geq1$ and $b\geq0$, define
 \[
 F_{a,b}(z):=b!\sum_{n=0}^{\infty}
 \frac{n!}{((a+1)n+b)!}z^{an}.
@@ -165,22 +164,21 @@ Then
 F_{a,b}(1)=1+b!C_{a,b}.
 \tag{3}
 \]
-For $b\geq0$, it is therefore enough to prove that $F_{a,b}(1)$ is transcendental. Beukers's theorem reduces this to finding a differential system, ordinary at $1$, whose components include $F_{a,b}$ and are linearly independent over $\overline{\mathbb Q}(z)$.
 
-\subsection{The range \texorpdfstring{$0\leq r\leq a$}{0 <= r <= a}}
-\label{sec:initial-range}
+\subsection{The first \texorpdfstring{$a$}{a} functions}
 
-Assume first that $0\leq r\leq a$. Put
+Fix $a\geq1$, write $F_b=F_{a,b}$, and let $\theta=z\,d/dz$. Put
 \[
-J_{a,r}:=\{1,\ldots,a+1\}\setminus\{a+1-r\},
+H:=F_{a-1},
 \qquad
-\beta_j:=\frac{r+j}{a+1}\quad(j\in J_{a,r}).
+J_a:=\{1,\ldots,a+1\}\setminus\{2\},
+\qquad
+\beta_j:=\frac{a-1+j}{a+1}\quad(j\in J_a).
 \]
-The omitted parameter is the unique one equal to $1$. The multiplication formula gives
+The multiplication formula gives
 \[
-F_{a,r}(z)
-={}_1F_a\!\left(
-\begin{matrix}1\\(\beta_j)_{j\in J_{a,r}}\end{matrix};
+H(z)={}_1F_a\!\left(
+\begin{matrix}1\\(\beta_j)_{j\in J_a}\end{matrix};
 \frac{z^a}{(a+1)^{a+1}}
 \right).
 \tag{4}
@@ -188,359 +186,160 @@ F_{a,r}(z)
 Indeed,
 \[
 \prod_{j=1}^{a+1}
-\left(\frac{r+j}{a+1}\right)_n
-=\frac{((a+1)n+r)!}{r!(a+1)^{(a+1)n}},
+\left(\frac{a-1+j}{a+1}\right)_n
+=\frac{((a+1)n+a-1)!}{(a-1)!(a+1)^{(a+1)n}},
 \]
-and deleting the factor $(1)_n=n!$ yields~(4).
+and the omitted factor is $(1)_n=n!$.
 
-To match the notation of the cited results, set
+To apply the results of Salikhov and Salikhov--Viskina, set
 \[
 \rho_a:=\frac{a}{(a+1)^{(a+1)/a}},
 \qquad
-\lambda_j:=\beta_j-1,
+\lambda_j:=\beta_j-1=\frac{j-2}{a+1},
 \]
-and define
+and
 \[
 \varphi(w):=\sum_{n=0}^{\infty}
 \frac{(w/a)^{an}}
-{\displaystyle\prod_{j\in J_{a,r}}(\lambda_j+1)_n}.
+{\displaystyle\prod_{j\in J_a}(\lambda_j+1)_n}.
 \]
-Then $F_{a,r}(z)=\varphi(\rho_a z)$. This is the $l=0$, $t=a$ case of Salikhov's formula~\cite[eq.~(1)]{salikhov}. Here $l=0$ means that Salikhov's numerator contains no Pochhammer factors; in standard hypergeometric notation the parameter $1$ in~(4) remains because $(1)_n/n!=1$.
+Then $H(z)=\varphi(\rho_a z)$. This hypergeometric $E$-function is the $l=0$, $t=a$ case of Salikhov's formula~\cite[eq.~(1)]{salikhov}.
 
-Let $\theta=z\,d/dz$ and define
-\[
-W_{a,r}:=\operatorname{span}_{\mathbb C(z)}
-\{1,F_{a,r},\theta F_{a,r},\ldots,\theta^{a-1}F_{a,r}\}.
-\tag{5}
-\]
-The key functional statement is
-\[
-\dim_{\mathbb C(z)}W_{a,r}=a+1.
-\tag{6}
-\]
-For odd $a$, Salikhov's Theorem~1 applies to this $l=0$ function~\cite[Theorem~1]{salikhov}. The parameters are rational, and none is a negative integer. The remaining hypothesis requires that their multiset modulo integers not be invariant under translation by $1/d$ for any divisor $d>1$ of $a$. In the present notation, this multiset is
+Suppose first that $a$ is odd. Salikhov's Theorem~1 applies provided that the parameter multiset modulo integers is not invariant under translation by $1/d$ for any divisor $d>1$ of $a$~\cite[Theorem~1]{salikhov}. Here that multiset is
 \[
 S_a=\left\{\frac1{a+1},\ldots,\frac a{a+1}\right\}\subset\mathbb Q/\mathbb Z.
 \]
-If $d>1$ divides $a$, then $\gcd(d,a+1)=1$, so $1/d$ does not lie in the subgroup $(a+1)^{-1}\mathbb Z/\mathbb Z$ containing $S_a$. Translation by $1/d$ therefore cannot preserve $S_a$, which verifies Salikhov's parameter condition. The theorem gives algebraic independence of $\varphi(\alpha),\varphi'(\alpha),\ldots,\varphi^{(a-1)}(\alpha)$ for every nonzero algebraic $\alpha$.
+If $d>1$ divides $a$, then $\gcd(d,a+1)=1$, so $1/d$ does not belong to the subgroup $(a+1)^{-1}\mathbb Z/\mathbb Z$ containing $S_a$. Translation by $1/d$ therefore cannot preserve $S_a$. Salikhov's theorem gives algebraic independence of the values of $\varphi$ and its first $a-1$ derivatives at every nonzero algebraic point.
 
-When $a$ is even, the theorem of Salikhov--Viskina applies with $t=a$. If the $\lambda_j$ are rational and not negative integers, it states that for every nonzero algebraic $\alpha$ the numbers $1,\varphi(\alpha),\delta\varphi(\alpha),\ldots,\delta^{a-1}\varphi(\alpha)$ are linearly independent over $\overline{\mathbb Q}$, where $\delta=w\,d/dw$ is their Euler operator~\cite[p.~833]{salikhov-viskina}. Unlike Salikhov's odd-order result, this gives linear rather than algebraic independence; it includes the constant $1$ and imposes no translation condition.
+When $a$ is even, Salikhov--Viskina show that algebraic dependence of the corresponding function and its first $a-1$ Euler derivatives requires one of the shifts $\lambda_j$ to be an integer~\cite[p.~833]{salikhov-viskina}. None of the numbers $(j-2)/(a+1)$ with $j\in J_a$ is an integer, so the same functional algebraic independence holds in the even case.
 
-In either parity, the cited theorem implies that the values of $1,F_{a,r},\theta F_{a,r},\ldots,\theta^{a-1}F_{a,r}$ are linearly independent over $\overline{\mathbb Q}$ at every nonzero algebraic point. At such a point $\alpha$, the Euler derivatives $(\theta^kF_{a,r})(\alpha)$ and the ordinary derivatives $F_{a,r}^{(k)}(\alpha)$ are related by a triangular algebraic matrix with diagonal entries $1,\alpha,\ldots,\alpha^{a-1}$. The two forms of the independence statement are therefore equivalent.
-
-\begin{descentlemma}
-Let $g_1,\ldots,g_m\in\overline{\mathbb Q}[[z]]$. If these series are linearly dependent over $\mathbb C(z)$, then they are linearly dependent over $\overline{\mathbb Q}(z)$.
-\end{descentlemma}
-
-\begin{proof}
-Clear the denominators in a nonzero relation and let $D$ be the largest degree of its polynomial coefficients. Writing those coefficients as $\sum_{d=0}^{D}c_{i,d}z^d$ and comparing Taylor coefficients gives a homogeneous linear system over $\overline{\mathbb Q}$ in the finitely many unknowns $c_{i,d}$. Its row space has a finite basis, so the system has the same kernel as a finite matrix over $\overline{\mathbb Q}$. If its kernel over $\mathbb C$ is nonzero, then its kernel over $\overline{\mathbb Q}$ is nonzero, and the corresponding polynomial coefficients give the required relation.
-\end{proof}
-
-Every function in~(5) has algebraic Taylor coefficients, so the descent lemma implies~(6). Otherwise a relation over $\mathbb C(z)$ would descend to $\overline{\mathbb Q}(z)$. Specializing at a nonzero algebraic point where its coefficients are defined and not all zero would contradict the cited value independence.
-
-Applying the value-independence statement at $z=1$ proves that $F_{a,r}(1)$, and hence $C_{a,r}$ by~(3), is transcendental for $0\leq r\leq a$.
-
-The same statement handles affine functions with negative intercept that remain positive for every $n\geq1$. Suppose that $1-a\leq b<0$ and put $r=a+1+b$, so that $a\geq2$ and $2\leq r\leq a$. Shifting the summation index by writing $n=m+1$ gives
+For odd $a$, the value theorem also implies functional independence. A relation over $\mathbb C(z)$ among functions with algebraic Taylor coefficients descends to $\overline{\mathbb Q}(z)$: after fixing the monomials and degree bounds in a hypothetical relation, comparison of Taylor coefficients gives a homogeneous linear system over $\overline{\mathbb Q}$ in its polynomial coefficients. Specialization at a nonzero algebraic point where those coefficients are defined and not all zero would then contradict Salikhov's value theorem. Since ordinary and Euler derivatives are related by an invertible triangular transformation, we have in every parity
 \[
-\begin{aligned}
-C_{a,b}
-&=\sum_{m=0}^{\infty}\frac{(m+1)!}{((a+1)m+r)!}\\
-&=\frac1{r!}\left(F_{a,r}(1)+\frac1a\theta F_{a,r}(1)\right).
-\end{aligned}
-\]
-If $C_{a,b}$ were algebraic, this identity would give a nontrivial linear relation over $\overline{\mathbb Q}$ among $1$, $F_{a,r}(1)$, and $\theta F_{a,r}(1)$. Hence $C_{a,b}$ is transcendental for $1-a\leq b<0$ as well.
-
-To treat $b>a$, we compare the formal solutions of the relevant differential equations at infinity. The generalized hypergeometric equation for~(4) can be written as
-\[
-\left[
-\prod_{j\in J_{a,r}}
-\left(\frac{\theta}{a}+\beta_j-1\right)
--\frac{z^a}{(a+1)^{a+1}}
-\right]F_{a,r}
-=\prod_{j\in J_{a,r}}(\beta_j-1).
-\tag{7}
-\]
-The right side is nonzero because the parameter equal to $1$ was removed. To describe the formal system at infinity, put
-\[
-x:=z^{-1},\qquad K:=\mathbb C((x)),\qquad \kappa_a:=(a+1)^{-(a+1)},
-\]
-so that $\theta=-x\,d/dx$ on $K$, and write
-\[
-c_{a,r}:=\prod_{j\in J_{a,r}}(\beta_j-1),\qquad P_{a,r}(u):=\prod_{j\in J_{a,r}}(u+\beta_j-1)=\sum_{j=0}^{a}p_ju^j,\qquad p_a=1.
-\]
-Let
-\[
-Y_0:=1,\qquad Y_j:=\theta^{j-1}F_{a,r}\quad(1\leq j\leq a).
-\]
-Equation~(7) is equivalent to the augmented companion system
-\[
-\theta Y_0=0,\qquad \theta Y_j=Y_{j+1}\quad(1\leq j<a),
-\]
-\[
-\theta Y_a=a^ac_{a,r}Y_0+a^a(\kappa_a z^a-p_0)Y_1-\sum_{j=1}^{a-1}a^{a-j}p_jY_{j+1}.
-\]
-After expanding rational functions at infinity, this system defines a rank-$(a+1)$ differential module $\mathcal M_{a,r}$ over $K$.
-
-\begin{lemma}[Zero-exponential formal component]
-\label{lem:zero-component}
-The Levelt--Turrittin decomposition of $\mathcal M_{a,r}$ is
-\[
-\mathcal M_{a,r}=\mathcal M_0\oplus\bigoplus_{\zeta^a=1}\mathcal M_\zeta,
-\]
-where $\mathcal M_0$ has rank one and exponential part $0$, while each $\mathcal M_\zeta$ has rank one and exponential part $\rho_a\zeta z$. The zero summand has the formal solution vector
-\[
-\widehat Y^{(0)}:=\left(1,\widehat F_{a,r}^{(0)},\theta\widehat F_{a,r}^{(0)},\ldots,\theta^{a-1}\widehat F_{a,r}^{(0)}\right)^{\mathsf T},
-\]
-where
-\[
-\widehat F_{a,r}^{(0)}(z)\in z^{-a}\mathbb C[[z^{-a}]].
-\tag{8}
-\]
-More explicitly, if
-\[
-G=r_0+\sum_{k=0}^{a-1}r_{k+1}\theta^kF_{a,r}\in W_{a,r},\qquad r_0,\ldots,r_a\in\mathbb C(z),
-\]
-then its zero-exponential projection is
-\[
-\pi_0(G)=r_0+\sum_{k=0}^{a-1}r_{k+1}\theta^k\widehat F_{a,r}^{(0)}\in K.
-\]
-The projection extends $K$-linearly to $K\otimes_{\mathbb C(z)}W_{a,r}$ and commutes with $\theta$. In particular, $\pi_0(G)$ is a Laurent series without powers of $\log z$.
-\end{lemma}
-
-\begin{proof}
-Writing $\widehat F_{a,r}^{(0)}=\sum_{m\geq1}h_mz^{-am}$ in~(7) gives
-\[
-h_1=-\frac{c_{a,r}}{\kappa_a},
-\qquad
-h_{m+1}=\frac{P_{a,r}(-m)}{\kappa_a}h_m
-\quad(m\geq1).
-\tag{9}
-\]
-This recurrence constructs the solution~(8). It is unique among Laurent-series particular solutions. Indeed, the difference of two such solutions would be a nonzero Laurent-series solution of the homogeneous equation. If $dz^\nu$ were its leading monomial, the term $-\kappa_a z^a dz^\nu$ could not be cancelled by $P_{a,r}(\theta/a)$, which does not raise exponents. Consequently $\widehat Y^{(0)}$ is a nonzero formal solution of the augmented system with exponential part $0$.
-
-The homogeneous equation associated with~(7) has characteristic equation
-\[
-\lambda^a=\frac{a^a}{(a+1)^{a+1}},
-\]
-so its $a$ characteristic numbers are the distinct nonzero numbers $\rho_a\zeta$. Its formal homogeneous solutions have the form
-\[
-e^{\rho_a\zeta z}z^{\mu_\zeta}\mathbb C[[z^{-1}]],
-\qquad \zeta^a=1,
-\]
-and are log-free because every characteristic number is simple; see Salikhov~\cite[Remark~2, p.~206]{salikhov}. Each of the $a$ distinct nonzero exponential parts therefore contributes a rank-one summand.
-
-The Levelt--Turrittin theorem decomposes $\mathcal M_{a,r}$ as a direct sum of differential modules indexed by their exponential parts~\cite[Chapter~3, Theorem~3.1]{vdput-singer}. No ramification is needed because $0$ and the polynomials $\rho_a\zeta z$ lie over $K$. The nonzero exponential summands account for rank $a$, and $\widehat Y^{(0)}$ supplies a nonzero solution in the zero-exponential summand. Since $\mathcal M_{a,r}$ has rank $a+1$, the zero summand has rank exactly one, and its formal solution space is spanned by $\widehat Y^{(0)}$.
-
-By~(6), the displayed expression for $G$ in the statement is unique. Expanding the coefficients $r_j$ in $K$ and projecting the companion vector onto the line spanned by $\widehat Y^{(0)}$ gives the stated formula for $\pi_0(G)$. Because the Levelt--Turrittin summands are differential modules, this projection is $K$-linear and commutes with $\theta$. Every entry of $\widehat Y^{(0)}$ lies in $K$, so the formula also shows directly that $\pi_0(G)$ contains no logarithms.
-\end{proof}
-
-\subsection{Euler reduction for \texorpdfstring{$b>a$}{b > a}}
-\label{sec:euler-reduction}
-
-Suppose that $b>a$ and write
-\[
-b=q(a+1)+r,
-\qquad q\geq1,
-\qquad 0\leq r\leq a.
-\tag{10}
-\]
-Put
-\[
-\beta_j:=\frac{b+j}{a+1},
-\qquad 1\leq j\leq a+1,
-\qquad
-x:=\frac{z^a}{(a+1)^{a+1}}.
-\]
-None of the lower parameters is equal to $1$, and the multiplication formula gives
-\[
-F_{a,b}(z)
-={}_2F_{a+1}\!\left(
-\begin{matrix}1,1\\\beta_1,\ldots,\beta_{a+1}\end{matrix};
-x
-\right).
-\tag{11}
-\]
-The function $F_{a,b}$ in~(11) is a hypergeometric $E$-function: its parameters are positive rational numbers, and with two upper and $a+1$ lower parameters, the required pullback degree is $(a+1)-2+1=a$. Writing its differential equation in terms of $\theta_x=x\,d/dx$, factoring off $\theta_x$, and evaluating at $x=0$ to determine the resulting constant gives
-\[
-\left[
-\prod_{j=1}^{a+1}\left(\frac{\theta}{a}+\beta_j-1\right)
--\frac{z^a}{(a+1)^{a+1}}\left(\frac{\theta}{a}+1\right)
-\right]F_{a,b}
-=\prod_{j=1}^{a+1}(\beta_j-1).
-\tag{12}
-\]
-This is an order-$(a+1)$ inhomogeneous equation. Its leading ordinary-derivative coefficient is a nonzero constant multiple of $z^{a+1}$, so its companion system has no nonzero finite singularity.
-
-Coefficient comparison in~(2) gives the Euler reduction
-\[
-\boxed{
-\prod_{k=1}^{q}\left(\frac{\theta}{a}+k\right)F_{a,b}(z)
-=\frac{b!}{r!}z^{-aq}
-\left[
-F_{a,r}(z)
--r!\sum_{m=0}^{q-1}
-\frac{m!}{((a+1)m+r)!}z^{am}
-\right].}
-\tag{13}
-\]
-The operator on the left multiplies the coefficient of $z^{an}$ by
-\[
-\prod_{k=1}^{q}(n+k)=\frac{(n+q)!}{n!}.
-\]
-The index shift $n\mapsto n+q$ gives the right side of~(13). In particular, the differential module generated by $1$ and $F_{a,b}$ contains $W_{a,r}$.
-
-\subsection{Resonance}
-\label{sec:resonance}
-
-Assume for contradiction that $F_{a,b}\in W_{a,r}$ and apply the projection $\pi_0$ of Lemma~\ref{lem:zero-component} to~(13). This projection commutes with the Euler operator on the left. On the right, the contribution of $z^{-aq}F_{a,r}$ begins at $z^{-a(q+1)}$ by~(8), whereas the highest term of the polynomial subtracted in~(13), corresponding to $m=q-1$, contributes the nonzero $z^{-a}$ coefficient
-\[
--\frac{b!(q-1)!}{((a+1)(q-1)+r)!}.
-\tag{14}
+H,\theta H,\ldots,\theta^{a-1}H
+\quad\text{algebraically independent over }\mathbb C(z).
+\tag{5}
 \]
 
-Under this assumption, the lemma shows that the zero-exponential component of $F_{a,b}$ is a Laurent series $L(z)\in\mathbb C((z^{-1}))$ without logarithms. The Euler operator on the left of~(13) acts diagonally on monomials, and its multiplier on $z^{-a}$ is
-\[
-\prod_{k=1}^{q}(-1+k)=0.
-\tag{15}
-\]
-It follows that the $z^{-a}$ coefficient in the zero-exponential component of the left side of~(13) must vanish, contradicting~(14). Therefore
-\[
-F_{a,b}\notin W_{a,r}.
-\tag{16}
-\]
-
-The projected equation therefore requires a logarithmic term. Since
-\[
-\prod_{k=1}^{q}\left(\frac{\theta}{a}+k\right)
-\bigl(z^{-a}\log z\bigr)
-=\frac{(q-1)!}{a}z^{-a},
-\]
-comparison with~(14) gives
-\[
-\widehat F_{a,b}^{(0)}(z)
-=-\frac{a\,b!}{((a+1)(q-1)+r)!}\,z^{-a}\log z
-+\cdots,
-\tag{17}
-\]
-where the omitted terms do not affect the coefficient of $z^{-a}\log z$.
-
-Define
-\[
-V_{a,b}:=\operatorname{span}_{\mathbb C(z)}
-\{1,F_{a,b},\theta F_{a,b},\ldots,\theta^aF_{a,b}\}.
-\tag{18}
-\]
-Equation~(12) makes $V_{a,b}$ stable under $\theta$ and gives $\dim V_{a,b}\leq a+2$. Equation~(13) gives $W_{a,r}\subseteq V_{a,b}$. By~(6) and~(16), the additional element $F_{a,b}$ is not in $W_{a,r}$, so
-\[
-\dim V_{a,b}\geq(a+1)+1=a+2.
-\]
-Hence $\dim V_{a,b}=a+2$, and
-\[
-1,F_{a,b},F_{a,b}',\ldots,F_{a,b}^{(a)}
-\tag{19}
-\]
-are linearly independent over $\mathbb C(z)$. Thus~(12) has minimal possible order among inhomogeneous equations over $\mathbb C(z)$ satisfied by $F_{a,b}$.
-
-\subsection{Values at \texorpdfstring{$z=1$}{z=1}}
-\label{sec:evaluation}
-
-By~(11), $F_{a,b}$ is an $E$-function, as are its derivatives. The functions in~(19) are linearly independent over $\overline{\mathbb Q}(z)$, and~(12) supplies a companion system with no nonzero finite singularity. Beukers~\cite[Corollary~1.4]{beukers} therefore gives the linear independence of their values at the ordinary algebraic point $z=1$. In particular, $F_{a,b}(1)$ is transcendental, and~(3) gives the transcendence of $C_{a,b}$.
-
-Combining this with the cases $1-a\leq b\leq a$ treated above proves that $S(f)$ is transcendental for every positive integer-valued affine function $f(n)=an+b$ with $a\geq1$. It remains to determine the algebraic relations among the values with the same slope.
-
-\subsection{Algebraic independence at fixed slope}
-\label{sec:algebraic-independence}
-
-Christopher D.~Long suggested extending the transcendence argument to algebraic independence~\cite{long-x}. For a fixed slope, the entire family cannot be algebraically independent because its members satisfy affine recurrences. We will prove that the maximal independent subfamily is
-\[
-C_{a,0},C_{a,1},\ldots,C_{a,a-1},C_{a,a+1}
-\tag{20}
-\]
-and that
-\[
-\operatorname{trdeg}_{\overline{\mathbb Q}}
-\overline{\mathbb Q}(C_{a,b}:b\geq1-a)=a+1.
-\tag{21}
-\]
-
-Fix $a\geq1$, continue to write $\theta=z\,d/dz$, and abbreviate $F_b=F_{a,b}$. Direct comparison of the coefficients in~(2) gives
+Direct coefficient comparison in~(2) gives the contiguous relation
 \[
 F_{b-1}=F_b+\frac{a+1}{ab}\theta F_b
 \qquad(1\leq b\leq a).
-\tag{22}
+\tag{6}
 \]
-Indeed, the coefficient of $z^{an}$ on the right is
+The coefficient of $z^{an}$ on the right is
 \[
 \frac{b!n!}{((a+1)n+b)!}
 \left(1+\frac{(a+1)n}{b}\right)
 =\frac{(b-1)!n!}{((a+1)n+b-1)!}.
 \]
-Put $H=F_{a-1}$. Iterating~(22) gives
+Iterating~(6) gives
 \[
 F_j=P_j(\theta)H,
 \qquad
-P_j(X)=\prod_{k=j+1}^{a-1}
+P_j(X):=\prod_{k=j+1}^{a-1}
 \left(1+\frac{a+1}{ak}X\right),
 \qquad 0\leq j\leq a-1,
-\tag{23}
+\tag{7}
 \]
-where an empty product is $1$. The polynomials $P_{a-1},P_{a-2},\ldots,P_0$ have degrees $0,1,\ldots,a-1$ and nonzero leading coefficients. Thus~(23) is an invertible triangular linear transformation between
+where an empty product is $1$. The polynomials $P_{a-1},P_{a-2},\ldots,P_0$ have degrees $0,1,\ldots,a-1$ and nonzero leading coefficients. Thus~(7) is an invertible triangular transformation, and~(5) implies that
 \[
 F_0,F_1,\ldots,F_{a-1}
-\quad\text{and}\quad
-H,\theta H,\ldots,\theta^{a-1}H.
-\tag{24}
+\tag{8}
 \]
-
-For $H=F_{a-1}$, the lower shifts in Salikhov's notation are
+are algebraically independent over $\mathbb C(z)$. Let
 \[
-\lambda_j=\frac{j-2}{a+1},
-\qquad 1\leq j\leq a+1,\quad j\neq2.
-\tag{25}
-\]
-When $a$ is odd, Salikhov's Theorem~1 and the parameter check in Section~\ref{sec:initial-range} show that $H,\theta H,\ldots,\theta^{a-1}H$ are algebraically independent over $\mathbb C(z)$. When $a$ is even, Salikhov--Viskina show that algebraic dependence of the relevant function and its first $a-1$ Euler derivatives requires one of the shifts $\lambda_j$ to be an integer~\cite[p.~833]{salikhov-viskina}. None of the numbers in~(25) is an integer, so the same algebraic independence holds for even $a$. It follows from~(24) that
-\[
-F_0,F_1,\ldots,F_{a-1}
-\tag{26}
-\]
-are algebraically independent over $\mathbb C(z)$ for every $a\geq1$.
-
-It remains to adjoin one function from beyond the initial range. Let
-\[
-G:=F_{a+1},
-\qquad
 \mathcal K_a:=\mathbb C(z)(H,\theta H,\ldots,\theta^{a-1}H).
 \]
-The case $q=1$, $r=0$ of~(13) is
+Then $\mathcal K_a$ has transcendence degree $a$ over $\mathbb C(z)$. Its stability under differentiation follows from the hypergeometric equation~(11) below.
+
+\subsection{The boundary function}
+
+Let $G:=F_{a+1}$. The multiplication formula gives
+\[
+G(z)={}_2F_{a+1}\!\left(
+\begin{matrix}1,1\\\left(1+\dfrac{j}{a+1}\right)_{1\leq j\leq a+1}\end{matrix};
+\frac{z^a}{(a+1)^{a+1}}
+\right),
+\tag{9}
+\]
+All parameters in~(9) are positive rational numbers, and with two upper and $a+1$ lower parameters the required pullback degree is $a$. Thus $G$ is a hypergeometric $E$-function. Comparing coefficients in~(2) gives
 \[
 \left(\frac{\theta}{a}+1\right)G
 =(a+1)!z^{-a}(F_0-1).
-\tag{27}
+\tag{10}
 \]
-The field $\mathcal K_a$ is stable under differentiation by the order-$a$ equation for $H$, and~(26) gives $\operatorname{trdeg}_{\mathbb C(z)}\mathcal K_a=a$.
+
+We next compare the formal expansions of the two sides at infinity. Put
+\[
+\kappa_a:=(a+1)^{-(a+1)},
+\qquad
+P_a(u):=\prod_{j\in J_a}(u+\lambda_j),
+\qquad
+c_a:=P_a(0)\neq0.
+\]
+The hypergeometric equation for $H$ is
+\[
+\left[P_a\!\left(\frac{\theta}{a}\right)-\kappa_a z^a\right]H=c_a.
+\tag{11}
+\]
 
 \begin{lemma}[Logarithmic boundary obstruction]
 \label{lem:field-log-obstruction}
-Every element of $\mathcal K_a$ has a log-free formal expansion at infinity, whereas the zero-exponential component of every formal solution $G$ of~(27) contains
+The formal image of $\mathcal K_a$ at infinity lies in a differential field containing no power of $\log z$. The zero-exponential component of every formal solution $G$ of~(10), however, contains
 \[
 -a(a+1)!z^{-a}\log z.
-\tag{28}
+\tag{12}
 \]
 In particular, $G\notin\mathcal K_a$.
 \end{lemma}
 
 \begin{proof}
-Apply Lemma~\ref{lem:zero-component} with $r=a-1$. A formal fundamental matrix for the augmented equation of $H$ consists of its rank-one zero-exponential solution and the $a$ rank-one solutions with distinct exponential parts $\rho_a\zeta z$. All of these solutions are log-free. Let $\mathcal P_a$ be the differential field generated over $\mathbb C((z^{-1}))$ by the entries of this matrix inside the standard formal Picard--Vessiot extension. It is generated by Laurent series, formal powers of $z$, and the exponentials $e^{\rho_a\zeta z}$, without adjoining a formal logarithm. The explicit admissible-field construction in Salikhov~\cite[pp.~207--210]{salikhov} treats the logarithm as a separate transcendental generator. Hence addition, multiplication, inversion, and differentiation in $\mathcal P_a$ do not introduce a power of $\log z$.
+Set $x=z^{-1}$ and $K=\mathbb C((x))$. Adjoin the constant solution to~(11) and write the resulting rank-$(a+1)$ companion vector as
+\[
+Y_0=1,
+\qquad
+Y_j=\theta^{j-1}H\quad(1\leq j\leq a).
+\]
+A zero-exponential formal particular solution has the form
+\[
+\widehat H^{(0)}(z)=\sum_{m\geq1}h_mz^{-am},
+\]
+where substitution into~(11) gives
+\[
+h_1=-\frac{c_a}{\kappa_a},
+\qquad
+h_{m+1}=\frac{P_a(-m)}{\kappa_a}h_m
+\quad(m\geq1).
+\tag{13}
+\]
+This recurrence constructs the unique Laurent-series particular solution. Indeed, the difference of two such solutions would be a Laurent-series solution of the homogeneous equation; its leading monomial could not cancel the exponent-raising term $-\kappa_a z^aH$ in~(11).
 
-The formal expansions of $H,\theta H,\ldots,\theta^{a-1}H$ lie in $\mathcal P_a$, so the formal image of $\mathcal K_a$ is contained in $\mathcal P_a$ and is log-free. Project the right side of~(27) onto its zero-exponential component. The zero component of $F_0-1$ has constant term $-1$, and therefore the right side has leading term $-(a+1)!z^{-a}$. The operator $\theta/a+1$ annihilates $z^{-a}$. Since
+The homogeneous equation associated with~(11) has characteristic equation
+\[
+\lambda^a=\frac{a^a}{(a+1)^{a+1}}.
+\]
+Its roots are the distinct nonzero numbers $\rho_a\zeta$ with $\zeta^a=1$. The corresponding formal solutions have exponential parts $\rho_a\zeta z$ and contain no logarithms because the characteristic numbers are simple; see Salikhov~\cite[Remark~2, p.~206]{salikhov}. The Levelt--Turrittin theorem therefore decomposes the augmented formal differential module as one rank-one zero-exponential summand and $a$ rank-one summands with exponential parts $\rho_a\zeta z$~\cite[Chapter~3, Theorem~3.1]{vdput-singer}. The zero summand has rank one because the nonzero summands already account for rank $a$, and the vector
+\[
+\left(1,\widehat H^{(0)},\theta\widehat H^{(0)},\ldots,
+\theta^{a-1}\widehat H^{(0)}\right)^{\mathsf T}
+\]
+supplies a nonzero zero-exponential solution.
+
+The direct-sum decomposition gives a $K$-linear projection onto the zero-exponential summand which commutes with $\theta$. A formal fundamental matrix is generated by Laurent series, formal powers of $z$, and the exponentials $e^{\rho_a\zeta z}$, without adjoining $\log z$. Salikhov's admissible-field construction treats the logarithm as a separate transcendental generator~\cite[pp.~207--210]{salikhov}. Hence the formal Picard--Vessiot field generated by this matrix is closed under field operations and differentiation without acquiring powers of $\log z$. The formal image of $\mathcal K_a$ lies in this log-free field.
+
+By~(7), the zero-exponential component of $F_0$ is $P_0(\theta)\widehat H^{(0)}$ and begins with $z^{-a}$. Projecting the right side of~(10) therefore gives
+\[
+-(a+1)!z^{-a}+O(z^{-2a}).
+\]
+The operator $\theta/a+1$ annihilates $z^{-a}$, while
 \[
 \left(\frac{\theta}{a}+1\right)
-\bigl(z^{-a}\log z\bigr)=\frac1a z^{-a},
+\bigl(z^{-a}\log z\bigr)=\frac1a z^{-a}.
 \]
-the projected equation forces the term~(28). A solution of the homogeneous equation is a constant multiple of $z^{-a}$ and cannot remove the logarithm. Thus $G$ cannot belong to the log-free field $\mathcal K_a$.
+Thus the projected equation forces the term~(12). A solution of the homogeneous equation is a constant multiple of $z^{-a}$ and cannot remove the logarithm. Therefore $G$ does not belong to the log-free field $\mathcal K_a$.
 \end{proof}
 
-The lemma excludes rational membership in $\mathcal K_a$. The next elementary differential-field argument excludes algebraic membership.
+The lemma excludes membership in $\mathcal K_a$. The following trace argument excludes algebraicity over it.
 
 \begin{lemma}[Trace descent]
 \label{lem:trace-descent}
@@ -552,45 +351,57 @@ Put $L=K(y)$ and $d=[L:K]$. Derivation commutes with the field trace, so
 \[
 y_0:=\frac1d\operatorname{Tr}_{L/K}(y)
 \]
-belongs to $K$ and satisfies $Dy_0+py_0=R$. The difference $y-y_0$ satisfies the homogeneous equation. The constants of the finite algebraic differential extension $L/K$ are algebraic over the constants of $K$ and hence introduce no new constants because the latter field is algebraically closed. The final assertion follows.
+belongs to $K$ and satisfies $Dy_0+py_0=R$. The difference $y-y_0$ satisfies the homogeneous equation. A finite algebraic differential extension introduces no new constants because the constant field of $K$ is algebraically closed. The final assertion follows.
 \end{proof}
 
-Apply Lemma~\ref{lem:trace-descent} to~(27), with $D=\theta/a$ and $p=1$. The homogeneous solutions are $cz^{-a}$, with $c\in\mathbb C$, and already belong to $\mathcal K_a$. If $G$ were algebraic over $\mathcal K_a$, the trace lemma would therefore imply $G\in\mathcal K_a$, contrary to Lemma~\ref{lem:field-log-obstruction}. Hence $G$ is transcendental over $\mathcal K_a$, and the $a+1$ functions
+Apply Lemma~\ref{lem:trace-descent} to~(10), with $D=\theta/a$ and $p=1$. The homogeneous solutions are $cz^{-a}$ with $c\in\mathbb C$, and already belong to $\mathcal K_a$. If $G$ were algebraic over $\mathcal K_a$, the trace lemma would imply $G\in\mathcal K_a$, contrary to Lemma~\ref{lem:field-log-obstruction}. Hence $G$ is transcendental over $\mathcal K_a$, and
 \[
 F_0,F_1,\ldots,F_{a-1},G
-\tag{29}
+\tag{14}
 \]
 are algebraically independent over $\mathbb C(z)$.
 
-These functions and the derivatives needed to close their equations form a system of $E$-functions over $\overline{\mathbb Q}(z)$ with no nonzero finite singularity. Its function field has transcendence degree $a+1$: the derivatives of $H$ lie in $\mathcal K_a$, while~(27) puts every derivative of $G$ in $\mathcal K_a(G)$. Beukers's Theorem~1.1~\cite[Theorem~1.1]{beukers} preserves this transcendence degree at the ordinary point $z=1$. By the triangular transformation~(24) and equation~(27), the corresponding value field is generated by
+\subsection{Specialization and the remaining intercepts}
+
+The functions in~(14), together with the derivatives needed to close~(11) and~(10), form a system of $E$-functions over $\overline{\mathbb Q}(z)$ with no nonzero finite singularity. Its function field is $\mathcal K_a(G)$ and has transcendence degree $a+1$. Beukers's Theorem~1.1 preserves this transcendence degree at the ordinary algebraic point $z=1$~\cite[Theorem~1.1]{beukers}. The triangular transformation~(7) shows that the corresponding value field is generated by
 \[
 F_0(1),F_1(1),\ldots,F_{a-1}(1),G(1).
-\tag{30}
 \]
-The values in~(30) are therefore algebraically independent over $\overline{\mathbb Q}$. Equation~(3) gives the algebraic independence of the constants in~(20).
+These values are therefore algebraically independent over $\overline{\mathbb Q}$. Equation~(3) gives the algebraic independence of
+\[
+C_{a,0},C_{a,1},\ldots,C_{a,a-1},C_{a,a+1}.
+\tag{15}
+\]
 
-It remains to identify the rest of the fixed-slope family. Shifting the summation index gives
+It remains to express the other intercepts in this basis. Shifting the summation index gives
 \[
 C_{a,a}=(a+1)C_{a,0}-\frac1{a!}
-\tag{31}
+\tag{16}
 \]
 and, for $b>a+1$,
 \[
 C_{a,b}=
 \frac{C_{a,b-1}-(a+1)C_{a,b-a-1}+(a+1)/b!}{b-a-1}.
-\tag{32}
+\tag{17}
 \]
-Thus every $C_{a,b}$ with $b\geq0$ is a rational affine combination of~(20). For $1-a\leq b<0$, set $r=a+1+b$. The index shift used in Section~\ref{sec:initial-range}, followed by~(22), gives
+Thus every $C_{a,b}$ with $b\geq0$ is a rational affine combination of~(15). For $1-a\leq b<0$, set $r=a+1+b$, so that $2\leq r\leq a$. Another index shift, followed by~(6), gives
 \[
 C_{a,b}
 =\frac1{r!}
 +\frac{a+1-r}{a+1}C_{a,r}
 +\frac1{a+1}C_{a,r-1}.
-\tag{33}
+\tag{18}
 \]
-Here $2\leq r\leq a$, and~(31) eliminates $C_{a,a}$ when $r=a$. This proves the affine-span assertion in Theorem~\ref{thm:main}. The algebraic independence of~(20) supplies the matching lower bound in~(21) and completes the proof. In particular, the affine recurrences account for all algebraic relations at fixed slope: after any finite collection of the constants is expressed in the basis~(20), its ideal of polynomial relations is generated by the resulting affine linear relations.
+Equation~(16) eliminates $C_{a,a}$ when $r=a$, proving the affine-span assertion for all admissible intercepts.
 
-\clearpage
+These affine combinations are nonconstant. Equation~(16) gives an invertible affine transformation from the basis~(15) to the block $C_{a,1},\ldots,C_{a,a+1}$. For each $b>a+1$, equation~(17) advances the block $C_{a,b-a-1},\ldots,C_{a,b-1}$ to the next block. Its linear part is invertible because the coefficient of the discarded first entry in the new final coordinate is $-(a+1)/(b-a-1)\neq0$. Induction therefore shows that every $C_{a,b}$ with $b\geq0$ has a nonzero linear part in the basis~(15). The expression~(18) has a nonzero linear part as well, including when $r=a$ after using~(16).
+
+A nonconstant affine combination of algebraically independent numbers is transcendental. Hence every admissible $C_{a,b}$ is transcendental, and the affine span together with~(15) gives
+\[
+\operatorname{trdeg}_{\overline{\mathbb Q}}
+\overline{\mathbb Q}(C_{a,b}:b\geq1-a)=a+1.
+\]
+The same argument shows that the affine recurrences account for all algebraic relations at fixed slope: after any finite collection of the constants is expressed in the basis~(15), its ideal of polynomial relations is generated by the resulting affine linear relations. This completes the proof of Theorem~\ref{thm:main}.
 \begin{thebibliography}{9}
 \footnotesize
 \raggedright

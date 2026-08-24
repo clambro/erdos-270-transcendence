@@ -145,7 +145,7 @@ Exact recurrences express every other $C_{a,b}$ as a rational affine combination
 
 $$
 \boxed{
-\operatorname{trdeg}_{\overline{\mathbb Q}}
+\mathrm{trdeg}_{\overline{\mathbb Q}}
 \overline{\mathbb Q}(C_{a,b}:b\geq1-a)=a+1.
 }
 $$

@@ -1,17 +1,20 @@
-# Transcendence in the Affine Case of Erdős Problem 270
+# Algebraic Independence in the Affine Case of Erdős Problem 270
 
-**[Read the full paper (PDF)](Transcendence_in_the_Affine_Case_of_Erdos_Problem_270.pdf)**
+**[Read the full paper (PDF)](Algebraic_Independence_in_the_Affine_Case_of_Erdos_Problem_270.pdf)**
 
 **[Browse the Lean proofs and verification notes](formalization/README.md)**
+
+## AI disclosure
+
+Generative AI performed nearly all of the mathematical work: it independently rediscovered the elementary denominator argument, developed the affine extensions and the transcendence-theoretic arguments, conducted the literature search, wrote the manuscript, and produced the Lean formalization. I directed and supervised the investigation.
 
 ## Contents
 
 - [Introduction](#introduction)
 - [Proof outline](#proof-outline)
-  - [1. Irrationality of the base case](#1-irrationality-of-the-base-case)
-  - [2. Irrationality for $0\leq b\leq a$](#irrationality-range)
-  - [3. Transcendence of the base case](#3-transcendence-of-the-base-case)
-  - [4. Transcendence of the full affine family](#4-transcendence-of-the-full-affine-family)
+  - [1. Irrationality in the affine family](#1-irrationality-in-the-affine-family)
+  - [2. Transcendence of the base case](#2-transcendence-of-the-base-case)
+  - [3. Algebraic independence in the affine family](#3-algebraic-independence-in-the-affine-family)
 - [Lean verification](#lean-verification)
   - [Fully verified](#fully-verified)
   - [Not yet verified in Lean](#not-yet-verified-in-lean)
@@ -31,42 +34,21 @@ $$
 C_{a,b}=\sum_{n=1}^{\infty}\frac{n!}{((a+1)n+b)!}.
 $$
 
-The paper begins with a short irrationality proof for the case $f(n)=n$, extends that proof to $0\leq b\leq a$, gives a shorter transcendence argument for the original example, and then argues that $C_{a,b}$ is transcendental for every positive integer-valued affine function, equivalently every $a\geq1$ and $b\geq1-a$.
+The main result determines the algebraic structure of the family at each fixed slope. For every $a\geq1$, the $a+1$ constants
+
+$$
+C_{a,0},C_{a,1},\ldots,C_{a,a-1},C_{a,a+1}
+$$
+
+are algebraically independent, and every other $C_{a,b}$ with $b\geq1-a$ is a rational affine combination of them with nonzero linear part. Consequently the fixed-slope family has transcendence degree $a+1$, and every $C_{a,b}$ in this range is transcendental. The proof begins with elementary irrationality and then uses hypergeometric $E$-functions to establish algebraic independence.
 
 ## Proof outline
 
-The complete arguments and references are in the [full paper](Transcendence_in_the_Affine_Case_of_Erdos_Problem_270.pdf).
+The complete arguments and references are in the [full paper](Algebraic_Independence_in_the_Affine_Case_of_Erdos_Problem_270.pdf).
 
-### 1. Irrationality of the base case
+### 1. Irrationality in the affine family
 
-Note: Crmarić and Kovač had already noticed this same argument for the base case after their paper appeared, and Kovač posted it on the [Erdős Problems forum](https://www.erdosproblems.com/forum/thread/270#post-7469) in July 2026. We became aware of the post after independently discovering the argument.
-
-For
-
-$$
-C_{1,0}=\sum_{n=1}^{\infty}\frac{n!}{(2n)!}=\sum_{n=1}^{\infty}\frac1{D_n},
-\qquad D_n=\frac{(2n)!}{n!},
-$$
-
-the denominators form a divisibility chain because
-
-$$
-\frac{D_{n+1}}{D_n}=4n+2.
-$$
-
-If $P_N$ is the $N^\mathrm{th}$ partial sum and $R_N=C_{1,0}-P_N$, then $D_NP_N$ is an integer, while a geometric estimate gives
-
-$$
-0 < D_N R_N \leq \frac{1}{4N+1} \to 0.
-$$
-
-If $C_{1,0}=p/q$ were rational, then $D_NR_N=pD_N/q-D_NP_N$ would be a positive element of $q^{-1}\mathbb Z$. It would therefore be at least $1/q$, contradicting the limit above. Hence $C_{1,0}$ is irrational.
-
-<a id="irrationality-range"></a>
-
-### 2. Irrationality for $0\leq b\leq a$
-
-The same argument works for $a\geq1$ and $0\leq b\leq a$. Set
+For $a\geq1$ and $0\leq b\leq a$, set
 
 $$
 D_n=\frac{((a+1)n+b)!}{n!}.
@@ -78,7 +60,7 @@ $$
 r_n:=\frac{D_{n+1}}{D_n}
 $$
 
-is a positive integer. Moreover, $r_n\to\infty$. The same partial-sum argument now gives
+is a positive integer for every $n$, and $r_n\to\infty$. If $P_N$ is the $N^\mathrm{th}$ partial sum and $R_N=C_{a,b}-P_N$, then $D_NP_N$ is an integer, while
 
 $$
 0 < D_N R_N
@@ -87,9 +69,17 @@ $$
 \to 0.
 $$
 
-Rationality would again force $D_NR_N$ to remain at least $1/q$. Therefore $C_{a,b}$ is irrational throughout this range.
+If $C_{a,b}=p/q$ were rational, then $D_NR_N$ would be a positive element of $q^{-1}\mathbb Z$ and hence at least $1/q$, contradicting the limit above. Therefore $C_{a,b}$ is irrational throughout this range.
 
-### 3. Transcendence of the base case
+Taking $a=1$ and $b=0$ gives the Erdős–Graham example
+
+$$
+C_{1,0}=\sum_{n=1}^{\infty}\frac{n!}{(2n)!},
+$$
+
+so the family argument proves its irrationality. Crmarić and Kovač later found this $a=1$, $b=0$ specialization and suggested that the reasoning might extend; Kovač posted the observation on the [Erdős Problems forum](https://www.erdosproblems.com/forum/thread/270#post-7469) in July 2026. We learned of the post after independently obtaining the general argument.
+
+### 2. Transcendence of the base case
 
 Crmarić and Kovač record the Gaussian representation
 
@@ -112,32 +102,55 @@ $$
 
 an algebraic value of $C_{1,0}$ would produce a nontrivial algebraic relation between those two values. Hence $C_{1,0}$ is transcendental.
 
-### 4. Transcendence of the full affine family
+### 3. Algebraic independence in the affine family
 
-For $b\geq0$, introduce the normalized hypergeometric $E$-function
+For each fixed $a\geq1$, the theorem identifies the algebraically independent basis[^long]
+
+$$
+C_{a,0},C_{a,1},\ldots,C_{a,a-1},C_{a,a+1}.
+$$
+
+Every other $C_{a,b}$ with $b\geq1-a$ is a rational affine combination of these $a+1$ constants with nonzero linear part.
+
+For $b\geq0$, introduce
 
 $$
 F_{a,b}(z)=b!\sum_{n=0}^{\infty}\frac{n!}{((a+1)n+b)!}z^{an},
 \qquad F_{a,b}(1)=1+b!C_{a,b}.
 $$
 
-When $0\leq b\leq a$, the multiplication formula expresses $F_{a,b}$ as a ${}_1F_a$ function. The value-independence theorems of Salikhov for odd $a$ and Salikhov–Viskina for even $a$ then give the transcendence of $F_{a,b}(1)$. The cases $1-a\leq b<0$ reduce to this range by shifting the summation index; the shifted value is an explicit algebraic linear combination of $F_{a,r}(1)$ and its Euler derivative.
-
-For $b>a$, write
+Set $H=F_{a,a-1}$. The algebraic-independence criteria of Salikhov for odd $a$ and Viskina–Salikhov for even $a$ show that
 
 $$
-b=q(a+1)+r,
-\qquad q\geq1,
-\qquad 0\leq r\leq a.
+H,\theta H,\ldots,\theta^{a-1}H
 $$
 
-Coefficient comparison gives an Euler-operator reduction from $F_{a,b}$ to $F_{a,r}$. At infinity, the differential module associated with $F_{a,r}$ has a rank-one zero-exponential component whose Laurent series contains no logarithms. Projecting the Euler reduction onto this component creates a resonance: the Euler operator kills the relevant log-free $z^{-a}$ coefficient, while the right side has a nonzero $z^{-a}$ term. The missing term can only be supplied by $z^{-a}\log z$. This proves that $F_{a,b}$ lies outside the differential space generated by $F_{a,r}$ and establishes the functional independence required in the final step.
+are algebraically independent over $\mathbb C(z)$. The contiguous relations express $F_{a,0},\ldots,F_{a,a-1}$ as an invertible triangular transformation of these functions, so the first $a$ members of the basis are algebraically independent.
 
-Beukers's refinement of the Siegel–Shidlovsky theorem lifts that functional independence to linear independence of the values at the ordinary point $z=1$. Consequently $F_{a,b}(1)$, and therefore $C_{a,b}$, is transcendental. Combining the three parameter ranges gives the theorem
+The additional function $G=F_{a,a+1}$ satisfies
 
 $$
-\boxed{C_{a,b}\text{ is transcendental for every }a\geq1,\ b\geq1-a.}
+\left(\frac\theta a+1\right)G=(a+1)!z^{-a}(F_{a,0}-1).
 $$
+
+The formal differential field generated by $H$ and its derivatives has no logarithmic terms at infinity. Projecting this equation onto its zero-exponential component forces the term
+
+$$
+-a(a+1)!z^{-a}\log z
+$$
+
+in $G$. A trace argument then shows that $G$ is transcendental over the field generated by the first $a$ functions. Beukers's refinement of the Siegel–Shidlovsky theorem transfers this functional algebraic independence to the values at $z=1$.
+
+Exact recurrences express every other $C_{a,b}$ as a rational affine combination of the basis. The induced transformations between consecutive blocks of $a+1$ values are invertible, so none of these combinations is constant. Algebraic independence therefore implies transcendence of every $C_{a,b}$ with $b\geq1-a$, and
+
+$$
+\boxed{
+\operatorname{trdeg}_{\overline{\mathbb Q}}
+\overline{\mathbb Q}(C_{a,b}:b\geq1-a)=a+1.
+}
+$$
+
+[^long]: An earlier version of this paper established individual transcendence. [Christopher D. Long pointed out](https://x.com/octonion/status/2091555025197662264) that the same machinery should also yield algebraic independence, and we then strengthened the argument to the form presented here.
 
 ## Lean verification
 
@@ -147,27 +160,28 @@ The detailed verification report is in the [formalization README](formalization/
 
 The elementary irrationality theorem for $a\geq1$ and $0\leq b\leq a$ is proved without additional mathematical assumptions in [`ElementaryIrrationality.lean`](formalization/FactorialRatio/ElementaryIrrationality.lean). Lean checks convergence, the denominator divisibility chain, integrality of the scaled partial sums, positivity of the tail, its decay to zero, and the final rationality contradiction.
 
-Lean also verifies many of the algebraic reductions used later:
+Lean verifies the following algebraic reductions:
 
 - the base-case reindexing $C_{1,0}=\frac12\sum_{n\geq0}n!/(2n+1)!$, convergence of that series, the normalization $F_{a,b}(1)=1+b!C_{a,b}$, and the negative-intercept identities in [`ValueIdentities.lean`](formalization/FactorialRatio/ValueIdentities.lean);
-- the Euclidean decomposition of $b$, the coefficientwise Euler reduction, the differential-equation recurrence, the resonant vanishing, the nonzero forcing coefficient, and the forced logarithmic coefficient in [`CoefficientIdentities.lean`](formalization/FactorialRatio/CoefficientIdentities.lean);
+- the coefficientwise contiguous and negative-intercept identities in [`CoefficientIdentities.lean`](formalization/FactorialRatio/CoefficientIdentities.lean);
 - the deduction of the base-case transcendence statement from the Gaussian identity and the required Siegel–Shidlovsky value independence in [`BaseCaseTranscendence.lean`](formalization/FactorialRatio/BaseCaseTranscendence.lean);
-- the normalization, parameter-range case split, and negative-intercept reduction in the conditional main theorem in [`Main.lean`](formalization/FactorialRatio/Main.lean).
+- the exact fixed-slope boundary, beyond-boundary, and negative-intercept affine recurrences in [`ValueIdentities.lean`](formalization/FactorialRatio/ValueIdentities.lean);
+- the construction of the $a+1$-element fixed-slope basis, extension of algebraic independence from rational to real algebraic coefficients, propagation of linear independence through every consecutive block, transcendence of every integer-intercept value with $b\geq1-a$, membership of every such value in the rational affine span, equality of the generated algebras, and fixed-slope transcendence degree $a+1$ in [`FixedSlopeAlgebraicIndependence.lean`](formalization/FactorialRatio/FixedSlopeAlgebraicIndependence.lean), conditional on the stated analytic independence input.
 
 There are no `sorry`, `admit`, or global `axiom` declarations. The [axiom audit](formalization/FactorialRatio/AxiomAudit.lean) reports only Lean's standard foundational axioms.
 
 ### Not yet verified in Lean
 
-The formalization does **not** currently prove the manuscript's transcendence theorem unconditionally. The missing inputs are stated explicitly in [`ExternalTheorems.lean`](formalization/FactorialRatio/ExternalTheorems.lean). They include:
+The formalization does **not** prove the manuscript's transcendence and algebraic-independence results unconditionally. The missing inputs are listed in [`ExternalTheorems.lean`](formalization/FactorialRatio/ExternalTheorems.lean). They include:
 
 - the Gaussian integral identity and the Siegel–Shidlovsky theorem used in the shorter base-case argument;
-- the applications of the Salikhov and Salikhov–Viskina value-independence theorems;
+- the applications of the Salikhov and Viskina–Salikhov algebraic-independence theorems;
 - the analytic hypergeometric-function and differential-system setup;
 - the Levelt–Turrittin decomposition and the zero-exponential projection at infinity;
-- the passage from the verified resonance calculation to functional minimality;
-- the application of Beukers's lifting theorem.
+- the log-free formal field and trace-descent argument for the additional function;
+- the application of Beukers's specialization theorem.
 
-The general transcendence result in [`Main.lean`](formalization/FactorialRatio/Main.lean) is therefore conditional on the explicit literature-dependent interfaces in [`ExternalTheorems.lean`](formalization/FactorialRatio/ExternalTheorems.lean). Lean verifies the deduction from those interfaces, but not the interfaces themselves.
+The algebraic-independence result in [`FixedSlopeAlgebraicIndependence.lean`](formalization/FactorialRatio/FixedSlopeAlgebraicIndependence.lean) is conditional on the literature-dependent interface in [`ExternalTheorems.lean`](formalization/FactorialRatio/ExternalTheorems.lean). Lean verifies all algebraic deductions from that interface, including the affine-span and exact-degree conclusions, but not the interface itself.
 
 ### Reproducing the Lean build
 

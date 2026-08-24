@@ -1,8 +1,7 @@
 # Lean and Lake build output
-.lake/
 **/.lake/
 
-# LaTeX auxiliary files (the published article.pdf remains tracked)
+# LaTeX auxiliary files (the published PDF remains tracked)
 *.aux
 *.bbl
 *.bcf

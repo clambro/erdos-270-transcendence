@@ -17,7 +17,7 @@ namespace FactorialRatio
 noncomputable def normalizedValue (a b : ℕ) : ℝ :=
   1 + (b.factorial : ℝ) * constant a b
 
-/-- The Euler derivative `(θ F_{a,b})(1)`, written directly as its series. -/
+/-- The Euler derivative `(θ F_{a,b})(1)`, represented by its defining series. -/
 noncomputable def eulerValue (a b : ℕ) : ℝ :=
   (b.factorial : ℝ) *
     ∑' n : ℕ, (a * (n + 1) : ℝ) * summand a b (n + 1)

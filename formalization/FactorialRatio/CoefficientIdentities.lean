@@ -231,7 +231,7 @@ def forcedLogCoeff (a b q r : ℕ) : ℚ :=
     (((a + 1) * (q - 1) + r).factorial : ℚ)
 
 /-- Multiplying the resonant logarithmic solution by `forcedLogCoeff` produces
-exactly the nonzero `z^(-a)` forcing coefficient. -/
+the nonzero `z^(-a)` forcing coefficient. -/
 theorem forcedLogCoeff_mul_resonanceAction (a b q r : ℕ)
     (ha : 1 ≤ a) (hq : 1 ≤ q) :
     forcedLogCoeff a b q r * (resonanceAction a q).2 =

@@ -40,7 +40,7 @@
 
 \begin{quote}
 \small
-Erd\H{o}s Problem 270 concerns the irrationality of a family of rapidly convergent series indexed by positive integer-valued functions $f$ with $f(n)\to\infty$. We treat the affine functions $f(n)=an+b$, for which the series becomes
+Erd\H{o}s Problem 270 concerns the irrationality of a family of convergent series indexed by positive integer-valued functions $f$ with $f(n)\to\infty$. We treat the affine functions $f(n)=an+b$, for which the series becomes
 \[
 C_{a,b}:=\sum_{n=1}^{\infty}\frac{n!}{((a+1)n+b)!}
 \]
@@ -63,7 +63,7 @@ S(f)=\sum_{n=1}^{\infty}\frac1{(n+1)\cdots((a+1)n+b)}
 =\sum_{n=1}^{\infty}\frac{n!}{((a+1)n+b)!}
 =:C_{a,b}.
 \]
-Erd\H{o}s and Graham singled out the simplest choice, $f(n)=n$, and described the resulting series as difficult to treat~\cite[pp.~65--66]{erdos-graham}. It is the case $a=1$, $b=0$ of the family above. The following argument proves irrationality throughout the larger range $0\leq b\leq a$.
+Erd\H{o}s and Graham singled out the simplest choice, $f(n)=n$, and described the resulting series as difficult to treat~\cite[pp.~65--66]{erdos-graham}. It is the case $a=1$, $b=0$ of the family above. The following argument proves irrationality for $0\leq b\leq a$.
 
 Fix $a\geq1$ and $0\leq b\leq a$, and put
 \[
@@ -81,13 +81,13 @@ r_n:=\frac{D_{n+1}}{D_n}
 \prod_{\substack{1\leq j\leq a+1\\j\neq a+1-b}}
 \bigl((a+1)n+b+j\bigr).
 \]
-Thus $D_n\mid D_{n+1}$. Moreover, $r_n\geq a+1\geq2$, and every factor in the product defining $r_n$ increases with $n$. Hence $r_n$ is increasing and tends to infinity. Let
+Thus $D_n\mid D_{n+1}$. Since $r_n\geq a+1\geq2$ and every factor in its defining product increases with $n$, the sequence $r_n$ is increasing and tends to infinity. Let
 \[
 P_N:=\sum_{n=1}^{N}\frac1{D_n},
 \qquad
 R_N:=C_{a,b}-P_N.
 \]
-Since $D_1\mid D_2\mid\cdots\mid D_N$, we have $D_NP_N\in\mathbb Z$. Moreover,
+The divisibility chain gives $D_NP_N\in\mathbb Z$. For the tail,
 \[
 \begin{aligned}
 0<D_NR_N
@@ -131,7 +131,7 @@ C_{1,0}=\frac{y(1/4)}{2e^{-1/4}},
 \]
 an algebraic value of $C_{1,0}$ would give a nontrivial algebraic relation between $y(1/4)$ and $e^{-1/4}$. Hence $C_{1,0}$ is transcendental. The MathOverflow discussion did not mention either the factorial series or this specialization.
 
-We now turn to the hypergeometric $E$-functions associated with the full affine family.
+We turn to the hypergeometric $E$-functions associated with the full affine family.
 
 \section{Algebraic independence in the affine family}
 \label{sec:affine-family}
@@ -147,10 +147,10 @@ are algebraically independent over $\overline{\mathbb Q}$. Every $C_{a,b}$ with 
 \operatorname{trdeg}_{\overline{\mathbb Q}}
 \overline{\mathbb Q}(C_{a,b}:b\geq1-a)=a+1.
 \]
-Consequently every $C_{a,b}$ in this range is transcendental.\footnote{An earlier version of this paper established only individual transcendence. Christopher D.~Long pointed out that the same machinery should also yield algebraic independence~\cite{long-x}; the argument was then strengthened to the form given here.}
+Consequently every $C_{a,b}$ in this range is transcendental.\footnote{An earlier version of this paper established individual transcendence. Christopher D.~Long pointed out that the same machinery should also yield algebraic independence~\cite{long-x}; we then strengthened the argument to the form given here.}
 \end{theorem}
 
-A logarithmic obstruction at infinity gives functional independence; we then specialize at $z=1$.
+We prove functional independence by a logarithmic obstruction at infinity and then specialize at $z=1$.
 
 For integers $a\geq1$ and $b\geq0$, define
 \[
@@ -182,13 +182,13 @@ H(z)={}_1F_a\!\left(
 \right).
 \tag{4}
 \]
-Indeed,
+The product identity
 \[
 \prod_{j=1}^{a+1}
 \left(\frac{a-1+j}{a+1}\right)_n
 =\frac{((a+1)n+a-1)!}{(a-1)!(a+1)^{(a+1)n}},
 \]
-and the omitted factor is $(1)_n=n!$.
+together with the omitted factor $(1)_n=n!$, verifies~(4).
 
 To apply the results of Salikhov and Salikhov--Viskina, set
 \[
@@ -212,7 +212,7 @@ If $d>1$ divides $a$, then $\gcd(d,a+1)=1$, so $1/d$ does not belong to the subg
 
 When $a$ is even, Salikhov--Viskina show that algebraic dependence of the corresponding function and its first $a-1$ Euler derivatives requires one of the shifts $\lambda_j$ to be an integer~\cite[p.~833]{salikhov-viskina}. None of the numbers $(j-2)/(a+1)$ with $j\in J_a$ is an integer, so the same functional algebraic independence holds in the even case.
 
-For odd $a$, the value theorem also implies functional independence. A relation over $\mathbb C(z)$ among functions with algebraic Taylor coefficients descends to $\overline{\mathbb Q}(z)$: after fixing the monomials and degree bounds in a hypothetical relation, comparison of Taylor coefficients gives a homogeneous linear system over $\overline{\mathbb Q}$ in its polynomial coefficients. Specialization at a nonzero algebraic point where those coefficients are defined and not all zero would then contradict Salikhov's value theorem. Since ordinary and Euler derivatives are related by an invertible triangular transformation, we have in every parity
+For odd $a$, functional independence follows from the value theorem. A relation over $\mathbb C(z)$ among functions with algebraic Taylor coefficients descends to $\overline{\mathbb Q}(z)$: after fixing the monomials and degree bounds in a hypothetical relation, comparison of Taylor coefficients gives a homogeneous linear system over $\overline{\mathbb Q}$ in its polynomial coefficients. Specialization at a nonzero algebraic point where those coefficients are defined and not all zero would then contradict Salikhov's value theorem. Since ordinary and Euler derivatives are related by an invertible triangular transformation, we have in every parity
 \[
 H,\theta H,\ldots,\theta^{a-1}H
 \quad\text{algebraically independent over }\mathbb C(z).
@@ -311,20 +311,20 @@ h_{m+1}=\frac{P_a(-m)}{\kappa_a}h_m
 \quad(m\geq1).
 \tag{13}
 \]
-This recurrence constructs the unique Laurent-series particular solution. Indeed, the difference of two such solutions would be a Laurent-series solution of the homogeneous equation; its leading monomial could not cancel the exponent-raising term $-\kappa_a z^aH$ in~(11).
+This recurrence constructs the unique Laurent-series particular solution: the difference of two such solutions would be a Laurent-series solution of the homogeneous equation, whose leading monomial could not cancel the exponent-raising term $-\kappa_a z^aH$ in~(11).
 
 The homogeneous equation associated with~(11) has characteristic equation
 \[
 \lambda^a=\frac{a^a}{(a+1)^{a+1}}.
 \]
-Its roots are the distinct nonzero numbers $\rho_a\zeta$ with $\zeta^a=1$. The corresponding formal solutions have exponential parts $\rho_a\zeta z$ and contain no logarithms because the characteristic numbers are simple; see Salikhov~\cite[Remark~2, p.~206]{salikhov}. The Levelt--Turrittin theorem therefore decomposes the augmented formal differential module as one rank-one zero-exponential summand and $a$ rank-one summands with exponential parts $\rho_a\zeta z$~\cite[Chapter~3, Theorem~3.1]{vdput-singer}. The zero summand has rank one because the nonzero summands already account for rank $a$, and the vector
+Its roots are the distinct nonzero numbers $\rho_a\zeta$ with $\zeta^a=1$. The corresponding formal solutions have exponential parts $\rho_a\zeta z$ and contain no logarithms because the characteristic numbers are simple; see Salikhov~\cite[Remark~2, p.~206]{salikhov}. The Levelt--Turrittin theorem therefore decomposes the augmented formal differential module as one rank-one zero-exponential summand and $a$ rank-one summands with exponential parts $\rho_a\zeta z$~\cite[Chapter~3, Theorem~3.1]{vdput-singer}. The zero summand has rank one because the nonzero summands account for rank $a$, and the vector
 \[
 \left(1,\widehat H^{(0)},\theta\widehat H^{(0)},\ldots,
 \theta^{a-1}\widehat H^{(0)}\right)^{\mathsf T}
 \]
 supplies a nonzero zero-exponential solution.
 
-The direct-sum decomposition gives a $K$-linear projection onto the zero-exponential summand which commutes with $\theta$. A formal fundamental matrix is generated by Laurent series, formal powers of $z$, and the exponentials $e^{\rho_a\zeta z}$, without adjoining $\log z$. Salikhov's admissible-field construction treats the logarithm as a separate transcendental generator~\cite[pp.~207--210]{salikhov}. Hence the formal Picard--Vessiot field generated by this matrix is closed under field operations and differentiation without acquiring powers of $\log z$. The formal image of $\mathcal K_a$ lies in this log-free field.
+The direct-sum decomposition gives a $K$-linear projection onto the zero-exponential summand which commutes with $\theta$. A formal fundamental matrix is generated by Laurent series, formal powers of $z$, and the exponentials $e^{\rho_a\zeta z}$, with no $\log z$ terms. Salikhov's admissible-field construction treats the logarithm as a separate transcendental generator~\cite[pp.~207--210]{salikhov}. Hence field operations and differentiation in the formal Picard--Vessiot field generated by this matrix do not introduce powers of $\log z$. The formal image of $\mathcal K_a$ lies in this log-free field.
 
 By~(7), the zero-exponential component of $F_0$ is $P_0(\theta)\widehat H^{(0)}$ and begins with $z^{-a}$. Projecting the right side of~(10) therefore gives
 \[
@@ -353,7 +353,7 @@ y_0:=\frac1d\operatorname{Tr}_{L/K}(y)
 belongs to $K$ and satisfies $Dy_0+py_0=R$. The difference $y-y_0$ satisfies the homogeneous equation. A finite algebraic differential extension introduces no new constants because the constant field of $K$ is algebraically closed. The final assertion follows.
 \end{proof}
 
-Apply Lemma~\ref{lem:trace-descent} to~(10), with $D=\theta/a$ and $p=1$. The homogeneous solutions are $cz^{-a}$ with $c\in\mathbb C$, and already belong to $\mathcal K_a$. If $G$ were algebraic over $\mathcal K_a$, the trace lemma would imply $G\in\mathcal K_a$, contrary to Lemma~\ref{lem:field-log-obstruction}. Hence $G$ is transcendental over $\mathcal K_a$, and
+Apply Lemma~\ref{lem:trace-descent} to~(10), with $D=\theta/a$ and $p=1$. The homogeneous solutions $cz^{-a}$, with $c\in\mathbb C$, belong to $\mathcal K_a$. If $G$ were algebraic over $\mathcal K_a$, the trace lemma would imply $G\in\mathcal K_a$, contrary to Lemma~\ref{lem:field-log-obstruction}. Hence $G$ is transcendental over $\mathcal K_a$, and
 \[
 F_0,F_1,\ldots,F_{a-1},G
 \tag{14}
@@ -393,7 +393,7 @@ C_{a,b}
 \]
 Equation~(16) eliminates $C_{a,a}$ when $r=a$, proving the affine-span assertion for all admissible intercepts.
 
-These affine combinations are nonconstant. Equation~(16) gives an invertible affine transformation from the basis~(15) to the block $C_{a,1},\ldots,C_{a,a+1}$. For each $b>a+1$, equation~(17) advances the block $C_{a,b-a-1},\ldots,C_{a,b-1}$ to the next block. Its linear part is invertible because the coefficient of the discarded first entry in the new final coordinate is $-(a+1)/(b-a-1)\neq0$. Induction therefore shows that every $C_{a,b}$ with $b\geq0$ has a nonzero linear part in the basis~(15). The expression~(18) has a nonzero linear part as well, including when $r=a$ after using~(16).
+These affine combinations are nonconstant. Equation~(16) gives an invertible affine transformation from the basis~(15) to the block $C_{a,1},\ldots,C_{a,a+1}$. For each $b>a+1$, equation~(17) advances the block $C_{a,b-a-1},\ldots,C_{a,b-1}$ to the next block. Its linear part is invertible because the coefficient of the discarded first entry in the new final coordinate is $-(a+1)/(b-a-1)\neq0$. Induction shows that every $C_{a,b}$ with $b\geq0$ has a nonzero linear part in the basis~(15). Equation~(18) also has a nonzero linear part; when $r=a$, use~(16).
 
 A nonconstant affine combination of algebraically independent numbers is transcendental. Hence every admissible $C_{a,b}$ is transcendental, and the affine span together with~(15) gives
 \[

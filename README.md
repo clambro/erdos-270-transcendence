@@ -40,7 +40,7 @@ $$
 C_{a,0},C_{a,1},\ldots,C_{a,a-1},C_{a,a+1}
 $$
 
-are algebraically independent, and every other admissible $C_{a,b}$ is a nonconstant rational affine combination of them. Consequently the fixed-slope family has transcendence degree $a+1$, and every $C_{a,b}$ with $b\geq1-a$ is transcendental. The argument develops from elementary irrationality proofs through the hypergeometric $E$-function machinery needed for the algebraic-independence theorem.
+are algebraically independent, and every other admissible $C_{a,b}$ is a nonconstant rational affine combination of them. Consequently the fixed-slope family has transcendence degree $a+1$, and every $C_{a,b}$ with $b\geq1-a$ is transcendental. The proof begins with elementary irrationality and then uses hypergeometric $E$-functions to establish algebraic independence.
 
 ## Proof outline
 
@@ -60,7 +60,7 @@ $$
 r_n:=\frac{D_{n+1}}{D_n}
 $$
 
-is a positive integer. Moreover, $r_n\to\infty$. If $P_N$ is the $N^\mathrm{th}$ partial sum and $R_N=C_{a,b}-P_N$, then $D_NP_N$ is an integer, while
+is a positive integer for every $n$, and $r_n\to\infty$. If $P_N$ is the $N^\mathrm{th}$ partial sum and $R_N=C_{a,b}-P_N$, then $D_NP_N$ is an integer, while
 
 $$
 0 < D_N R_N
@@ -77,7 +77,7 @@ $$
 C_{1,0}=\sum_{n=1}^{\infty}\frac{n!}{(2n)!},
 $$
 
-so its irrationality is an immediate corollary of the family argument. Crmarić and Kovač later found this $a=1$, $b=0$ specialization and suggested that similar reasoning might extend further; Kovač posted the observation on the [Erdős Problems forum](https://www.erdosproblems.com/forum/thread/270#post-7469) in July 2026. We learned of the post after independently obtaining the general argument.
+so the family argument proves its irrationality. Crmarić and Kovač later found this $a=1$, $b=0$ specialization and suggested that the reasoning might extend; Kovač posted the observation on the [Erdős Problems forum](https://www.erdosproblems.com/forum/thread/270#post-7469) in July 2026. We learned of the post after independently obtaining the general argument.
 
 ### 2. Transcendence of the base case
 
@@ -150,7 +150,7 @@ $$
 }
 $$
 
-[^long]: An earlier version of this paper established only individual transcendence. [Christopher D. Long pointed out](https://x.com/octonion/status/2091555025197662264) that the same machinery should also yield algebraic independence, and the argument was then strengthened to the form presented here.
+[^long]: An earlier version of this paper established individual transcendence. [Christopher D. Long pointed out](https://x.com/octonion/status/2091555025197662264) that the same machinery should also yield algebraic independence, and we then strengthened the argument to the form presented here.
 
 ## Lean verification
 
@@ -160,20 +160,20 @@ The detailed verification report is in the [formalization README](formalization/
 
 The elementary irrationality theorem for $a\geq1$ and $0\leq b\leq a$ is proved without additional mathematical assumptions in [`ElementaryIrrationality.lean`](formalization/FactorialRatio/ElementaryIrrationality.lean). Lean checks convergence, the denominator divisibility chain, integrality of the scaled partial sums, positivity of the tail, its decay to zero, and the final rationality contradiction.
 
-Lean also verifies many of the algebraic reductions used later:
+Lean verifies the following algebraic reductions:
 
 - the base-case reindexing $C_{1,0}=\frac12\sum_{n\geq0}n!/(2n+1)!$, convergence of that series, the normalization $F_{a,b}(1)=1+b!C_{a,b}$, and the negative-intercept identities in [`ValueIdentities.lean`](formalization/FactorialRatio/ValueIdentities.lean);
 - the boundary Euler identity and, as supplementary results, its generalization to arbitrary $b>a$, the associated recurrence, and the resonance calculation in [`CoefficientIdentities.lean`](formalization/FactorialRatio/CoefficientIdentities.lean);
 - the deduction of the base-case transcendence statement from the Gaussian identity and the required Siegel–Shidlovsky value independence in [`BaseCaseTranscendence.lean`](formalization/FactorialRatio/BaseCaseTranscendence.lean);
 - the normalization, parameter-range case split, and negative-intercept reduction in the supplementary direct-transcendence theorem in [`Main.lean`](formalization/FactorialRatio/Main.lean);
-- the construction of the $a+1$-element fixed-slope basis, extension of algebraic independence from rational to real algebraic coefficients, transcendence of each basis coordinate, and the resulting polynomial-algebra equivalence in [`FixedSlopeAlgebraicIndependence.lean`](formalization/FactorialRatio/FixedSlopeAlgebraicIndependence.lean), conditional on the explicitly stated analytic independence input.
+- the construction of the $a+1$-element fixed-slope basis, extension of algebraic independence from rational to real algebraic coefficients, transcendence of each basis coordinate, and the resulting polynomial-algebra equivalence in [`FixedSlopeAlgebraicIndependence.lean`](formalization/FactorialRatio/FixedSlopeAlgebraicIndependence.lean), conditional on the stated analytic independence input;
 - the exact fixed-slope boundary, beyond-boundary, and negative-intercept affine recurrences in [`ValueIdentities.lean`](formalization/FactorialRatio/ValueIdentities.lean).
 
 There are no `sorry`, `admit`, or global `axiom` declarations. The [axiom audit](formalization/FactorialRatio/AxiomAudit.lean) reports only Lean's standard foundational axioms.
 
 ### Not yet verified in Lean
 
-The formalization does **not** currently prove the manuscript's transcendence and algebraic-independence results unconditionally. The missing inputs are stated explicitly in [`ExternalTheorems.lean`](formalization/FactorialRatio/ExternalTheorems.lean). They include:
+The formalization does **not** prove the manuscript's transcendence and algebraic-independence results unconditionally. The missing inputs are listed in [`ExternalTheorems.lean`](formalization/FactorialRatio/ExternalTheorems.lean). They include:
 
 - the Gaussian integral identity and the Siegel–Shidlovsky theorem used in the shorter base-case argument;
 - the applications of the Salikhov and Salikhov–Viskina algebraic-independence theorems;
@@ -182,7 +182,7 @@ The formalization does **not** currently prove the manuscript's transcendence an
 - the log-free formal field and trace-descent argument for the boundary function;
 - the application of Beukers's specialization theorem.
 
-The algebraic-independence result in [`FixedSlopeAlgebraicIndependence.lean`](formalization/FactorialRatio/FixedSlopeAlgebraicIndependence.lean) and the supplementary direct-transcendence result in [`Main.lean`](formalization/FactorialRatio/Main.lean) are therefore conditional on explicit literature-dependent interfaces in [`ExternalTheorems.lean`](formalization/FactorialRatio/ExternalTheorems.lean). Lean verifies the deductions from those interfaces, but not the interfaces themselves.
+The algebraic-independence result in [`FixedSlopeAlgebraicIndependence.lean`](formalization/FactorialRatio/FixedSlopeAlgebraicIndependence.lean) and the supplementary direct-transcendence result in [`Main.lean`](formalization/FactorialRatio/Main.lean) are conditional on literature-dependent interfaces in [`ExternalTheorems.lean`](formalization/FactorialRatio/ExternalTheorems.lean). Lean verifies the deductions from those interfaces, but not the interfaces themselves.
 
 ### Reproducing the Lean build
 

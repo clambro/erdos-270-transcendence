@@ -5,7 +5,7 @@ import Mathlib.RingTheory.AlgebraicIndependent.AlgebraicClosure
 /-!
 # External transcendence inputs
 
-The Salikhov, Salikhov--Viskina, and Beukers theorems are not presently available in
+The Salikhov, Salikhov--Viskina, and Beukers theorems are not available in
 mathlib. Their exact interfaces will be exposed here as hypotheses rather than hidden
 behind `axiom` declarations or `sorry`.
 -/
@@ -33,7 +33,7 @@ def TwoValuesLinearIndependent (x y : ℝ) : Prop :=
       c₁ * x + c₂ * y = 0 → c₁ = 0 ∧ c₂ = 0
 
 /-- The Gaussian integral identity for the base case, separated as an explicit input
-until its termwise-integration proof is formalized. Crmarić and Kovač record exactly
+until its termwise-integration proof is formalized. Crmarić and Kovač record
 this identity in the source cited by the manuscript. -/
 structure BaseCaseGaussianIdentity : Prop where
   identity : constant 1 0 = Real.exp (1 / 4 : ℝ) * gaussianHalfIntegral

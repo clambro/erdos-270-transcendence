@@ -32,7 +32,7 @@ theorem constant_transcendental_of_normalizedValue (a b : ℕ)
   have hbAlg : IsAlgebraic ℚ (b.factorial : ℝ) := isAlgebraic_natCast b.factorial
   exact IsAlgebraic.add isAlgebraic_one (IsAlgebraic.mul hbAlg hC)
 
-/-- Conditional only on the cited fundamental-strip value theorem, the constants with
+/-- Assuming the cited fundamental-strip value theorem, the constants with
 `0 ≤ b ≤ a` are transcendental. -/
 theorem fundamental_constant_transcendental
     (published : FundamentalStripInput) (a r : ℕ) (ha : 1 ≤ a) (hr : r ≤ a) :

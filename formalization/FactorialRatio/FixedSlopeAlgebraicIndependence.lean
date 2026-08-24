@@ -27,7 +27,7 @@ theorem fixedSlopeBasis_algebraicIndependent_realAlgebraic
     AlgebraicIndependent (Subalgebra.algebraicClosure ℚ ℝ) (fixedSlopeBasis a) :=
   (published.independent a ha).subalgebraAlgebraicClosure
 
-/-- Every member of the fixed-slope basis is individually transcendental. -/
+/-- Every member of the fixed-slope basis is transcendental. -/
 theorem fixedSlopeBasis_transcendental
     (published : FixedSlopeAlgebraicIndependenceInput) (a : ℕ) (ha : 1 ≤ a)
     (i : Fin (a + 1)) :

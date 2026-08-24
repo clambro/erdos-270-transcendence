@@ -119,7 +119,7 @@ F_{a,b}(z)=b!\sum_{n=0}^{\infty}\frac{n!}{((a+1)n+b)!}z^{an},
 \qquad F_{a,b}(1)=1+b!C_{a,b}.
 $$
 
-Set $H=F_{a,a-1}$. The algebraic-independence criteria of Salikhov for odd $a$ and Salikhov–Viskina for even $a$ show that
+Set $H=F_{a,a-1}$. The algebraic-independence criteria of Salikhov for odd $a$ and Viskina–Salikhov for even $a$ show that
 
 $$
 H,\theta H,\ldots,\theta^{a-1}H
@@ -175,7 +175,7 @@ There are no `sorry`, `admit`, or global `axiom` declarations. The [axiom audit]
 The formalization does **not** prove the manuscript's transcendence and algebraic-independence results unconditionally. The missing inputs are listed in [`ExternalTheorems.lean`](formalization/FactorialRatio/ExternalTheorems.lean). They include:
 
 - the Gaussian integral identity and the Siegel–Shidlovsky theorem used in the shorter base-case argument;
-- the applications of the Salikhov and Salikhov–Viskina algebraic-independence theorems;
+- the applications of the Salikhov and Viskina–Salikhov algebraic-independence theorems;
 - the analytic hypergeometric-function and differential-system setup;
 - the Levelt–Turrittin decomposition and the zero-exponential projection at infinity;
 - the log-free formal field and trace-descent argument for the boundary function;

@@ -12,7 +12,7 @@ This is the Lean 4 formalization accompanying *Algebraic Independence in the Aff
 | --- | --- | --- |
 | Irrationality of $C_{a,b}$ for $a\geq1$ and $0\leq b\leq a$ | Fully verified | None |
 | Transcendence of $C_{1,0}$ by the Gaussian argument | Conditional deduction verified | Gaussian identity; Siegel–Shidlovsky value independence |
-| Algebraic independence of $C_{a,0},\ldots,C_{a,a-1},C_{a,a+1}$ | Conditional deduction verified | Salikhov and Salikhov–Viskina algebraic independence; logarithmic boundary obstruction; trace descent; Beukers's theorem |
+| Algebraic independence of $C_{a,0},\ldots,C_{a,a-1},C_{a,a+1}$ | Conditional deduction verified | Salikhov and Viskina–Salikhov algebraic independence; logarithmic boundary obstruction; trace descent; Beukers's theorem |
 | Transcendence of every $C_{a,b}$ with $a\geq1$ and $b\geq1-a$ | Conditional deduction verified | The fixed-slope algebraic-independence input above |
 | Rational affine-span structure and fixed-slope transcendence degree $a+1$ | Conditional deduction verified | The fixed-slope algebraic-independence input above |
 
@@ -90,7 +90,7 @@ The file now carries the manuscript's remaining algebraic argument through to it
 - [`fixedSlopeConstants_adjoin_eq`](FactorialRatio/FixedSlopeAlgebraicIndependence.lean): all nonnegative-intercept values generate the same $\mathbb Q$-algebra as the basis;
 - [`fixedSlopeConstants_trdeg`](FactorialRatio/FixedSlopeAlgebraicIndependence.lean): that algebra has transcendence degree exactly $a+1$.
 
-The external input packages the analytic part of the manuscript: the Salikhov and Salikhov–Viskina results, the log-free formal field at infinity, the trace-descent argument for the boundary function, and Beukers's specialization theorem. These ingredients have not been reconstructed in Lean.
+The external input packages the analytic part of the manuscript: the Salikhov and Viskina–Salikhov results, the log-free formal field at infinity, the trace-descent argument for the boundary function, and Beukers's specialization theorem. These ingredients have not been reconstructed in Lean.
 
 ## Source guide
 

@@ -5,7 +5,7 @@ import Mathlib.RingTheory.AlgebraicIndependent.AlgebraicClosure
 /-!
 # External transcendence inputs
 
-The Salikhov, Salikhov--Viskina, and Beukers theorems are not available in
+The Salikhov, Viskina--Salikhov, and Beukers theorems are not available in
 mathlib. Their exact interfaces will be exposed here as hypotheses rather than hidden
 behind `axiom` declarations or `sorry`.
 -/
@@ -33,7 +33,7 @@ structure BaseCaseSiegelShidlovskyInput : Prop where
   independent : TwoValuesLinearIndependent gaussianYQuarter expNegQuarter
 
 /-- The fixed-slope value-independence consequence of the Salikhov,
-Salikhov--Viskina, formal-at-infinity, trace-descent, and Beukers arguments.
+Viskina--Salikhov, formal-at-infinity, trace-descent, and Beukers arguments.
 
 The family has `a + 1` coordinates: `C_(a,0),...,C_(a,a-1),C_(a,a+1)`.
 This interface is passed explicitly because the analytic theorems needed to

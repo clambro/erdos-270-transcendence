@@ -9,7 +9,7 @@ import Mathlib.RingTheory.AlgebraicIndependent.TranscendenceBasis
 # Fixed-slope algebraic independence
 
 This file records the exact value-level boundary of the formalization. The analytic
-Salikhov, Salikhov--Viskina, Levelt--Turrittin, trace-descent, and Beukers arguments
+Salikhov, Viskina--Salikhov, Levelt--Turrittin, trace-descent, and Beukers arguments
 are supplied through `FixedSlopeAlgebraicIndependenceInput`. Lean verifies the
 algebraic consequences of that input and exposes the extension from rational to
 real algebraic coefficients.

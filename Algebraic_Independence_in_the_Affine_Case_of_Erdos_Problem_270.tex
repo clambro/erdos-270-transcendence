@@ -57,7 +57,7 @@ S(f):=\sum_{n=1}^{\infty}
 \]
 and asked whether $S(f)$ must be irrational. They expected an affirmative answer when $f$ is nondecreasing~\cite[p.~66]{erdos-graham}. Crmari\'c and Kova\v{c} later showed that some regularity assumption is necessary: as $f$ ranges over all such functions, $S(f)$ takes every value in $(0,\infty)$~\cite[Theorem~1]{crmaric-kovac}. The nondecreasing problem remains open~\cite{bloom-270}.
 
-For integers $a\geq1$ and $b\geq0$, the affine choice $f(n)=an+b$ gives
+For integers $a\geq1$ and $b\geq1-a$, the positive affine choice $f(n)=an+b$ gives
 \[
 S(f)=\sum_{n=1}^{\infty}\frac1{(n+1)\cdots((a+1)n+b)}
 =\sum_{n=1}^{\infty}\frac{n!}{((a+1)n+b)!}
@@ -150,7 +150,7 @@ are algebraically independent over $\overline{\mathbb Q}$. Every $C_{a,b}$ with 
 Consequently every $C_{a,b}$ in this range is transcendental.\footnote{An earlier version of this paper established individual transcendence. Christopher D.~Long pointed out that the same machinery should also yield algebraic independence~\cite{long-x}; we then strengthened the argument to the form given here.}
 \end{theorem}
 
-For fixed $a$, we first obtain functional algebraic independence for $F_{a,0},\ldots,F_{a,a-1}$ from the hypergeometric $E$-function results of Salikhov and Salikhov--Viskina. A logarithmic obstruction then supplies the additional independent function $F_{a,a+1}$. Beukers's theorem transfers this independence to $z=1$, after which elementary recurrences recover every remaining intercept.
+For fixed $a$, we first obtain functional algebraic independence for $F_{a,0},\ldots,F_{a,a-1}$ from the hypergeometric $E$-function results of Salikhov and Viskina--Salikhov. A logarithmic obstruction then supplies the additional independent function $F_{a,a+1}$. Beukers's theorem transfers this independence to $z=1$, after which elementary recurrences recover every remaining intercept.
 
 For integers $a\geq1$ and $b\geq0$, define
 \[
@@ -190,7 +190,7 @@ The product identity
 \]
 together with the omitted factor $(1)_n=n!$, verifies~(4).
 
-To apply the results of Salikhov and Salikhov--Viskina, set
+To apply the results of Salikhov and Viskina--Salikhov, set
 \[
 \rho_a:=\frac{a}{(a+1)^{(a+1)/a}},
 \qquad
@@ -210,7 +210,7 @@ S_a=\left\{\frac1{a+1},\ldots,\frac a{a+1}\right\}\subset\mathbb Q/\mathbb Z.
 \]
 If $d>1$ divides $a$, then $\gcd(d,a+1)=1$, so $1/d$ does not belong to the subgroup $(a+1)^{-1}\mathbb Z/\mathbb Z$ containing $S_a$. Translation by $1/d$ therefore cannot preserve $S_a$. Salikhov's theorem gives algebraic independence of the values of $\varphi$ and its first $a-1$ derivatives at every nonzero algebraic point.
 
-When $a$ is even, Salikhov--Viskina show that algebraic dependence of the corresponding function and its first $a-1$ Euler derivatives requires one of the shifts $\lambda_j$ to be an integer~\cite[p.~833]{salikhov-viskina}. None of the numbers $(j-2)/(a+1)$ with $j\in J_a$ is an integer, so the same functional algebraic independence holds in the even case.
+When $a$ is even, Viskina--Salikhov show that algebraic dependence of the corresponding function and its first $a-1$ Euler derivatives requires one of the shifts $\lambda_j$ to be an integer~\cite[p.~833]{salikhov-viskina}. None of the numbers $(j-2)/(a+1)$ with $j\in J_a$ is an integer, so the same functional algebraic independence holds in the even case.
 
 For odd $a$, functional independence follows from the value theorem. A relation over $\mathbb C(z)$ among functions with algebraic Taylor coefficients descends to $\overline{\mathbb Q}(z)$: after fixing the monomials and degree bounds in a hypothetical relation, comparison of Taylor coefficients gives a homogeneous linear system over $\overline{\mathbb Q}$ in its polynomial coefficients. Specialization at a nonzero algebraic point where those coefficients are defined and not all zero would then contradict Salikhov's value theorem. Since ordinary and Euler derivatives are related by an invertible triangular transformation, we have in every parity
 \[
@@ -432,7 +432,7 @@ F.~Beukers, A refined version of the Siegel--Shidlovskii theorem, \emph{Annals o
 V.~Kh.~Salikhov, A criterion for the algebraic independence of values of a class of hypergeometric $E$-functions, \emph{Mathematics of the USSR-Sbornik} \textbf{69} (1991), 203--226. \href{https://doi.org/10.1070/SM1991v069n01ABEH002113}{doi:10.1070/SM1991v069n01ABEH002113}.
 
 \bibitem{salikhov-viskina}
-V.~Kh.~Salikhov and G.~G.~Viskina, Algebraic relations between the hypergeometric $E$-function and its derivatives, \emph{Matematicheskie Zametki} \textbf{71} (2002), 832--844; English translation in \emph{Mathematical Notes} \textbf{71} (2002), 761--772. \href{https://doi.org/10.1023/A:1015864711107}{doi:10.1023/A:1015864711107}.
+G.~G.~Viskina and V.~Kh.~Salikhov, Algebraic relations between the hypergeometric $E$-function and its derivatives, \emph{Matematicheskie Zametki} \textbf{71} (2002), 832--844; English translation in \emph{Mathematical Notes} \textbf{71} (2002), 761--772. \href{https://doi.org/10.1023/A:1015864711107}{doi:10.1023/A:1015864711107}.
 
 \bibitem{vdput-singer}
 M.~van der Put and M.~F.~Singer, \emph{Galois Theory of Linear Differential Equations}, Grundlehren der mathematischen Wissenschaften \textbf{328}, Springer, 2003, Chapter~3, Theorem~3.1. \href{https://doi.org/10.1007/978-3-642-55750-7}{doi:10.1007/978-3-642-55750-7}.

@@ -1,5 +1,4 @@
 # Lean and Lake build output
-.lake/
 **/.lake/
 
 # LaTeX auxiliary files (the published PDF remains tracked)

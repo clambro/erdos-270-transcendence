@@ -47,7 +47,7 @@ C_{a,b}:=\sum_{n=1}^{\infty}\frac{n!}{((a+1)n+b)!}
 where $a\geq1$ and $b\geq1-a$. For each fixed $a$, we prove that $C_{a,0},\ldots,C_{a,a-1},C_{a,a+1}$ are algebraically independent over $\overline{\mathbb Q}$ and that every other admissible $C_{a,b}$ is a nonconstant rational affine combination of them. Hence the fixed-slope family has transcendence degree $a+1$, and every $C_{a,b}$ in this range is transcendental. We also give an elementary irrationality proof for $0\leq b\leq a$ and a short Gaussian-integral proof of the transcendence of $C_{1,0}$. The general proof combines algebraic-independence theorems for hypergeometric $E$-functions, a logarithmic obstruction at infinity, and Beukers's specialization theorem.
 \end{quote}
 
-\section{Irrationality in the affine family}
+\section{Irrationality for \texorpdfstring{$0\leq b\leq a$}{0 <= b <= a}}
 \label{sec:irrationality}
 
 Erd\H{o}s and Graham ended their chapter on irrationality and transcendence with the question now known as Erd\H{o}s Problem 270. Given a positive integer-valued function $f$ with $f(n)\to\infty$, they considered
@@ -63,7 +63,7 @@ S(f)=\sum_{n=1}^{\infty}\frac1{(n+1)\cdots((a+1)n+b)}
 =\sum_{n=1}^{\infty}\frac{n!}{((a+1)n+b)!}
 =:C_{a,b}.
 \]
-Erd\H{o}s and Graham singled out the simplest choice, $f(n)=n$, and described the resulting series as difficult to treat~\cite[pp.~65--66]{erdos-graham}. It is the case $a=1$, $b=0$ of the family above. The following argument proves irrationality for $0\leq b\leq a$.
+Erd\H{o}s and Graham singled out the simplest choice, $f(n)=n$, and described the resulting series as difficult to treat~\cite[pp.~65--66]{erdos-graham}. It is the case $a=1$, $b=0$ of the family above. Crmari\'c and Kova\v{c} later returned to this example and reported that they knew no proof of its irrationality~\cite[p.~55, following (1.1)]{crmaric-kovac}. The following argument proves it throughout the larger range $0\leq b\leq a$.\footnote{After their paper appeared, Kova\v{c} posted the $a=1$, $b=0$ specialization of this argument on the Erd\H{o}s Problems forum and suggested that it should extend further~\cite{kovac-forum}. We obtained the general argument independently before learning of that post.}
 
 Fix $a\geq1$ and $0\leq b\leq a$, and put
 \[
@@ -108,7 +108,7 @@ C_{1,0}=\sum_{n=1}^{\infty}\frac{n!}{(2n)!}
 is irrational.
 \end{corollary}
 
-Crmari\'c and Kova\v{c} returned to this example and reported that they knew no proof of its irrationality~\cite[p.~55, following (1.1)]{crmaric-kovac}. After their paper appeared, they found the $a=1$, $b=0$ specialization of the argument above and suggested that similar reasoning might extend further; Kova\v{c} posted this observation on the Erd\H{o}s Problems forum in July 2026~\cite{kovac-forum}. We obtained the general argument independently before learning of their post.
+The denominator argument settles the original example and a finite block in every affine family. For $C_{1,0}$, the integral representation recorded by Crmari\'c and Kova\v{c} points to the stronger question of transcendence.
 
 \section{Transcendence of \texorpdfstring{$C_{1,0}$}{C(1,0)}}
 \label{sec:a1-transcendence}
@@ -118,7 +118,7 @@ Crmari\'c and Kova\v{c} record the Gaussian integral representation~\cite[p.~55 
 C_{1,0}=e^{1/4}\int_0^{1/2}e^{-t^2}\,dt.
 \tag{1}
 \]
-In a 2023 MathOverflow discussion of the neighboring integral $\int_0^1e^{-t^2}\,dt$, Weber and Pinelis~\cite{mathoverflow} considered the $E$-function
+In a 2023 MathOverflow discussion\footnote{The discussion did not mention either the factorial series or the specialization below.} of the neighboring integral $\int_0^1e^{-t^2}\,dt$, Weber and Pinelis~\cite{mathoverflow} considered the $E$-function
 \[
 y(x):=\frac1{\sqrt{x}}\int_0^{\sqrt{x}}e^{-t^2}\,dt
 =\sum_{n=0}^{\infty}\frac{(-1)^n}{2n+1}\frac{x^n}{n!}
@@ -129,9 +129,9 @@ y(1/4)=2\int_0^{1/2}e^{-t^2}\,dt,
 \qquad
 C_{1,0}=\frac{y(1/4)}{2e^{-1/4}},
 \]
-an algebraic value of $C_{1,0}$ would give a nontrivial algebraic relation between $y(1/4)$ and $e^{-1/4}$. Hence $C_{1,0}$ is transcendental. The MathOverflow discussion did not mention either the factorial series or this specialization.
+an algebraic value of $C_{1,0}$ would give a nontrivial algebraic relation between $y(1/4)$ and $e^{-1/4}$. Hence $C_{1,0}$ is transcendental.
 
-We turn to the hypergeometric $E$-functions associated with the full affine family.
+The natural next question is whether this conclusion extends through the affine family. Its uniform hypergeometric formulation gives a stronger result: algebraic independence at each fixed slope.
 
 \section{Algebraic independence in the affine family}
 \label{sec:affine-family}
@@ -150,7 +150,7 @@ are algebraically independent over $\overline{\mathbb Q}$. Every $C_{a,b}$ with 
 Consequently every $C_{a,b}$ in this range is transcendental.\footnote{An earlier version of this paper established individual transcendence. Christopher D.~Long pointed out that the same machinery should also yield algebraic independence~\cite{long-x}; we then strengthened the argument to the form given here.}
 \end{theorem}
 
-We prove functional independence by a logarithmic obstruction at infinity and then specialize at $z=1$.
+For fixed $a$, we first obtain functional algebraic independence for $F_{a,0},\ldots,F_{a,a-1}$ from the hypergeometric $E$-function results of Salikhov and Salikhov--Viskina. A logarithmic obstruction then supplies the additional independent function $F_{a,a+1}$. Beukers's theorem transfers this independence to $z=1$, after which elementary recurrences recover every remaining intercept.
 
 For integers $a\geq1$ and $b\geq0$, define
 \[

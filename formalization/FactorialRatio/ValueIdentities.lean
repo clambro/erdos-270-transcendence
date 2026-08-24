@@ -283,8 +283,8 @@ theorem summand_intercept_recurrence (a b n : ℕ) (hb : a + 1 ≤ b) :
   ring
 
 /-- Unified value recurrence. Its boundary case `b = a + 1` gives equation
-(31) of the manuscript; solving it for `constant a b` when `a + 1 < b`
-gives equation (32). -/
+(16) of the manuscript; solving it for `constant a b` when `a + 1 < b`
+gives equation (17). -/
 theorem constant_intercept_recurrence (a b : ℕ) (ha : 1 ≤ a) (hb : a + 1 ≤ b) :
     constant a (b - 1) =
       (a + 1 : ℝ) * (constant a (b - a - 1) - 1 / (b.factorial : ℝ)) +
@@ -411,7 +411,7 @@ theorem shiftedConstant_eq (a r : ℕ) (ha : 1 ≤ a) :
   rw [htsum, tsum_mul_left]
   ring
 
-/-- Affine form of the negative-intercept shift, corresponding to equation (33)
+/-- Affine form of the negative-intercept shift, corresponding to equation (18)
 of the manuscript after `r = a + 1 + b`. -/
 theorem shiftedConstant_affine (a r : ℕ) (ha : 1 ≤ a) (hr : 1 ≤ r) :
     shiftedConstant a r =

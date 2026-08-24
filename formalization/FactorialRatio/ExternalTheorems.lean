@@ -12,21 +12,8 @@ behind `axiom` declarations or `sorry`.
 
 namespace FactorialRatio
 
-/-- Linear independence of `1` and `x` with real algebraic coefficients. This is the
-real-valued form of linear independence over `Q̄` needed in the fundamental strip. -/
-def OneAndValueLinearIndependent (x : ℝ) : Prop :=
-  ∀ c₀ c₁ : ℝ,
-    IsAlgebraic ℚ c₀ → IsAlgebraic ℚ c₁ →
-      c₀ + c₁ * x = 0 → c₀ = 0 ∧ c₁ = 0
-
-/-- Linear independence of `1`, `x`, and `y` with real algebraic coefficients. -/
-def OneAndTwoValuesLinearIndependent (x y : ℝ) : Prop :=
-  ∀ c₀ c₁ c₂ : ℝ,
-    IsAlgebraic ℚ c₀ → IsAlgebraic ℚ c₁ → IsAlgebraic ℚ c₂ →
-      c₀ + c₁ * x + c₂ * y = 0 → c₀ = 0 ∧ c₁ = 0 ∧ c₂ = 0
-
 /-- Linear independence of two specified real values with algebraic coefficients.
-Unlike `OneAndValueLinearIndependent`, this predicate has no constant coordinate. -/
+This is the special-value consequence used by the Gaussian base-case proof. -/
 def TwoValuesLinearIndependent (x y : ℝ) : Prop :=
   ∀ c₁ c₂ : ℝ,
     IsAlgebraic ℚ c₁ → IsAlgebraic ℚ c₂ →
@@ -44,28 +31,6 @@ over the real algebraic numbers. The published argument proves the stronger stat
 that these two values are algebraically independent. -/
 structure BaseCaseSiegelShidlovskyInput : Prop where
   independent : TwoValuesLinearIndependent gaussianYQuarter expNegQuarter
-
-/-- The precise consequences of the Salikhov and Salikhov--Viskina value theorems used
-by the formalized argument. The first field covers `1,F`; the second is required for
-the shifted negative-intercept cases and covers `1,F,θF` when `a ≥ 2`.
-
-This structure is an explicit hypothesis. Constructing it from the published papers is
-outside mathlib and is not asserted by an `axiom` declaration. -/
-structure FundamentalStripInput : Prop where
-  pair : ∀ a r : ℕ, 1 ≤ a → r ≤ a →
-    OneAndValueLinearIndependent (normalizedValue a r)
-  triple : ∀ a r : ℕ, 2 ≤ a → 2 ≤ r → r ≤ a →
-    OneAndTwoValuesLinearIndependent (normalizedValue a r) (eulerValue a r)
-
-/-- The specialized value-independence conclusion produced, for `b > a`, by the
-paper's functional-minimality argument followed by Beukers's lifting theorem.
-
-As with `FundamentalStripInput`, this is passed explicitly. The formalization checks the
-coefficient reduction and resonance arithmetic but does not formalize Levelt--Turrittin
-theory, E-functions, or Beukers's theorem. -/
-structure BeyondStripInput : Prop where
-  pair : ∀ a b : ℕ, 1 ≤ a → a < b →
-    OneAndValueLinearIndependent (normalizedValue a b)
 
 /-- The fixed-slope value-independence consequence of the Salikhov,
 Salikhov--Viskina, formal-at-infinity, trace-descent, and Beukers arguments.

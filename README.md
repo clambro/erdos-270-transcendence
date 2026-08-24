@@ -163,11 +163,10 @@ The elementary irrationality theorem for $a\geq1$ and $0\leq b\leq a$ is proved 
 Lean verifies the following algebraic reductions:
 
 - the base-case reindexing $C_{1,0}=\frac12\sum_{n\geq0}n!/(2n+1)!$, convergence of that series, the normalization $F_{a,b}(1)=1+b!C_{a,b}$, and the negative-intercept identities in [`ValueIdentities.lean`](formalization/FactorialRatio/ValueIdentities.lean);
-- the boundary Euler identity and, as supplementary results, its generalization to arbitrary $b>a$, the associated recurrence, and the resonance calculation in [`CoefficientIdentities.lean`](formalization/FactorialRatio/CoefficientIdentities.lean);
+- the coefficientwise contiguous and negative-intercept identities in [`CoefficientIdentities.lean`](formalization/FactorialRatio/CoefficientIdentities.lean);
 - the deduction of the base-case transcendence statement from the Gaussian identity and the required Siegel–Shidlovsky value independence in [`BaseCaseTranscendence.lean`](formalization/FactorialRatio/BaseCaseTranscendence.lean);
-- the normalization, parameter-range case split, and negative-intercept reduction in the supplementary direct-transcendence theorem in [`Main.lean`](formalization/FactorialRatio/Main.lean);
-- the construction of the $a+1$-element fixed-slope basis, extension of algebraic independence from rational to real algebraic coefficients, transcendence of each basis coordinate, and the resulting polynomial-algebra equivalence in [`FixedSlopeAlgebraicIndependence.lean`](formalization/FactorialRatio/FixedSlopeAlgebraicIndependence.lean), conditional on the stated analytic independence input;
-- the exact fixed-slope boundary, beyond-boundary, and negative-intercept affine recurrences in [`ValueIdentities.lean`](formalization/FactorialRatio/ValueIdentities.lean).
+- the exact fixed-slope boundary, beyond-boundary, and negative-intercept affine recurrences in [`ValueIdentities.lean`](formalization/FactorialRatio/ValueIdentities.lean);
+- the construction of the $a+1$-element fixed-slope basis, extension of algebraic independence from rational to real algebraic coefficients, propagation of linear independence through every consecutive block, transcendence of every admissible integer-intercept value, membership of every value in the rational affine span, equality of the generated algebras, and fixed-slope transcendence degree $a+1$ in [`FixedSlopeAlgebraicIndependence.lean`](formalization/FactorialRatio/FixedSlopeAlgebraicIndependence.lean), conditional on the stated analytic independence input.
 
 There are no `sorry`, `admit`, or global `axiom` declarations. The [axiom audit](formalization/FactorialRatio/AxiomAudit.lean) reports only Lean's standard foundational axioms.
 
@@ -182,7 +181,7 @@ The formalization does **not** prove the manuscript's transcendence and algebrai
 - the log-free formal field and trace-descent argument for the boundary function;
 - the application of Beukers's specialization theorem.
 
-The algebraic-independence result in [`FixedSlopeAlgebraicIndependence.lean`](formalization/FactorialRatio/FixedSlopeAlgebraicIndependence.lean) and the supplementary direct-transcendence result in [`Main.lean`](formalization/FactorialRatio/Main.lean) are conditional on literature-dependent interfaces in [`ExternalTheorems.lean`](formalization/FactorialRatio/ExternalTheorems.lean). Lean verifies the deductions from those interfaces, but not the interfaces themselves.
+The algebraic-independence result in [`FixedSlopeAlgebraicIndependence.lean`](formalization/FactorialRatio/FixedSlopeAlgebraicIndependence.lean) is conditional on the literature-dependent interface in [`ExternalTheorems.lean`](formalization/FactorialRatio/ExternalTheorems.lean). Lean verifies all algebraic deductions from that interface, including the affine-span and exact-degree conclusions, but not the interface itself.
 
 ### Reproducing the Lean build
 

@@ -1,6 +1,4 @@
-import FactorialRatio.Main
-import FactorialRatio.BaseCaseTranscendence
-import FactorialRatio.FixedSlopeAlgebraicIndependence
+import FactorialRatio
 
 /-!
 Run this file with `lake env lean FactorialRatio/AxiomAudit.lean` to display the axiom
@@ -8,32 +6,29 @@ dependencies of the principal verified statements.
 -/
 
 #print axioms FactorialRatio.constant_irrational
-#print axioms FactorialRatio.elementary_constant_irrational
 #print axioms FactorialRatio.summable_summand_all
 #print axioms FactorialRatio.integer_factorial_index_ge_two
 #print axioms FactorialRatio.summable_integerSummand
-#print axioms FactorialRatio.intercept_division_algorithm
-#print axioms FactorialRatio.intercept_quotient_pos_of_beyond
-#print axioms FactorialRatio.euler_reduction_coefficient
-#print axioms FactorialRatio.differentialStepNumerator_eq_prod
-#print axioms FactorialRatio.differential_equation_coefficient
 #print axioms FactorialRatio.normalizedCoeff_contiguous
+#print axioms FactorialRatio.negative_shift_coefficient
 #print axioms FactorialRatio.normalizedValue_contiguous
 #print axioms FactorialRatio.constant_intercept_recurrence
 #print axioms FactorialRatio.constant_boundary_eq
 #print axioms FactorialRatio.constant_beyond_recurrence
 #print axioms FactorialRatio.shiftedConstant_affine
-#print axioms FactorialRatio.resonanceAction_succ
-#print axioms FactorialRatio.resonantForcingCoeff_ne_zero
-#print axioms FactorialRatio.no_log_free_resonant_coefficient
-#print axioms FactorialRatio.forcedLogCoeff_mul_resonanceAction
 #print axioms FactorialRatio.integerConstant_eq_shifted
 #print axioms FactorialRatio.shiftedConstant_eq
 #print axioms FactorialRatio.constant_one_zero_eq_half_oddFactorialSeries
 #print axioms FactorialRatio.gaussianYQuarter_eq_two_mul_constant_mul_expNegQuarter
 #print axioms FactorialRatio.constant_one_zero_transcendental_of_gaussian
-#print axioms FactorialRatio.nonnegative_constant_transcendental
-#print axioms FactorialRatio.integer_constant_transcendental
 #print axioms FactorialRatio.fixedSlopeBasis_algebraicIndependent
 #print axioms FactorialRatio.fixedSlopeBasis_algebraicIndependent_realAlgebraic
 #print axioms FactorialRatio.fixedSlopeBasis_transcendental
+#print axioms FactorialRatio.fixedSlopeBlock_linearIndependent
+#print axioms FactorialRatio.nonnegative_constant_transcendental_of_fixedSlope
+#print axioms FactorialRatio.shiftedConstant_transcendental_of_fixedSlope
+#print axioms FactorialRatio.integer_constant_transcendental_of_fixedSlope
+#print axioms FactorialRatio.constant_mem_fixedSlopeAffineSpan
+#print axioms FactorialRatio.integerConstant_mem_fixedSlopeAffineSpan
+#print axioms FactorialRatio.fixedSlopeConstants_adjoin_eq
+#print axioms FactorialRatio.fixedSlopeConstants_trdeg
